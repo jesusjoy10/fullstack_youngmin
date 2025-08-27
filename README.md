@@ -17,8 +17,8 @@
  이름, 이메일, 깃허브주소, 포트폴리오 2*4의 테이블형식으로 -->
 ## contact & Links
 
-![프로필](./track001/984103_avatar_geek_male_man_person_icon.png)
-<img src="./984126_avatar_male_man_user_person_icon.png" alt="프로필"> width="50" />
+![프로필](./track001/984126_avatar_male_man_user_person_icon.png)
+<img src="./" alt="프로필">width="50" />
 
 
 | | |
@@ -37,7 +37,7 @@ _ _ _
 
 - 협업 중심의 **GitHub 프로젝트 운영 흐름** 학습
 
--AI 기반의 **스마트 개발 환경 실습
+- AI 기반의 **스마트 개발 환경 실습
 <br/>
 <br/>
 <br/> 
@@ -85,6 +85,7 @@ no changes added to commit
 
 - **느낀점** 기본적인 실수지만, 실무에서도 충분히 발생할 수 있는 상황. 작업 전 저장 습관화가 중요하며, 커밋 전 git status 확인은 필수다.
 
+```
 ### 🔧 트러블슈팅 (2)
 
 ```bash
@@ -96,6 +97,8 @@ nothing to commit, working tree clean
 - **해결방안** 작업한 파일을 워크스페이스에 추가하지 않음. 새 파일을 프로젝트 폴더에 넣지 않아 Git이 인식하지 못함. → 파일을 워크스페이스에 추가 후 정상 커밋.
 
 - **느낀점** Git은 추적 가능한 경로에 있는 파일만 관리한다는 점을 다시금 인지. 파일 위치와 Git 상태를 항상 함께 확인해야 한다.
+
+```
 
 ### 🔧 트러블슈팅 (3)
 ```bash
