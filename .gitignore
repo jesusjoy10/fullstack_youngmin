@@ -3,9 +3,13 @@
 .project
 .settings/
 eclipse/
+<<<<<<< HEAD
 fullstack_sally/
 fullstack_test/
 fullstack_youngmin/
+=======
+
+>>>>>>> 62ab4467003ba4a7aae6f09f7e90e290f18ac926
 
 # 빌드 결과물 무시
 /bib/
