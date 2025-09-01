@@ -3,7 +3,9 @@
 .project
 .settings/
 eclipse/
-
+fullstack_sally/
+fullstack_test/
+fullstack_youngmin/
 
 # 빌드 결과물 무시
 /bib/
