@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> ID VS CLASS</title>
+    <style>
+        /* 전체선택자 - 전체여백빼기 */
+        * { margin: 0; padding: 0;}
+
+        /*body - 좋아하는 글꼴 선택 */
+        body {font-family: 'Courier New', Courier, monospace;
+    
+        background-image: linear-gradient(135deg,#fdfdfd,#0c9963);}
+        /* Q1. h3 중앙정렬, 글자색상 : #e11306, 아래쪽여백 : 10px */
+        h3 { text-align: center; color: #07c517; margin-bottom:10px; }
+    
+    
+        p{text-align: center; font-size: 14px; color: #666; margin-bottom: 20px;}
+        div{ background-color: #fff; width: 300px; margin: 30px auto; padding: 20px;
+             border-radius: 15px; box-shadow: 0px 12px rgba(92,182,76,0.2); text-align: left;}
+        dt{ font-weight: bold; margin-bottom: 10px; color: #333}
+        dd{ font-size: 14px; color: #666; margin-bottom: 8px; padding-left:10px;}
+        #id1, #id2 {font-weight: bold;}
+        #id1 { color: #3b5fd3; background-color: #666;}
+        #id2 { color: #a5212c; background-color: #637776;}
+        .mycss {background-color:#22805c; border-left: 4px solid #e13066; padding: 5px 10px; border-radius: 5px;}
+        
+    </style>
+
+ 
+
+
+</head> 
+
+
+<body>
+    <div>
+        <h3>id</h3>
+        <p>유일한 값</p>
+        <dl>
+            <dt>id 특징</dt>
+            <dd>html 문서에서 한번만 사용가능</dd>
+            <dd id="id1">중복불가</dd>
+            <dd id="id2">css에서 #id명</dd>
+            <dd>우선순위가 id와 class 모두 있을때 id가 더 높음</dd>
+        </dl>
+    </div><!-- end div -->
+
+    <div>
+        <h3>class</h3>
+        <p>여러개 선택시</p>
+        <dl>
+            <dt>class 의 특징</dt>
+            <dd> class="mycss">재사용 가능 : 여러요소에 class 지정</dd>
+            <dd>하나의 요소에 여러개의 class 사용가능 </dd>
+            <dd>class=:"mycss">css에서 .class명</dd>
+            <dd>반복스타일에 적합</dd>
+        </dl>
+
+        
+    </div> <!-- end div -->
+    
+    
+</body>
+</html>
