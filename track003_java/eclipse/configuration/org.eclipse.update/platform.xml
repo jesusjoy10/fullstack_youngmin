@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<config date="1756191278340" transient="false">
-	<site updateable="true" url="file:/C:/Users/TJ-BU-703-P03/.p2/pool/" enabled="true" policy="MANAGED-ONLY">
+<config date="1757033320291" transient="false">
+	<site updateable="true" url="file:/C:/Users/tj-bu-703-20/.p2/pool/" enabled="true" policy="MANAGED-ONLY">
 		<feature id="org.eclipse.wst.server_adapters.feature" version="3.36.0.v202503251436" url="features/org.eclipse.wst.server_adapters.feature_3.36.0.v202503251436/">
 		</feature>
 		<feature id="org.eclipse.wst.common_ui.feature" version="3.36.0.v202410202228" url="features/org.eclipse.wst.common_ui.feature_3.36.0.v202410202228/">
@@ -28,8 +28,6 @@
 		<feature id="org.eclipse.jgit.http.apache" version="7.3.0.202506031305-r" url="features/org.eclipse.jgit.http.apache_7.3.0.202506031305-r/">
 		</feature>
 		<feature id="org.eclipse.tm.terminal.feature" version="12.1.0.202505062016" url="features/org.eclipse.tm.terminal.feature_12.1.0.202505062016/" plugin-identifier="org.eclipse.tm.terminal.view.core">
-		</feature>
-		<feature id="org.eclipse.oomph.setup" version="1.37.0.v20250805-0709" url="features/org.eclipse.oomph.setup_1.37.0.v20250805-0709/">
 		</feature>
 		<feature id="org.eclipse.wildwebdeveloper.embedder.node.feature" version="1.2.0.202411190713" url="features/org.eclipse.wildwebdeveloper.embedder.node.feature_1.2.0.202411190713/">
 		</feature>
@@ -72,6 +70,8 @@
 		<feature id="org.eclipse.datatools.connectivity.oda.designer.core.feature" version="1.16.1.202412071309" url="features/org.eclipse.datatools.connectivity.oda.designer.core.feature_1.16.1.202412071309/" plugin-identifier="org.eclipse.datatools.connectivity.oda.design.ui">
 		</feature>
 		<feature id="org.eclipse.oomph.p2" version="1.34.0.v20250805-0700" url="features/org.eclipse.oomph.p2_1.34.0.v20250805-0700/">
+		</feature>
+		<feature id="org.eclipse.oomph.setup" version="1.37.0.v20250831-0649" url="features/org.eclipse.oomph.setup_1.37.0.v20250831-0649/">
 		</feature>
 		<feature id="org.eclipse.emf.edit.ui" version="2.28.0.v20250405-0811" url="features/org.eclipse.emf.edit.ui_2.28.0.v20250405-0811/">
 		</feature>

@@ -67,7 +67,7 @@ public class Operrator001 {
 		//6. 단항
 		int a1 = 1, b1=1 , c1=1, d1=1;
 		
-		System.out.println( ++a1 ); //2  증가하고 출력
+		
 		System.out.println(  a1  ); //2  
 		 
 		System.out.println( b1++ ); //1  출력증가
