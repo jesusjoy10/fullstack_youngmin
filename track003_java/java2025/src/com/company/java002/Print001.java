@@ -18,7 +18,7 @@ public class Print001 { //어디든 접근 가능 - 부품 객체 - 이름
 		
 		//4. +의 의미
 		System.out.println(10+3); //연산
-		System.out.println(10+3 + "+" + 1+2);
+		System.out.println(10+3 + "+" + 1+3);
 		//			   숫자+숫자 + "문자열" + 문자열 뒤 숫자는 문자열처럼 순차 출력
 		System.out.println(10+3 + "+" + (1+2));
 		//								묶어서 해결 가능!
@@ -28,6 +28,7 @@ public class Print001 { //어디든 접근 가능 - 부품 객체 - 이름
 		//		1+2=3으로 출력
 		System.out.println("1+2=3");
 		System.out.println(1 + "+" + 2 + "=" + 3);
+		
 		System.out.printf("%d + %d = %d", 1, 2, 3);
 	}
 	
