@@ -74,7 +74,7 @@ ___
 ## 🔧트러블슈팅 (github에서 발생)
 
 <details>
-<summary style= "font-size:18px; font-weight:bold;">🔑트러블슈팅01(커밋오류)<summary>
+<summary style= "font-size:18px; font-weight:bold;">🔑트러블슈팅01(커밋오류)</summary>
 ```bash
 $ git commit -m "git 수정 후 다시올리기"
 Changes not staged for commit:
@@ -90,7 +90,7 @@ no changes added to commit
 </details>
 
 <details>
-<summary style= "font-size:18px; font-weight:bold;">🔑트러블슈팅02(커밋오류)<summary>
+<summary style= "font-size:18px; font-weight:bold;">🔑트러블슈팅02(커밋오류)</summary>
 
 ```bash
 $ git commit -m "test"
@@ -106,7 +106,7 @@ nothing to commit, working tree clean
 
 
 <details>
-<summary style= "font-size:18px; font-weight:bold;">🔑트러블슈팅03(병합충돌)<summary>
+<summary style= "font-size:18px; font-weight:bold;">🔑트러블슈팅03(병합충돌)</summary>
 ```bash
 $ git pull origin master
 Auto-merging day002.md
