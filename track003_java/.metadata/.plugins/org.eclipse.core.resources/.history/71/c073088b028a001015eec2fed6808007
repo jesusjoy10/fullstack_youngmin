@@ -1,0 +1,22 @@
+package com.company.java004_ex;
+
+import java.util.Scanner;
+
+public class IfEx008 {
+	public static void main(String[] main) {
+		
+		
+		//변수
+		Scanner scanner = new Scanner(System.in);
+		int kor; int math; int eng;  double avg;  		
+		//입력
+		
+		//처리
+		
+		//출력
+		
+		
+		
+	}
+
+}

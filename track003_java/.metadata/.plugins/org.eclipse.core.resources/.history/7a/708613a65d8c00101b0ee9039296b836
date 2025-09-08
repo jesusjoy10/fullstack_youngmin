@@ -1,0 +1,18 @@
+package com.company.java005;
+
+public class Repeat001 {
+	public static void main(String[]args) {
+		//step1  
+		System.out.print(1+"|t"); //복사할 구문
+		System.out.print(2+"|t"); // ctrl +c , ctrl +v 2번 
+		System.out.print(3+"|t"); // 안에 숫자 2,3
+		
+		//step2
+		
+		//step3
+		
+		
+		
+	}
+
+}
