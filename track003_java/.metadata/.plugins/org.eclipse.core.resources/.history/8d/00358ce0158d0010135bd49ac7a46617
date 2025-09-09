@@ -1,0 +1,22 @@
+package com.company.java005_ex;
+
+import java.util.Scanner;
+
+public class Repeat012_2 {
+	public static void main(String[] args) {
+		int a = 0;
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("숫자를 하나 입력하세요");
+		a = scanner.nextInt();
+
+		switch (a) {
+		case 1:
+			System.out.println("one"); be
+		case 2:
+			System.out.println("two");
+		case 3:
+			System.out.println("three");
+		}
+	}
+
+}

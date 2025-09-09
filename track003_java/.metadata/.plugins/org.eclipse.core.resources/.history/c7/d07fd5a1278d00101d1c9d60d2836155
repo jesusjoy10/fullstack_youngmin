@@ -1,0 +1,48 @@
+package com.company.java006_ex;
+
+import java.util.Scanner;
+
+public class ForEx006_2 {
+	public static void main(String[] args) {
+		// 변수
+		Scanner scanner = new Scanner(System.in);
+		int num1, num2 = 1;
+		char ch;
+		double result = 0;
+
+		// 입력 101 -1 무한반복 for(;;) {빠져나올조건}
+		for (;;) {
+			System.out.println("숫자를 입력하시오");	num1 = scanner.nextInt(); // 1-2 입력받기
+			if (!(num1 >= 0 && num1 <= 100))  // 1-1 0~100범위가 아니라면 10 
+				continue; // 1-3. 아래쪽 진행하지말것! skip 건너뛰기! 잘입력받았는지 체크
+		}
+		for (;;) {
+			System.out.print("숫자를 입력하시오"); num2 = scanner.nextInt();
+			if (!(num2 >= 0 && num2 <= 100))
+				continue;
+		}
+		for (;;) {
+			System.out.print("연산자를 입력하시오"); ch = scanner.next().charAt(0);
+			if (!(ch == '+' || ch == '-' || ch == '*' || ch == '/'))
+				continue;
+		}
+		break; // break를 만났다면 num1,num2, ch 잘 쓴경우
+		// 처리
+		switch (ch) {
+		case '+':
+			result = num1 + num2;
+			break;
+		case '-':
+			result = num1 - num2;
+			break;
+		case '*':
+			result = num1 * num2;
+			break;
+		case '/':
+			result = num1 / (double) num2;
+			break;
+		}
+
+		System.out.println(num1 + " " + ch + " " + num2 + " = " + result);
+
+}

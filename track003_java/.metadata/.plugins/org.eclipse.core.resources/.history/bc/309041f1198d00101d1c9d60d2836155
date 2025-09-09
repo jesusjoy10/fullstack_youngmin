@@ -1,0 +1,28 @@
+package com.company.java005;
+
+public class Repeat002_IFor {
+	public static void main(String[] args) {
+		//1. 무한반복 for(;;){}
+		//for(;;) {System.out.print("Hello");}
+		
+		
+		//for - break
+		for(int i=1; i<=10; i++) {
+			if(i==3) {break;}
+			System.out.print(i +"\t");
+		}
+		System.out.println();
+		//for - continue
+		for(int i=1; i<=10; i++) {
+			if(i==3) {continue;}
+			System.out.print(i +"\t");
+
+		
+		
+		
+		
+		
+		
+		}	
+	} //end main
+} // end class 

@@ -1,0 +1,17 @@
+package com.company.java005_ex;
+
+import java.util.Scanner;
+
+public class Reapeat012_1 {
+	public static void main (String[] args) {
+		int a=0;
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("숫자를 하나 입력하세요");
+		a = scanner.nextInt();
+		
+		if(a==1) {System.out.println("one");}
+		else if(a==2) {System.out.println("two");}
+		else if(a==2) {System.out.println("three");}
+	}
+
+}
