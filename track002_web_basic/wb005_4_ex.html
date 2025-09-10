@@ -25,17 +25,19 @@
    h1 {
     text-align: center; 
     color: #00796b; 
-    margin-bottom: 40px;}
+    margin-bottom: 40px;
+    width: 100%;}
 
 
 
 
 /* Q3: 콘텐츠 박스를 가운데 배치하고 너비를 50%로 설정하려면?
    - 너비: 50%
-   - 좌우 자동 마진으로 가운데 정렬 */
+   - 좌우 자동 마진으로 가운데 정렬 
    .container{
     width: 50%; 
     margin:auto;}
+    */
 
 
 
@@ -52,7 +54,8 @@
    - 텍스트 가운데 정렬
    - 애니메이션: 등장 시 아래에서 위로 이동 (translateY)
    - 테두리: 투명 3px, 배경 클립 설정 */
-   .card{float: left;
+   .card{
+     /*float: left;*/
      width: 250px; 
      margin: 20px; 
      padding: 20px; 
@@ -127,7 +130,7 @@
              height: 80px; 
              border-radius: 10px; 
              object-fit: cover; 
-             border-color: #00796b;}
+             border:2px solid #00796b;}
 
 
 
@@ -214,13 +217,62 @@
    - 배경색: #e0f2f1
    - 둥근 모서리: 10px
    - 텍스트 가운데 정렬, 글자색: #333 */
-   .clear{clear: both;
-          margin-top: 390px;
+   .clear{
+          /*clear: both;  margin-top: 390px;*/
+          width: 100%;
           padding: 15px;
           background-color: #e0f2f1;
           border-radius: 10px; 
           text-align: center;
           color: #333;}
+
+/* Q16 : 콘텐츠 박스를 가운데 배치하고 너비를 80%로 설정하려면?
+ - 너비80%
+ - 좌우 자동 마진으로 가운데 정렬
+ - display:flex 를 이용해서 카드들을 가로로 나열하고
+ - 가운데 정렬
+*/
+
+   .container{width: 80% ;margin:auto;
+              display: flex;  /*자식요소들 가로방향 나열해줘*/
+              justify-content: center; /* 좌우 끝에 배치 */
+              flex-wrap: wrap; /*넘치는 콘텐츠가 있다면 줄바꿈 허용 (한줄에 안들어가면 다음줄로)*/
+              gap:20px;} /*카드사이간격20px*/
+
+    /* Q1: 물방울 요소를 화면 아래에서 시작하도록 고정하려면?
+      - 위치: fixed
+      - 시작 위치: bottom -100px
+      - 크기: 20px × 20px
+      - 배경색: 청록색 반투명 (rgba)
+      - 모양: 원형
+      - 애니메이션: rise (8초, 반복, ease-in)
+      - z-index: 0 (다른 요소보다 뒤에 배치)
+    */
+    .bubble{position: fixed; bottom: -100px; width: 20px; height: 20px;
+            background-color: rgba(221, 14, 42, 0.1); animation: rise 8s ease-in infinite;
+             z-index: 0;
+            border-radius: 50%;} 
+
+
+    /* Q2: 물방울이 위로 떠오르며 크기와 투명도가 변하도록 애니메이션을 정의하려면?
+      - 시작: 아래 위치, scale(1), opacity 0.5
+      - 중간: 위로 이동 -300px, scale(1.2), opacity 1
+      - 끝: 더 위로 -600px, scale(0.8), opacity 0
+    */ 
+   @keyframes rise{
+      0%{  transform:translateY(0)        scale(1);          opaicy:0.5; }
+      50%{ transform:translateY(-300px)   scale(1.2);        opaicy:1;   }
+      100%{transform:translateY(-600px)   scale(0.8);        opaicy:0;   }
+    } 
+    /* Q3: 여러 개의 물방울을 화면에 흩뿌리듯 배치하려면?
+      - nth-of-type를 사용해 위치(left), 크기(width/height), 애니메이션 지연(animation-delay) 설정
+      - 각 물방울마다 다른 위치와 크기, 시작 시간 부여
+    */   
+    .bubble:nth-of-type(1) { left: 10%; animation-delay: 0s; }
+    .bubble:nth-of-type(2) { left: 25%; animation-delay: 2s; width: 15px; height: 15px; }
+    .bubble:nth-of-type(3) { left: 40%; animation-delay: 4s; width: 25px; height: 25px; }
+    .bubble:nth-of-type(4) { left: 60%; animation-delay: 1s; width: 18px; height: 18px; }
+    .bubble:nth-of-type(5) { left: 75%; animation-delay: 3s; width: 22px; height: 22px; }
 
 
 
@@ -263,8 +315,14 @@
             <p>이 포트폴리오는 실제 프로젝트를 기반으로 구성되었으며, 각 프로젝트는 GitHub에서 확인할 수 있습니다.</p>
         </div>
 
-      
-    </div>
+
+
+        </div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
 
     
 </body>

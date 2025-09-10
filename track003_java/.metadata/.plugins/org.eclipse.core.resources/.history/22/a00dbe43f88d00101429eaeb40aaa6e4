@@ -1,0 +1,25 @@
+package com.company.java005_ex;
+
+public class RepeatEx010 {
+	public static void main(String[] args) {
+		
+		System.out.println("for");
+		for(char a='A'; a<='Z'; a++) {
+			
+			
+		}
+		
+		
+		
+	}	
+}
+
+
+/*for , while , do while 3가지 버젼으로 
+ABCDE   
+FGHIJ
+KLMNO
+PQRST
+UVWXY
+Z 
+*/
