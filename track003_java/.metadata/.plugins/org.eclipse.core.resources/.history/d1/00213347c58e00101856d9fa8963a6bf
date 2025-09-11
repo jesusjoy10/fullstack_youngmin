@@ -1,0 +1,23 @@
+package com.company.java007_ex;
+
+public class ArrayEx006 {
+	public static void main(String[] args) {
+		  // 1. 배열 만들기 (크기 5짜리 실수 배열)
+        double[] arr = new double[5];
+
+        // 2. 값 넣기: 1.1부터 시작해서 0.1씩 증가
+        double a = 1.1;
+        for (int i = 0; i < arr.length; i++)  { arr[i] = a; a += 0.1; }
+        // 3. 배열 출력하기
+        for (int i = 0; i < arr.length; i++) { System.out.println(arr[i]+"");
+        }
+		
+	}
+
+}
+
+
+/*    new 연산자 이용해서 배열만들기
+1. 배열명 : arr     
+2. 값 넣기 : 1.1  , 1.2  , 1.3  , 1.4  , 1.5    for+length 이용해보기
+3. for + length 로 출력 */

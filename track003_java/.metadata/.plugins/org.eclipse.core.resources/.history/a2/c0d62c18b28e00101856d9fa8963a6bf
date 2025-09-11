@@ -1,0 +1,27 @@
+package com.company.java006;
+
+public class Ar001 {
+	public static void main(String[] args) {
+		//1. 변수활용시
+		int a=1, b=2, c=3;
+		
+		//2. 배열?
+		// [같은타입]의 데이터를 [연속된 공간에 저장] 하는 자료구조
+		// 각데이터의 저장위치 [인덱스]를 통해서 접근
+		// int[] arr  주소를 보관할 준비됐어요!  2) null 공간은 있지만 값이 없어요!
+		int[] arr=null;
+		System.out.println(arr);
+		
+		// [stack]arr2 주소보관 = [heap] 1,2,3, 연속된 공간에 저장 
+		int     [] arr2 = {1,2,3};
+		// arr2(1000번지)     = 1000번지{1,2,3}
+		//                            [0] [1] [2]
+		System.out.println(arr2);
+		System.out.println("1꺼내쓰기>" + arr2[0]);
+		System.out.println("2꺼내쓰기>" + arr2[1]);
+		System.out.println("3꺼내쓰기>" + arr2[2]);
+		//3. 배열예시
+		
+		
+	}//end main
+}//end class

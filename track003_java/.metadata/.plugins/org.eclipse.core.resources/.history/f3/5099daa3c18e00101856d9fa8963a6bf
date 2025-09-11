@@ -1,0 +1,13 @@
+package com.company.java006;
+
+public class Ar002 {
+	public static void main(String[] args) {
+		//1. new 
+		// 주소담을거야1     1000번지- 같은자료형 연달아서 저장
+		// arr(1000번지)   [0][1][2]
+		int [] arr   =   {1,2,3};
+		
+		int [] arr2  =  new int[3]; // new 공간빌리기 int형태의 자료형 맞게		
+	}
+
+}

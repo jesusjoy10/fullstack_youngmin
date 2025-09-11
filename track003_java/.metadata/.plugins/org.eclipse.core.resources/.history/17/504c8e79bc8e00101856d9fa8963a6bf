@@ -1,0 +1,27 @@
+package com.company.java006_ex;
+
+public class ArrayEx005 {
+	public static void main(String[] args) {
+
+		int up = 0;
+		int low = 0;
+		char[] ch = { 'B', 'a', 'n', 'a', 'n', 'a' };
+		
+		for (int a = 0; a < ch.length; a++) {
+			if (ch[0] >= 'A' && ch[0] <= 'Z') {
+				up++;
+			} else if (ch[0] >= 'a' && ch[0] <= 'z') {
+				low++;
+			}
+			
+		} System.out.println("대문자의 개수: " + up);
+		System.out.println("대문자의 개수: " + low);
+
+	}
+
+}
+
+/*
+ * 클래스명 : ArrayEx005 1. 배열명 : ch 2. 값 넣기 : 'B' , 'a' , 'n' , 'a', 'n' , 'a' 3.
+ * ch 배열에서 대문자의 갯수카운트, 소문자의 갯수 카운트
+ */
