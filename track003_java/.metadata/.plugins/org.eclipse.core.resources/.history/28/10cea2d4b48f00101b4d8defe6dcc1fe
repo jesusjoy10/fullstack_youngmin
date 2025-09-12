@@ -1,0 +1,142 @@
+package com.company.java006;
+
+import java.text.DecimalFormat;
+import java.util.Scanner;
+
+public class Bank100_control {
+    public static void main(String[] args) {
+        int num = -1;
+        String id = "", pass = "";
+        double balance = 0;
+        Scanner scanner = new Scanner(System.in);
+
+        // 숫자 포맷: 소수점 이하가 .00이면 생략, 아니면 최대 두 자리까지 표시
+        DecimalFormat df = new DecimalFormat("#,##0.##");
+
+        for (;;) {
+            System.out.print("\n\n== 💰뱅크런 없는 영민BANK💰 ==" +
+                             "\n1. 추가" +
+                             "\n2. 조회" +
+                             "\n3. 입금" +
+                             "\n4. 출금" +
+                             "\n5. 삭제" +
+                             "\n6. 이체" +
+                             "\n7. 타행 이체" +
+                             "\n9. 종료 > ");
+            num = scanner.nextInt();
+
+            if (num == 9) {
+                System.out.println("종료합니다.");
+                break;
+            } 
+            else if (num == 1) {
+                System.out.print("ID 입력 > ");
+                id = scanner.next();
+                System.out.print("PASS 입력 > ");
+                pass = scanner.next();
+                System.out.print("잔액 입력 > ");
+                balance = scanner.nextDouble();
+                System.out.println("계좌 생성됨. 초기 잔액: " + df.format(balance) + "원");
+            } 
+            else if (num == 2 || num == 3 || num == 4 || num == 5 || num == 6 || num == 7) {
+                // 사용자 인증
+                System.out.print("ID 입력 > ");
+                String tempId = scanner.next();
+                System.out.print("PASS 입력 > ");
+                String tempPass = scanner.next();
+                if (!(id.equals(tempId) && pass.equals(tempPass))) {
+                    System.out.println("아이디와 비밀번호를 확인해주세요!");
+                    continue;
+                }
+
+                switch (num) {
+                    case 2:
+                        // 조회
+                        System.out.println("\n[조회 결과]");
+                        System.out.println("ID: " + id);
+                        System.out.println("PASS: " + pass);
+                        System.out.println("잔액: " + df.format(balance) + "원");
+                        break;
+
+                    case 3:
+                        // 입금
+                        System.out.print("입금할 금액 > ");
+                        double inAmt = scanner.nextDouble();
+                        double feeRateIn = 0.05;  // 기본 수수료 5%
+                        double feeIn = inAmt * feeRateIn;
+                        double netIn = inAmt - feeIn;
+                        balance += netIn;
+                        System.out.println("[입금 거래]");
+                        System.out.println("입금 수수료 명목: 기본 입금 수수료 (" + (int)(feeRateIn * 100) + "%)");
+                        System.out.println("입금액: " + df.format(inAmt) + "원, 수수료: " + df.format(feeIn) + "원, 실제 입금된 금액: " + df.format(netIn) + "원");
+                        System.out.println("잔액: " + df.format(balance) + "원");
+                        break;
+
+                    case 4:
+                        // 출금
+                        System.out.print("출금할 금액 > ");
+                        double outAmt = scanner.nextDouble();
+                        if (outAmt > balance) {
+                            System.out.println("잔액이 모자랍니다.");
+                            continue;
+                        }
+                        double feeRateOut = 0.05;  // 기본 출금 수수료 5%
+                        double feeOut = outAmt * feeRateOut;
+                        double totalOut = outAmt + feeOut;
+                        if (totalOut > balance) {
+                            System.out.println("수수료 포함 출금액이 잔액을 초과합니다.");
+                            continue;
+                        }
+                        balance -= totalOut;
+                        System.out.println("[출금 거래]");
+                        System.out.println("출금 수수료 명목: 기본 출금 수수료 (" + (int)(feeRateOut * 100) + "%)");
+                        System.out.println("출금액: " + df.format(outAmt) + "원, 수수료: " + df.format(feeOut) + "원, 총 차감액: " + df.format(totalOut) + "원");
+                        System.out.println("잔액: " + df.format(balance) + "원");
+                        break;
+
+                    case 5:
+                        // 삭제
+                        System.out.println("삭제하시겠습니까? (y/n) > ");
+                        String answer = scanner.next();
+                        if (!answer.toLowerCase().equals("y")) {
+                            System.out.println("삭제 취소되었습니다.");
+                            continue;
+                        }
+                        id = "";
+                        pass = "";
+                        balance = 0;
+                        System.out.println("계좌 삭제되었습니다.");
+                        break;
+
+                    case 6:
+                        // 이체
+                        System.out.print("이체할 금액 > ");
+                        double tranAmt = scanner.nextDouble();
+                        if (tranAmt > balance) {
+                            System.out.println("잔액이 모자랍니다.");
+                            continue;
+                        }
+                        balance -= tranAmt;
+                        System.out.println("[이체 거래]");
+                        System.out.println("이체금액: " + df.format(tranAmt) + "원");
+                        System.out.println("잔액: " + df.format(balance) + "원");
+                        break;
+
+                    case 7:
+                        // 타행 이체
+                        System.out.print("이체할 금액 > ");
+                        double tranAmt2 = scanner.nextDouble();
+                        if (tranAmt2 > balance) {
+                            System.out.println("잔액이 모자랍니다.");
+                            continue;
+                        }
+                        balance -= tranAmt2;
+                        System.out.println("[타행 이체 거래]");
+                        System.out.println("이체금액: " + df.format(tranAmt2) + "원");
+                        System.out.println("잔액: " + df.format(balance) + "원");
+                        break;
+                }
+            }
+        }
+    }
+}

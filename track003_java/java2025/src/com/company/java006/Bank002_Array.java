@@ -1,0 +1,60 @@
+package com.company.java006;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Bank002_Array {
+	public static void main(String[] args) {
+		String[] id = new String[3];
+		String[] pass = new String[3];
+		double[] balance = new double[3];
+
+		int num = -1;
+		Scanner scanner = new Scanner(System.in);
+		// 입력+처리+출력
+		while (num != 9) { // 9가 아니라면 계속 무한반복
+			System.out.println(Arrays.toString(id));
+			System.out.println(Arrays.toString(pass));
+			System.out.println(Arrays.toString(balance));
+			// 기능 1. 메뉴판
+			System.out.println("Welcome (주)뱅크런 없는 영민은행" + "\n* 1.추가\n* 2.조회\n* 3.입금\n* 4.출금\n* 5.삭제\n* 9.종료\n* 입력>>>");
+
+			num = scanner.nextInt();
+
+			if (num == 1) {
+				// if(1이라면) 1-1 빈칸인지 확인 후 find
+				// ver-1 if(0번이 빈칸이라면) {find는 0} if(1번이 빈칸이라면){find는 1}
+				// ver-2 if(0번이 null이라면) {find는 0} if(1번이 null){find는 1}
+				// ver-1 if(id[0]==null) {find는 0;} if(id[1]==null){find=1;}
+				int find = -1;
+				for (int i = 0; i < id.length; i++) {
+					if (id[i] == null) {
+						find = i;
+						break;
+					}
+				}
+				// 1-2. 유저계정에 입력받기
+				System.out.println("아이디 입력 >");
+				id[find] = scanner.next();
+				System.out.println("비밀번호 입력 >");
+				pass[find] = scanner.next();
+				System.out.println("금액 입력 >");
+				balance[find] = scanner.nextDouble();
+			}
+			
+			else if (num == 2 || num == 3 || num == 4 || num == 5) {
+				//2-1 인증정보
+				//1. 사용자에게 아이디 입력받기
+				//2. 시용자에게 비밀번호 입력받기
+				//3. ver-0 int find=-1; 없는 번호
+				//3. ver-1 사용자에게 입력받은 아이디와 id[0]이 같고 사용자에게입력받은비밀번호와 pass[0]번이면 사용자번호는0
+				//3. ver-1 사용자에게 입력받은 아이디와 id[0]이 같고 사용자에게입력받은비밀번호와 pass[0]번이면 사용자번호는1
+				//3. ver-2 사용자에게 입력받은 아이디와 id[1]이 같고 사용자에게입력받은비밀번호와 pass[1]번이면 {사용자번호는1}
+			}
+			// 2-2 find 번호로 각각의 처리 */
+			else {
+				System.out.println("");
+			}
+		}
+	}
+}

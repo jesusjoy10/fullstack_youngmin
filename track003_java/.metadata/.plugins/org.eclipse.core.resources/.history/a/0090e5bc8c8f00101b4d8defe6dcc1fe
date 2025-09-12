@@ -1,0 +1,126 @@
+package com.company.java006;
+
+import java.time.LocalTime;
+import java.text.DecimalFormat;
+import java.util.Scanner;
+
+public class Bank100_control {
+    public static void main(String[] args) {
+        int num = -1;
+        String id = "", pass = "";
+        double balance = 0;
+        Scanner scanner = new Scanner(System.in);
+
+        // 콤마 + 소수점 두 자리 포맷 객체 준비
+        DecimalFormat df = new DecimalFormat("#,##0.00");
+
+        for (;;) {
+            System.out.print("\n\n== BANK ==");
+            System.out.print(
+                "\n1. 추가" +
+                "\n2. 조회" +
+                "\n3. 입금" +
+                "\n4. 출금" +
+                "\n5. 삭제" +
+                "\n6. 타행 이체" +
+                "\n9. 종료 > "
+            );
+            num = scanner.nextInt();
+
+            if (num == 9) {
+                System.out.println("종료합니다.");
+                break;
+            } else if (num == 1) {
+                System.out.print("ID 입력 > "); id = scanner.next();
+                System.out.print("PASS 입력 > "); pass = scanner.next();
+                System.out.print("잔액 입력 > "); balance = scanner.nextDouble();
+                System.out.println("계좌 생성됨. 초기 잔액: " + df.format(balance) + "원");
+            } else if (num == 2 || num == 3 || num == 4 || num == 5 || num == 6) {
+                System.out.print("ID 입력 > "); String tempId = scanner.next();
+                System.out.print("PASS 입력 > "); String tempPass = scanner.next();
+                if (!(id.equals(tempId) && pass.equals(tempPass))) {
+                    System.out.println("아이디와 비밀번호를 확인해주세요!");
+                    continue;
+                }
+
+                switch (num) {
+                    case 2:
+                        System.out.println("\nID > " + id +
+                                           "\nPASS > " + pass +
+                                           "\n잔액 > " + df.format(balance) + "원");
+                        break;
+
+                    case 3:
+                        System.out.print("입금할 금액 > ");
+                        double inAmt = scanner.nextDouble();
+                        double feeInRate = 0.05;
+                        double feeIn = inAmt * feeInRate;
+                        double netIn = inAmt - feeIn;
+                        balance += netIn;
+                        System.out.println("입금 완료.");
+                        System.out.println("입금액: " + df.format(inAmt) + "원, 수수료: " + df.format(feeIn) + "원, 실제 입금된 금액: " + df.format(netIn) + "원");
+                        System.out.println("잔액: " + df.format(balance) + "원");
+                        break;
+
+                    case 4:
+                        System.out.print("출금할 금액 > ");
+                        double outAmt = scanner.nextDouble();
+                        if (outAmt > balance) {
+                            System.out.println("잔액이 모자랍니다.");
+                            continue;
+                        }
+                        LocalTime now = LocalTime.now();
+                        boolean isNight = (now.isAfter(LocalTime.of(22, 0)) || now.isBefore(LocalTime.of(6, 0)));
+                        double feeOutRate = isNight ? 0.10 : 0.05;
+                        double feeOut = outAmt * feeOutRate;
+                        double totalDeduct = outAmt + feeOut;
+                        if (totalDeduct > balance) {
+                            System.out.println("수수료 포함 출금 후 잔액이 부족합니다.");
+                            continue;
+                        }
+                        balance -= totalDeduct;
+                        System.out.println("출금 완료.");
+                        System.out.println("출금액: " + df.format(outAmt) + "원, 수수료: " + df.format(feeOut) + "원, 총 차감액: " + df.format(totalDeduct) + "원");
+                        System.out.println("잔액: " + df.format(balance) + "원");
+                        break;
+
+                    case 6:
+                        System.out.print("이체할 금액 > ");
+                        double tranAmt = scanner.nextDouble();
+                        double feeTranRate = 0.05;
+                        double feeTran = tranAmt * feeTranRate;
+                        double totalTranDeduct = tranAmt + feeTran + 1000;
+                        if (totalTranDeduct > balance) {
+                            System.out.println("이체 + 수수료 후 잔액이 부족합니다.");
+                            continue;
+                        }
+                        balance -= totalTranDeduct;
+                        System.out.println("타행 이체 완료.");
+                        System.out.println("이체금액: " + df.format(tranAmt) + "원, 기본 수수료: " + df.format(feeTran) + "원, 추가 수수료: 1,000원, 총 차감액: " + df.format(totalTranDeduct) + "원");
+                        System.out.println("잔액: " + df.format(balance) + "원");
+                        break;
+
+                    case 5:
+                        System.out.println("삭제하시겠습니까? (y/n)");
+                        String ans = scanner.next();
+                        if (!ans.toLowerCase().equals("y")) {
+                            System.out.println("삭제를 취소했습니다.");
+                            continue;
+                        }
+                        id = pass = "";
+                        balance = 0;
+                        System.out.println("계좌가 삭제되었습니다. 잔액: " + df.format(balance) + "원");
+                        break;
+
+                    default:
+                        System.out.println("잘못된 입력입니다.");
+                        break;
+                }
+            } else {
+                System.out.println("잘못된 입력입니다.");
+            }
+        }
+
+        scanner.close();
+    }
+}
