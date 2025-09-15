@@ -74,78 +74,156 @@ ___
 <!-- 정리해놓은 day1,day2 -->
 ## 🔧트러블슈팅 (github에서 발생)
 
-<details>
-<summary style= "font-size:18px; font-weight:bold;">🔑트러블슈팅01(커밋오류)</summary>
+<details> <summary style="font-size:18px; font-weight:bold;">🔑트러블슈팅01(문자+숫자 연산)</summary>
 
 ```bash
-$ git commit -m "git 수정 후 다시올리기"
-Changes not staged for commit:
-  modified:   day001.md
-no changes added to commit
+System.out.println(10 + 3 + "+" + 1 + "+" + 3);
 ```
 
-- **[문제점]** 
-수정한 파일이 커밋되지 않음. git add를 해도 반응이 없었음.
+[문제점]: 예상 출력이 "103+13"일 것이라 생각했지만, 실제 출력은 "13+1+3"임.
+<br>
 
-- **[해결방안]** 
-너무나도 단순한 이유였음 → 파일을 저장하지 않음. 에디터에서 수정 후 저장하지 않은 상태로 커밋을 시도함.
+[해결방안]: 자바에서는 연산 순서가 왼쪽에서 오른쪽, 숫자 + 숫자 → 산술 연산, 숫자 + 문자열 → 문자열 결합임.
 
-- **[느낀점]** 
-기본적인 실수지만, 실무에서도 충분히 발생할 수 있는 상황. 작업 전 저장 습관화가 중요하며, 커밋 전 git status 확인은 필수다.
+10+3 → 13
+
+13 + "+" → "13+"
+
+"13+" + 1 → "13+1"
+
+"13+1" + "+" → "13+1+"
+
+"13+1+" + 3 → "13+1+3"
+
+<br>
+
+[느낀점]: 숫자와 문자열을 혼합한 연산에서는 연산 순서와 타입 변환 규칙을 반드시 이해해야 함.
+잘못된 예상 출력은 대부분 연산 순서와 타입 변환 이해 부족에서 발생.
+
+</details>
+
+<details> <summary style="font-size:18px; font-weight:bold;">🔑트러블슈팅02(short끼리 덧셈 시 타입 오류)</summary>
+
+```bash
+short sh1 = 1;
+short sh2 = 2;
+
+// 산술연산시 자동으로 int 변환
+short result1 = (sh1 + sh2); // 오류 발생
+int result2 = sh1 + sh2;     // 정상
+```
+
+[문제점]:
+
+short + short 연산 시 자동으로 int로 변환됨
+
+따라서 short result1 = sh1 + sh2; 는 컴파일 오류 발생
+
+[해결방안]:
+
+연산 결과를 short로 다시 캐스팅하거나, 결과 타입을 int로 변경:
+
+short result1 = (short)(sh1 + sh2); // 캐스팅 후 정상
+int result2 = sh1 + sh2;            // 기존 코드 정상
+
+
+[느낀점]:
+
+자바에서 정수형 산술연산은 자동으로 int로 변환됨
+
+타입 변환 규칙을 이해하지 못하면 오류를 쉽게 겪을 수 있음
+
+</details>
+
+
+
+
+
+<details> <summary style="font-size:18px; font-weight:bold;">🔑트러블슈팅03(문법 오류)</summary>
+
+```bash
+if(i==1) {System.out.println("one");}
+else if(i==2) {System.out.println("two");}
+else if(i==3) {System.out.println("three");}
+else if {System.out.println("1,2,3이 아니다");} // 오류 발생 부분
+```
+
+[문제점]:
+
+else if { ... } 는 조건식이 없음 → 컴파일 오류 발생
+
+초보자는 else if 와 else의 차이를 혼동하기 쉬움.
+
+[해결방안]:
+
+조건이 없는 경우는 else 를 사용해야 함:
+
+if(i==1) {System.out.println("one");}
+else if(i==2) {System.out.println("two");}
+else if(i==3) {System.out.println("three");}
+else {System.out.println("1,2,3이 아니다");} // 수정 완료
+
+
+[느낀점]:
+
+if-else if-else 문법을 정확히 이해해야 오류를 피할 수 있음.
+
+조건 없는 마지막 경우는 항상 else 를 사용해야 함.
+
 </details>
 
 <details>
-<summary style= "font-size:18px; font-weight:bold;">🔑트러블슈팅02(커밋오류)</summary>
+<summary style="font-size:18px; font-weight:bold;">🔑트러블슈팅04(switch 문 오류)</summary>
 
-```bash
-$ git commit -m "test"
-nothing to commit, working tree clean
-```
+```java
+public class Test006 {
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("숫자를입력하세요>");
+		int num1 = scanner.nextInt();
 
-- **[문제점]** 
-커밋할 변경사항이 없다는 메시지. 하지만 실제로는 작업한 파일이 존재함.
+		switch (num1) 
+		case 1 : System.out.println("mango"); break;
+		case 2 : System.out.println("noodle"); break;
+		case 3 : System.out.println("orange"); break;
+		default : System.out.println("1,2,3이 아닙니다"); break;
+	}
+}
+[문제점]
+switch 문에 중괄호 {}가 없어, case 구문이 블록 외부에 위치함. → 문법 오류 발생.
 
-- **[해결방안]**
- 작업한 파일을 워크스페이스에 추가하지 않음. 새 파일을 프로젝트 폴더에 넣지 않아 Git이 인식하지 못함. → 파일을 워크스페이스에 추가 후 정상 커밋.
+[해결방안]
+switch 문은 중괄호 {}로 감싸야 하며, 모든 case 구문은 그 안에 작성해야 함.
 
-- **[느낀점]**
- Git은 추적 가능한 경로에 있는 파일만 관리한다는 점을 다시금 인지. 파일 위치와 Git 상태를 항상 함께 확인해야 한다.
+switch (num1) {
+  case 1: System.out.println("mango"); break;
+  case 2: System.out.println("noodle"); break;
+  case 3: System.out.println("orange"); break;
+  default: System.out.println("1,2,3이 아닙니다"); break;
+}
+[느낀점]
+Java에서 switch는 구조가 간단해 보여도 기본 문법을 어기면 치명적인 에러가 발생한다. 항상 중괄호 포함 여부를 확인해야 함.
+
+</details> ```
+
+<details> <summary style="font-size:18px; font-weight:bold;">🔑트러블슈팅05(for문 세미콜론 실수)</summary>
+for (int i = 0; i < 5; i++); {
+    System.out.println("Hello");
+}
+
+
+[문제점]
+for문 끝에 세미콜론(;)이 있어서, 반복문이 빈 실행문으로 처리되어 "Hello"가 한 번만 출력됨.
+
+[해결방안]
+for문 끝 세미콜론을 제거하고 중괄호{}를 붙여서 반복문 블록을 올바르게 작성한다.
+
+for (int i = 0; i < 5; i++) {
+    System.out.println("Hello");
+}
+
+
+[느낀점]
+세미콜론 하나로 인해 반복문이 무력화될 수 있으니, for문 뒤에 세미콜론이 없는지 항상 주의해야 한다.
+
 </details>
-
-
-<details>
-<summary style= "font-size:18px; font-weight:bold;">🔑트러블슈팅03(병합충돌)</summary>
-
-```bash
-$ git pull origin master
-Auto-merging day002.md
-CONFLICT (content): Merge conflict in day002.md
-Automatic merge failed; fix conflicts and then commit the result.
-```
-
-- **[문제점]** 
-원격 저장소와 로컬 파일 간의 충돌 발생. 자동 병합 실패.
-
-- **[해결방안]**
-충돌 파일 비교 후 로컬에서 직접 수정
-
-git add로 변경사항 스테이징
-
-git commit -m "test"로 커밋
-
-git push origin master로 푸시
-
-- **[느낀점]**
- 충돌은 협업에서 자주 발생하는 상황. 충돌 메시지를 정확히 읽고, 침착하게 해결하는 능력이 중요하다. Git은 단순한 도구가 아니라 협업의 핵심 시스템이라는 점을 체감함.
-</details>
-<br/>
-<br/>
-<br/> 
-
----
-## 참고문헌
-- [Git 공식 문서](https://git-scm.com/doc)  
-- [Markdown 가이드](https://www.markdownguide.org/basic-syntax/)  
-- [VS Code 공식 사이트](https://code.visualstudio.com/)  
-- [AI 프롬프트 작성 팁](https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/prompt-engineering)
-
