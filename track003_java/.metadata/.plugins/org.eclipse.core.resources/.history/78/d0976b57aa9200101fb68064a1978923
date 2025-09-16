@@ -1,0 +1,18 @@
+package com.company.java008;
+
+public class Meshood002 {
+	//(1) 마법상자의 정의
+	//public static 리턴값 매서드명 (파라미터){}
+	public static void myint (int a) {System.out.println(a);}
+	
+	
+	///////////////////////////////////////
+	public static void main(String[]args) {
+		//(2)사용
+		myint(1);
+		myint(2);
+		
+	}
+	///////////////////////////////////////
+
+}

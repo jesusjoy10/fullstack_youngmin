@@ -1,0 +1,19 @@
+package com.company.java008_ex;
+
+public class MethodEx004 {
+	
+	public static String sign(){
+		return "전설의_마법의_도끼를_든_초코우유_중독자_용감한_불꽃전사";
+		}
+	//////////////////////////////////////////
+	public static void main(String[]args) {
+		//public static 리턴값 매서드명(파라미터){}
+		//1. 당신의 이름은? 전설의_마법의_도끼를_든_초코우유_중독자_용감한_불꽃전사
+		
+		System.out.println("1.당신의 이름은?"+ sign());
+		
+	//////////////////////////////////////////
+		
+	}
+
+}
