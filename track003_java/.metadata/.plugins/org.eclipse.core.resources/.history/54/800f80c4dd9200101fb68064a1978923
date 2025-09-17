@@ -1,0 +1,99 @@
+package com.company.java006;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Exercise_Log {
+	 public static void main(String[] args) {
+	        String[] exerciseName = new String[3];   // 운동명
+	        String[] exerciseType = new String[3];   // 운동 종류
+	        int[] totalCount = new int[3];           // 누적 횟수
+	        int num = -1;
+	        int find = -1;
+	        Scanner scanner = new Scanner(System.in);
+
+	        while(num != 9) {
+	            System.out.println(Arrays.toString(exerciseName));
+	            System.out.print("\n\n🏋️‍♂️ 운동 루틴 트래커 🏋️‍♀️\n" +
+	                "\n[1] 운동 루틴 추가" +
+	                "\n[2] 운동 루틴 조회" +
+	                "\n[3] 운동 횟수 추가" +
+	                "\n[4] 운동 루틴 삭제" +
+	                "\n\n번호 선택하세요(종료:9): ");
+	            num = scanner.nextInt();
+
+	            if(num == 1) {
+	                find = -1;
+	                for(int i=0; i<exerciseName.length; i++) {
+	                    if(exerciseName[i] == null) {
+	                        find = i;
+	                        break;
+	                    }
+	                }
+	                if(find == -1) {
+	                    System.out.println("더 이상 운동 루틴을 추가할 수 없습니다.");
+	                    continue;
+	                }
+	                System.out.print("운동명 입력 > ");
+	                exerciseName[find] = scanner.next();
+	                System.out.print("운동 종류 입력 (유산소/무산소/스트레칭) > ");
+	                exerciseType[find] = scanner.next();
+	                System.out.print("초기 누적 횟수 입력 > ");
+	                totalCount[find] = scanner.nextInt();
+
+	            } else if(num == 2 || num == 3 || num == 4) {
+	                System.out.print("운동명 입력 > ");
+	                String tempName = scanner.next();
+
+	                find = -1;
+	                for(int i=0; i<exerciseName.length; i++) {
+	                    if(tempName.equals(exerciseName[i])) {
+	                        find = i;
+	                        break;
+	                    }
+	                }
+
+	                if(find == -1) {
+	                    System.out.println("운동 루틴을 찾을 수 없습니다.");
+	                    continue;
+	                }
+
+	                switch(num) {
+	                    case 2: // 조회
+	                        System.out.println("운동명: " + exerciseName[find]);
+	                        System.out.println("운동 종류: " + exerciseType[find]);
+	                        System.out.println("누적 횟수: " + totalCount[find]);
+	                        break;
+
+	                    case 3: // 횟수 추가
+	                        System.out.print("추가할 운동 횟수 입력 > ");
+	                        int addCount = scanner.nextInt();
+	                        totalCount[find] += addCount;
+	                        System.out.println("누적 횟수가 업데이트 되었습니다.");
+	                        break;
+
+	                    case 4: // 삭제
+	                        System.out.print("정말로 삭제하시겠습니까? (y/n) > ");
+	                        if(scanner.next().toLowerCase().equals("y")) {
+	                            exerciseName[find] = null;
+	                            exerciseType[find] = null;
+	                            totalCount[find] = 0;
+	                            System.out.println("운동 루틴이 삭제되었습니다.");
+	                        } else {
+	                            System.out.println("삭제가 취소되었습니다.");
+	                        }
+	                        break;
+	                }
+
+	            } else if(num == 9) {
+	                System.out.println("프로그램을 종료합니다.");
+	            } else {
+	                System.out.println("메뉴를 확인해주세요~!");
+	            }
+	        }
+
+	        scanner.close();
+	    }
+	}
+
+
