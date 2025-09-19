@@ -201,20 +201,20 @@
   <script type="text/javascript">
     (function(){
         emailjs.init({
-          publicKey: "YgWf1fcGb7Ae9t_sTx",
+          publicKey: "gWf1fcGb7Ae9t_sTx",
         });
     })();
     //////////////////////////////////////
     function sendEmail(e){
         e.preventDefault(); // 무조건 전송기능 막기
         var templateParams = {
+        title: document.getElementById("title").value,
         name: document.getElementById("name").value,
-        title:document.getElementById("title").value,
-        email:document.getElementById("email").value,
-        message: document.getElementById("message").value,
+        email: document.getElementById("email").value,
+        message: document.getElementById("message").value
       };
 
-      emailjs.send('dudals5292@gmail.com', 'template_wnu408s', templateParams).then(
+      emailjs.send('jesusjoy10', 'template_wnu408s', templateParams).then(
         (response) => {
           alert("메일이 성공적으로 전송되었습니다.")
           console.log('SUCCESS!', response.status, response.text);
