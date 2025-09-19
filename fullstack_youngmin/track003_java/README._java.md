@@ -64,6 +64,16 @@ _ _ _
 <br/> 
 
 ___
+
+### 📂 포트폴리오
+**Java 콘솔 “💪 바디프로필 챌린지 🏋️‍♂️” 프로젝트**
+- [💪 바디프로필 챌린지 프로젝트 영상](https://youtube.com/shorts/TZhNvTL7h_U?feature=share)
+<br/>
+
+**Java 콘솔 은행 프로그램 완성! 입출금/이체 수수료 로직 💰**
+- [💰 Java 콘솔 은행 입출금/이체 프로젝트 영상 ](https://youtube.com/shorts/5hxrxdKfWaY?feature=share)
+
+
 <!-- java, HTML+CSS+JS/JQUERY-->
 <!-- ## 포트폴리오>
 <br/>
