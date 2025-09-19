@@ -1,0 +1,48 @@
+package com.company.java006;
+
+public class Bank001_control {
+	public static void main(String[] args) {
+		//변수
+		int num = 1;
+		String id = null, pass = null;
+		double balance = 0;
+		
+		//입력+처리+출력
+		for(;;) {
+			System.out.println("\n\n == bank ==" + "\n1.추가" + "\n2.조회" + "\n* 3.입금" +"\n* 4.출금"+ "\n* 5.삭제>");
+		}
+		num= scanner.nextInt();
+		// 기능 1. 메뉴판
+		if(num==9) {System.out.println("종료합니다"); id=scanner.next();}
+		 {System.out.println("id 입력>");  id=scanner.next();
+		 {System.out.println("pass 입력>");  pass=scanner.next();
+		 {System.out.println("금액 입력>");  balance=scanner.nextDoble();}
+		 
+		 
+		
+		}
+		}
+			
+		}
+		
+	
+	}
+
+}
+/*  for(;;){ 무한반복
+    ■기능 1. 메뉴판
+    ■기능 2. 
+         if(9){ 빠져나오기   }
+    else if(1){ 사용자에게 추가}
+    else if(2,3,4,5){ 
+       ■1. 사용자 인증
+        2. 2,3,4,5 각각에 해당하는 처리
+          switch(){
+             case 2 : 정보출력 break;
+             case 3 : 입금 break;
+             case 4 : 출금 break;
+             case 5 : 삭제 break;
+          }
+    } // end else if
+ }// end for
+ */

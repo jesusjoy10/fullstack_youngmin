@@ -1,0 +1,11 @@
+package com.company.java007;
+
+public class Arr2_001 {
+	public static void main(String[] args) {
+		int[][] arr = {  {1,2,3},    //00 01 02 
+				         {4,5,6}	 //10 11 12	    
+		              };
+		System.out.println( arr );
+		
+	}// end main
+}//end calls 

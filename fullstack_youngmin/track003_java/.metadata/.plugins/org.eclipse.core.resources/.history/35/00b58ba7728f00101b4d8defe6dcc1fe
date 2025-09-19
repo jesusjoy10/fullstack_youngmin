@@ -1,0 +1,10 @@
+package com.company.java007_ex;
+
+public class Test007 {
+    public static void main(String[] args) {
+        for (int i = 5; i >= 1; i--) {
+            System.out.println(i); // 변수 i의 실제 값을 출력
+        }
+    }
+}
+
