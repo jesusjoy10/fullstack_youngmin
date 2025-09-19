@@ -38,5 +38,5 @@
         vm="true"/>
   </setupTask>
   <productVersion
-      href="index:/org.eclipse.setup#//@productCatalogs[name='org.eclipse.products']/@products[name='epp.package.jee']/@versions[name='2025-06']"/>
+      href="index:/org.eclipse.setup#//@productCatalogs[name='org.eclipse.products']/@products[name='epp.package.jee']/@versions[name='2025-09']"/>
 </setup:Installation>
