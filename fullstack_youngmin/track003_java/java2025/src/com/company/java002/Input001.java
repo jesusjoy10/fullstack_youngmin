@@ -10,7 +10,7 @@ public class Input001 {
 		
 		//OOP : 클래스(부품객체) 조립해서 완성해가는 프로그램 
 		//변수
-		int 	like	=0; //기본 : like[0]
+		int 	dudals	=0; //기본 : like[0]
 		Scanner scanner = new Scanner(System.in); //참조 : ctrl + shift + o ->(import java.util.Scanner; 자동 생성)
 		//1. new(공간 빌리기)	heap 1000 번지 [	]
 		//2. Scanner(System.in) : Scanner() =사용할 수 있게 초기화 - System.in =키보드로 입력 의미
@@ -18,10 +18,10 @@ public class Input001 {
 		
 		//입력
 		System.out.println("정수를 입력하세요>");
-		like = scanner.nextInt(); //입력받기 커서가 깜빡임
+		dudals = scanner.nextInt(); //입력받기 커서가 깜빡임
 		//처리x
 		//출력
-		System.out.println("입력하신 정수는 " + like + "입니다.");
+		System.out.println("입력하신 정수는 " + dudals + "입니다.");
 		
 		
 		
