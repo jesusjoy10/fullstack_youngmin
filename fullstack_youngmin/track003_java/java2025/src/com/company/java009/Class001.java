@@ -1,6 +1,8 @@
 package com.company.java009;
 
-public class clas001{
+class A1{}
+
+public class Class001{
     public static void main(String []args){  //jvm - mian 구동시점
         int i =10;
         A1 a = new A1(); // 4-1 new (heap 1번지 공간빌리기, 객체생성) 인스턴스화
