@@ -1,4 +1,4 @@
-package com.company.java011_ex;
+package com.company.java010_ex;
 
     class Score{
 	// 멤버변수 (private - getters/setters)

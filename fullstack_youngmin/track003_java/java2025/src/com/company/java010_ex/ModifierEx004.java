@@ -1,4 +1,4 @@
-package com.company.java011_ex;
+package com.company.java010_ex;
 
  class Pet{  
 	   private String name;  
