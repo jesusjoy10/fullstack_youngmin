@@ -1,22 +1,22 @@
-# Eclipse 관련폴더 및 파일무시
-.classpath
-.project
+# Eclipse metadata
+/fullstack_youngmin/track003_java/.metadata/
+*.launch
 .settings/
-.eclipse/
-<<<<<<< HEAD
+bin/
+tmp/
 
-=======
+# IDE 설정 파일
+*.classpath
+*.project
 
-
-
-# 빌드 결과물 무시
-/bib/
+# 빌드 산출물
 /build/
-# IDE관련
-.idead/
-*.iml
-# os변 임시파일
-*.DS_Store
-Thumbs.db
-# 로그파일
+/target/
+/out/
+
+# 로그
 *.log
+
+# OS 자동 생성 파일
+.DS_Store
+Thumbs.db
