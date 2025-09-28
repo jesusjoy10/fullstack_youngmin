@@ -42,8 +42,8 @@ public class Castting002_char {
 		System.out.println(System.identityHashCode(str2)  );
 		System.out.println(System.identityHashCode(str3)  );
 		
-		System.out.println(Str1 == str3);      //주소값비교 - false
-		System.out.println(Str1.equals(str3)); //문자열비교 ★ 
+		System.out.println(str1 == str3);      //주소값비교 - false
+		System.out.println(str1.equals(str3)); //문자열비교 ★ 
 		
 	}// end main
 

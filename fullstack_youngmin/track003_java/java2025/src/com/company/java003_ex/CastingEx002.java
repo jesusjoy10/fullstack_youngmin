@@ -24,7 +24,7 @@ public class CastingEx002 {
 		System.out.println("::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
 		System.out.println(":: GOOD  IT SCORE ::");
 		System.out.println("::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
-		System.out.printf("%-5s\t%-5s\t%-5s\t%-5s\t%-5s\t%-5s\n", "국어", "영어", "수학", "총점", "평균", "레벨");
+		System.out.printf("%-5s%-5s\t%-5s\t%-5s\t%-5s\t%-5s\n", "국어", "영어", "수학", "총점", "평균", "레벨");
 		//System.out.println(kor +" "+ eng +" "+ mat +" "+ total +" "+ String.format("%.2f", avg) +" "+ (int)lev);
 		System.out.printf("%-5d\t%-5d\t%-5d\t%-5d\t%-5s\t%-5d\n", kor, eng, mat, total, String.format("%.2f", avg), (int)lev);
 		

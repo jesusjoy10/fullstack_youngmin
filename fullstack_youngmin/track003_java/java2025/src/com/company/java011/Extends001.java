@@ -10,7 +10,7 @@ package com.company.java011;
      
      B b1 = new B(); b1.show();
      1) extends 상속
-     2) is a: A는 Object이다,  Beh Object 
+     2) is a: A는 Object이다,  B도 Object 
      3) 생성자호출 : B() → A() →  Object   1 2 3
      4) 객체생성 : Object → A → B         4 5 6
  *  */

@@ -73,10 +73,10 @@ public class Operrator001 {
 		System.out.println( b1++ ); //1  출력증가
 		System.out.println(  b1  ); //2 
 		
-		System.out.println( --c1 ); //1 감소출력
-		System.out.println(  c1  ); //1
+		System.out.println( --c1 ); //0 감소출력
+		System.out.println(  c1  ); //0
 		
-		System.out.println( --d1 ); //1 출력감소
+		System.out.println( --d1 ); //0 출력감소
 		System.out.println(  d1  ); //0
 		
 		

@@ -18,7 +18,7 @@ public class Input001 {
 		
 		//입력
 		System.out.println("정수를 입력하세요>");
-		dudals = scanner.nextInt(); //입력받기 커서가 깜빡임
+		 //입력받기 커서가 깜빡임
 		//처리x
 		//출력
 		System.out.println("입력하신 정수는 " + dudals + "입니다.");
