@@ -9,7 +9,7 @@ public class Repaeat012_3 {
 		for (int i=1; i<=5; i++) System.out.print(i+"\t");
 		
 		System.out.println("\n\nq2");
-		for (int i=5; i>=1; i--) System.out.print(i);
+		for (int i=5; i>=1; i--) System.out.print(i+"\t");
 		
 		
 		System.out.println("\n\nq3 JAVA1 JAVA2 JAVA3");

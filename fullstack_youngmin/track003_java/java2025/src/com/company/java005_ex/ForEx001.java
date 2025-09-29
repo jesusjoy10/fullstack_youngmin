@@ -3,7 +3,7 @@ package com.company.java005_ex;
 public class ForEx001 {
 	public static void main(String[]args) {
 		//q1  for문을 이용해서 다음과 같이 출력하시오 :   1 2 3 4 5 
-		System.out.println("\n\nq1");
+		System.out.println("q1");
 		for(int i=1; i<=5; i++) {System.out.print(i+"\t");}
 		
 		//q2  for문을 이용해서 다음과 같이 출력하시오 :   5 4 3 2 1 
@@ -21,6 +21,7 @@ public class ForEx001 {
 		//q5  for문을 이용해서 다음과 같이 출력하시오 :   0,1,2  
 		System.out.println("\n\nq5");
 		for(int i=0; i<=2; i++){System.out.print((i==0?"": ",")+ i + "\t");}
+	
 		
 		//q6  for문을 이용해서 다음과 같이 출력하시오 :   0,1,2, ,,,중간생략 ,,, 99 
 		System.out.println("\n\nq6");

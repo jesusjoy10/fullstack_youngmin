@@ -16,6 +16,8 @@ public class Repeat002_While_DoWhile {
 			System.out.println(i + "\t");
 			i++;
 		} // 2-3. 증감- } 맨끝
+		
+		
 
 		// 3.do while ( 무조건 1번은 실행해야할때 )
 		System.out.println("3. do while");

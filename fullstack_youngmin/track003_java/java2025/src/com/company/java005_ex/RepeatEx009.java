@@ -36,15 +36,8 @@ public class RepeatEx009 {
 			i++;
 		}while (i <= 10) ;
 		
-		System.out.println("do문 결과: " + sum);
-		
-		
-		
-				
-			
-		
-		
-
+		System.out.println("do문 결과: " + sum);		
+												
 	}
 }
 
