@@ -16,7 +16,8 @@ public class Bank001_control {
 	          );  
 	          num= scanner.nextInt();
 	          //■기능 2. 
-	               if(num==9){ System.out.println("종료합니다.");  break;   }
+	               if(num==9){ System.out.println("종료합니다.");  break; 
+	               }
 	          else if(num==1){ 
 	             System.out.print("ID   입력 > "); id=scanner.next();
 	             System.out.print("PASS 입력 > "); pass=scanner.next();
