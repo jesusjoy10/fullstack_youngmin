@@ -16,7 +16,7 @@ class TestB4 extends TestA4{ int b= 20;
 @Override public String toString() { return "TestB4 [b=" + b + "]"; }
  }
 /////////////////////////////////////////////////////
-public class Polly4 {
+public class Poly004 {
 	public static void main(String[]args) {
 		TestA4 ta = new TestA4();
 		//1. {int a, toString}= 1000번지 {int a, to String} 

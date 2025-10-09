@@ -30,7 +30,7 @@ class person extends Animal{
 	public void show() {System.out.println("person > " + super.name + "/" + super.age);}
 }
 
-public class Polly005 {
+public class Poly005 {
 
 	
 	public static void main(String[] args) {

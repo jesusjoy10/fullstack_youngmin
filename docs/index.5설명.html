@@ -257,7 +257,15 @@ footer {
 }
 
 /* 스크롤 애니메이션 */
-
+.fade-slide-on-scroll { 
+  opacity:0; /* 처음 안 보임 */
+  transform:translateY(20px); /* 살짝 아래에서 나타남 */
+  transition:0.8s ease-out;
+}
+.fade-slide-on-scroll.active { 
+  opacity:1; 
+  transform:translateY(0); /* 원래 위치로 올라오면서 나타남 */
+}
 
 /* iframe: 유튜브 영상 */
 iframe { 

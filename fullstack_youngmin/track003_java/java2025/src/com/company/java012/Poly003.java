@@ -16,7 +16,7 @@ class TestB3 extends TestA3{ int b= 10;
 @Override public String toString() { return "TestB3 [b=" + b + "]"; }
  }
 
-public class Polly003 {
+public class Poly003 {
 	public static void main(String[]args) {
 		// 자식  =  부모    다운캐스팅
 		TestB3 tb =  (TestB3) new TestA3(); 
