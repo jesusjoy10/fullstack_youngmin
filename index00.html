@@ -4,14 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>김영민 포트폴리오</title>
-
-<!-- Bootstrap & Icons -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-
-<!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600&display=swap');
 * { font-family: 'Noto Sans KR', sans-serif; margin:0; padding:0; box-sizing:border-box; }
@@ -54,22 +49,15 @@ footer { text-align:center; padding:40px 0 20px; color:#777; font-size:14px; }
 .fade-slide-on-scroll { opacity:0; transform:translateY(20px); transition:0.8s ease-out;}
 .fade-slide-on-scroll.active { opacity:1; transform:translateY(0);}
 iframe { width:100%; height:200px; border:none; border-radius:12px; }
-
-header h2{  margin:50px 0;   }
-.bg.about{background:#ffb400; padding:50px;}
 </style>
 </head>
-
 <body>
 
 <header class="fade-slide-on-scroll">
   <h1>김영민</h1>
-  <h2 id="typed-text"></h2>
   <p>WEB DEVELOPER PORTFOLIO.</p>
 </header>
 
-<!-- ABOUT -->
-<div class="bg about"> 
 <section id="about" class="fade-slide-on-scroll">
   <h2>ABOUT ME</h2>
   <div class="about-grid">
@@ -81,9 +69,7 @@ header h2{  margin:50px 0;   }
     <div class="about-item"><i class="bi bi-github"></i><p>GitHub<br><a href="https://github.com/jesusjoy10/fullstack_youngmin.git" target="_blank">github.com/jesusjoy10</a></p></div>
   </div>
 </section>
-</div>
 
-<!-- SKILLS -->
 <section id="skills" class="fade-slide-on-scroll">
   <h2>SKILLS</h2>
   <div class="skills-grid">
@@ -94,13 +80,15 @@ header h2{  margin:50px 0;   }
   </div>
 </section>
 
-<!-- PROJECTS -->
 <section id="projects" class="fade-slide-on-scroll">
   <h2>PROJECTS</h2>
   <div class="project-grid">
     <div class="project-card" data-project="p1">
-      <div class="front">프로젝트 1 (YouTube)<br>자바 콘솔 바디프로필 챌린지</div>
-      <div class="back"><iframe src="https://www.youtube.com/embed/TZhNvTL7h_U" allowfullscreen></iframe></div>
+      <div class="front">프로젝트 1 (YouTube) <br>
+        자바 콘솔 바디프로필 챌린지</div>
+      <div class="back">
+        <iframe src="https://www.youtube.com/embed/TZhNvTL7h_U" allowfullscreen></iframe>
+      </div>
     </div>
     <div class="project-card" data-project="p2">
       <div class="front">프로젝트 2</div>
@@ -117,9 +105,44 @@ header h2{  margin:50px 0;   }
   </div>
 </section>
 
-<!-- CONTACT -->
+<!-- ✅ 이메일 전송 기능이 실제 작동하는 CONTACT 섹션 -->
 <section id="contact" class="fade-slide-on-scroll">
   <h2>CONTACT</h2>
+
+  <!-- EmailJS -->
+  <script type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+  </script>
+  <script type="text/javascript">
+    (function(){
+        emailjs.init({
+          publicKey: "gWf1fcGb7Ae9t_sTx",
+        });
+    })();
+
+    function sendEmail(e){
+      e.preventDefault();
+      const templateParams = {
+        title: document.getElementById("title").value,
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        message: document.getElementById("message").value
+      };
+
+      emailjs.send('jesusjoy10', 'template_wnu408s', templateParams).then(
+        (response) => {
+          alert("메일이 성공적으로 전송되었습니다!");
+          console.log('SUCCESS!', response.status, response.text);
+          document.getElementById("contactForm").reset();
+        },
+        (error) => {
+          alert("메일 전송에 실패했습니다. 다시 시도해주세요.");
+          console.log('FAILED...', error);
+        }
+      );
+    }
+  </script>
+
   <form id="contactForm" onsubmit="sendEmail(event)">
     <input type="text" id="name" placeholder="이름" required>
     <input type="email" id="email" placeholder="이메일" required>
@@ -146,76 +169,35 @@ header h2{  margin:50px 0;   }
   </div>
 </div>
 
-<!-- JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-
 <script>
-  // Typed text
-  var typed = new Typed("#typed-text", {
-    strings: ["안녕하세요, 김영민입니다.", "웹 개발자 포트폴리오에 오신 걸 환영합니다!"],
-    typeSpeed: 50,
-    backSpeed: 50,
-    loop: true
+// Project flip
+$(".project-card").on("click", function(){ $(this).toggleClass("flipped"); });
+
+// Skill modal
+const skillDesc = {
+  HTML: "시맨틱 구조 설계 및 접근성을 고려한 마크업 경험이 있습니다.",
+  CSS: "Flex, Grid, Transform, Animation을 활용해 반응형 디자인 구현.",
+  JS: "폼 검증, 인터랙션 제어 등 동적 기능 구현 경험.",
+  GIT: "Git Flow 전략과 GitHub 협업 (브랜치/PR) 경험."
+};
+$(".skill-btn").on("click", function(){
+  const key=$(this).data("skill");
+  $("#skillModal .modal-title").text(key);
+  $("#skillModal .modal-body").text(skillDesc[key]);
+  new bootstrap.Modal($("#skillModal")).show();
+});
+
+// Scroll fade
+function handleScroll(){
+  $(".fade-slide-on-scroll").each(function(){
+    const elemTop=$(this).offset().top;
+    const scrollTop=$(window).scrollTop();
+    const winHeight=$(window).height();
+    if(scrollTop+winHeight>elemTop+50){ $(this).addClass("active"); }
   });
-
-  // EmailJS 초기화
-  (function(){
-      emailjs.init({ publicKey: "gWf1fcGb7Ae9t_sTx" });
-  })();
-
-  function sendEmail(e){
-    e.preventDefault();
-    const templateParams = {
-      title: document.getElementById("title").value,
-      name: document.getElementById("name").value,
-      email: document.getElementById("email").value,
-      message: document.getElementById("message").value
-    };
-
-    emailjs.send('jesusjoy10', 'template_wnu408s', templateParams).then(
-      (response) => {
-        alert("메일이 성공적으로 전송되었습니다!");
-        document.getElementById("contactForm").reset();
-      },
-      (error) => {
-        alert("메일 전송에 실패했습니다. 다시 시도해주세요.");
-        console.log('FAILED...', error);
-      }
-    );
-  }
-
-  // 프로젝트 카드 뒤집기
-  $(".project-card").on("click", function(){ 
-    $(this).toggleClass("flipped"); 
-  });
-
-  // Skill Modal
-  const skillDesc = {
-    HTML: "시맨틱 구조 설계 및 접근성을 고려한 마크업 경험이 있습니다.",
-    CSS: "Flex, Grid, Transform, Animation을 활용해 반응형 디자인 구현.",
-    JS: "폼 검증, 인터랙션 제어 등 동적 기능 구현 경험.",
-    GIT: "Git Flow 전략과 GitHub 협업 (브랜치/PR) 경험."
-  };
-
-  $(".skill-btn").on("click", function(){
-    const key=$(this).data("skill");
-    $("#skillModal .modal-title").text(key);
-    $("#skillModal .modal-body").text(skillDesc[key]);
-    new bootstrap.Modal($("#skillModal")).show();
-  });
-
-  // Scroll Fade Animation
-  function handleScroll(){
-    $(".fade-slide-on-scroll").each(function(){
-      const elemTop=$(this).offset().top;
-      const scrollTop=$(window).scrollTop();
-      const winHeight=$(window).height();
-      if(scrollTop+winHeight>elemTop+50){ $(this).addClass("active"); }
-    });
-  }
-  $(window).on("scroll load", handleScroll);
+}
+$(window).on("scroll load", handleScroll);
 </script>
 
 </body>
