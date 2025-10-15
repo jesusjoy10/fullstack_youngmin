@@ -45,10 +45,12 @@ select ename, sal from emp order by sal desc; -- desc는 내림차순
  select * from emp;
 
 -- Q5. EMP 테이블의 EMPNO, ENAME, DEPTNO 열을 조회하시오
- select  EMPNO, ENAME, DEPTNO from emp;
+ select  EMPNO, ENAME, DEPTNO
+ from emp;
 
 -- Q6. EMP 테이블의 DEPTNO 열의 중복을 제거하고 조회하시오
- select distinct deptno from emp;
+ select distinct deptno 
+ from emp;
 
 -- Q7. EMP 테이블의 job, deptno열의 중복을 제거 조회하시오
  select distinct job deptno from emp;
