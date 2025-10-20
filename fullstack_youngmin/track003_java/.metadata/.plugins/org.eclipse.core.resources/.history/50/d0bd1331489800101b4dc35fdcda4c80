@@ -1,0 +1,27 @@
+package com.company.java010;
+
+
+class UserInfo{
+	public String name;
+	protected String safeCode;   // 자식
+	          String house;
+	private   int    iQ;
+	
+	public int getiQ() {return iQ;}
+	
+	public void setiQ(int iQ) {this.iQ = iQ;}           
+}
+
+///////////////////////////////////////////
+public class Modifier001_public_private {
+	public static void main(String[] args) {
+		UserInfo user = new UserInfo();
+		user.name="홍상직";  //public 아무데서나 접근 (홍길동씨 아버지)
+		user.safeCode = "1234"; //protected 본인꺼 접근가능
+		user.house = "전라남도장성군";
+		user.setiQ(148);  //The field UserInfo.iQ is not visible
+		System.out.println(user.getiQ());
+	}
+
+}
+///////////////////////////////////////////

@@ -1,0 +1,47 @@
+package com.company.java015_lamda_stram;
+
+class Refclass{void method(String str) {System.out.println(str);} }
+interface InterUsing{void inter (Refclass c, String str);}
+
+public class Lambda003 {
+	public static void main(String[] args) {
+		//#1. 익명클래스
+		InterUsing a1 = new InterUsing() {		 
+			@Override
+			public void inter(Refclass c, String str) { c.method(str);}};
+		    a1.inter(new Refclass(), "Hello: )");
+		
+		//#2. 람다()->{}
+		    InterUsing a2 = (c ,str) -> { c.method(str); }; //직접구현
+		    a1.inter(new Refclass(), "Hello: )");  // RefClass클래스의 method 사용
+		
+		//#3. :: 표현식(참조)
+		    InterUsing  a3 = Refclass::method; // 자동연결 1) RefClass 2) method
+		    a3.inter(new Refclass(), "Hello: )");
+		//#4. interface InterBasic{int method(int a , int b);}
+		    InterBasic basic = (int a, int b)-> { return Math.max(a, b);};
+		    System.out.println(basic.method(10,3));
+		    
+		    InterBasic basic2 = ( a,  b)-> Math.max(a, b);
+		    System.out.println(basic2.method(100,3));
+		    
+		    InterBasic basic3 = Math::max;
+		    System.out.println(basic3.method(1000,3));
+		    
+		    InterBasic basic4 = (a,b)->Math.min(a, b); //()-> return
+		    System.out.println(basic4.method(10, 3));
+		    
+		    InterBasic basic5 = Math::min; //()-> return
+		    System.out.println(basic4.method(10, 3));
+		    
+		  //#4. interface
+		    InterString basic6 = (a,b)->a.compareTo(b);
+		    System.out.println(basic6.compare("apple", "canana")); //음수
+		    // 문자열이 같으면 0, <0  (음수)a<b  a가 b보다 앞에 옴 
+	}
+}
+
+
+
+interface InterBasic{int method(int a , int b);}
+interface InterString{int compare(String a , String b);}  // 순서1) (a,b)->return 

@@ -1,0 +1,7 @@
+package com.company.java010_ex;
+
+public class Milk{  // java011_ex에 설정해주세요!
+	   private int  mno;   
+	   private String mname;  
+	   private  int mprice;  
+	}

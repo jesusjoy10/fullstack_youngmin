@@ -1,0 +1,16 @@
+package com.company.java015_lamda_stram;
+
+import java.util.Arrays;
+
+public class Stream003 {
+
+	public static void main(String[] args) {
+		Integer[] ages = {17,21,26, 45, 18};  // 객체
+		
+		Arrays.stream(ages)
+		.mapToInt(age->age)
+		.average() // 평균값
+		.orElse(0.0);
+	}
+
+}

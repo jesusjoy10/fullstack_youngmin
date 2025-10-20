@@ -1,0 +1,25 @@
+package com.company.java010_bank;
+
+// 1. 클래스는 부품객체
+// 2. 상태와 행위
+
+public class Bank_main {
+     // 상태 : 멤버변수
+	UserInfo userinfo;
+	Add      add;
+	Show     show;
+	// Deposit deposit,,,,
+	
+	
+	 // 행위 : 멤버함수 
+	
+	public static void main(String[] args) {
+		
+	}
+	public Bank_main(UserInfo userinfo, Add add, Show show) {
+		super();
+		this.userinfo = userinfo;
+		this.add = add;
+		this.show = show;
+	}
+}

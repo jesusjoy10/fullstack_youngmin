@@ -1,0 +1,23 @@
+package com.company.java010;
+
+//1. 클래스는 부품객체
+//2. 클래스는 상태(멤버변수)와 행위(멤버함수)
+class Farm{
+	//상태 - 멤버변수
+	String name;
+	int age;
+	//행위 - 멤버함수
+	void show() {
+		System.out.println("\n\n::::::::::::::::::::::");
+		System.out.println("::이름" + this.name);
+		System.out.println("::나이" + this.age);
+	}
+}
+/////////////////////////////////////////////
+public class Static001 {
+	public static void main(String[] args) {
+	    System.out.println("\n\n. 동물농장식구-this-각각");
+        Farm cat = new Farm(); cat.name="boy"; cat.age=10;
+	}
+}
+/////////////////////////////////////////////

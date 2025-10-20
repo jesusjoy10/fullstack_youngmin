@@ -1,0 +1,20 @@
+package com.company.java010;
+
+
+class UserInfo{
+	public String name;
+	protected String safeCode;   // 자식
+	          String house;
+	private   int    iQ;           
+}
+
+///////////////////////////////////////////
+public class Modifier001_public_private {
+	public static void main(String[] args) {
+		UserInfo user = new UserInfo();
+		user.name="홍길동";  //public 아무데서나 접근
+		user.safeCode =  "1234";
+	}
+
+}
+///////////////////////////////////////////

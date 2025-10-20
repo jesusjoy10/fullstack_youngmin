@@ -1,0 +1,22 @@
+package com.company.java015_lamda_stram;
+
+import java.util.Arrays;
+import java.util.List;
+
+public class Stream002 {
+
+	public static void main(String[] args) {
+		
+		Integer[] arr = {1,2,3,4,5}; //배열
+		List<Integer>list = Arrays.asList(arr);
+		
+		//1단계- stream
+		Arrays.stream(arr);
+		list.stream();
+		//2단계- 중간연산
+		//3단계- 최종연산
+		
+
+	}
+
+}

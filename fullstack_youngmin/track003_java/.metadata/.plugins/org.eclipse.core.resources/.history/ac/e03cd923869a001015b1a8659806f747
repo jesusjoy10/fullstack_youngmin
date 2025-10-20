@@ -1,0 +1,20 @@
+package com.company.java011;
+
+//1. 상속? 클래스의 재사용
+class A extends Object{
+	int a;
+}
+class B extends A {
+	int b;
+
+	public B() { super();}
+	
+	public void show() {System.out.println(a+ "\t"+b);}
+	
+}
+public class Extends001 {
+	public static void main(String [] args) {
+		
+	}
+
+}

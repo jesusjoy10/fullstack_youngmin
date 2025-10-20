@@ -1,0 +1,44 @@
+package com.company.java010;
+
+//1. 클래스는 부품객체
+//2. 클래스는 상태(멤버변수)와 행위(멤버함수)
+class Farm{
+	//상태 - 멤버변수
+	String name; // 인스턴스변수- cat(1번지).name , cat(2번지).name
+	int age;  // 인스턴스변수- dog(2번지).name , dog(2번지).age
+	static String FarmName;
+	//행위 - 멤버함수
+	void show() { // 인스턴스메서드
+		System.out.println("\n\n::::::::::::::::::::::");
+		System.out.println("::이름" + this.name);
+		System.out.println("::나이" + this.age);
+	}
+}
+/////////////////////////////////////////////
+public class Static001 {
+	public static void main(String[] args) {
+		 System.out.println("\n\n0. 동물농장");
+		 System.out.println(Farm.FarmName);
+		
+	    System.out.println("\n\n. 동물농장식구-this-각각");
+	    Farm cat = new Farm();  //  조립:    1) new : 메모리빌리기, 객체생성 2)Farm()초기화  3)cat 번지
+        cat.name="boy"; cat.age=3; cat.show();
+        Farm dog = new Farm(); 
+        dog.name="alpha"; dog.age=7; dog.show();
+	}
+}
+/////////////////////////////////////////////
+
+/* 초기화순서 : 기본값                명시적초기화                       초기화블록                생성자
+ * cat      name=null, age=0   (x)name=null, age=0              (x)name=null, age=0       name=null, age=0 
+ * dog      name=null, age=0   (x)name=null, age=0              (x)name=null, age=0       name=null, age=0 
+------------------------[ runtime data area]
+[method: 정보, static, final : 공용정보]  
+  Farm.class , Static001.class                   ★ 클래스는 : 설계도 
+------------------------------------
+[heap: 동적]            | [stack : 잠깐빌리기]
+2번지{name,age}     <- dog[1번지]  
+1번지{name,age}     <- cat[1번지]
+                     | main
+------------------------------------
+*/

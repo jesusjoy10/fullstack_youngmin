@@ -1,0 +1,42 @@
+package com.company.java016_Javaio;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Writer;
+
+public class Java003_char {
+
+	public static void main(String[] args) {
+		//#1. 경로
+		String folder_rel="src/com/company/java016_Javaio_ex/"; //상대경로 (현재작업 폴더기준)
+		String file_path="io003.txt";
+		
+		File folder = new File(folder_rel);
+		File file   = new File(folder_rel + file_path);
+		
+		//#2. 폴더 + 파일만들기  exists / mkdir / creatNewFile
+		try {
+		if(!folder.exists()) { folder.mkdir();}
+		if(!file.exists()) {file.createNewFile();}
+		System.out.println("1) 폴더/파일 만들기");
+	}catch(Exception e ) {e.printStackTrace();}
+		
+		//#3. char 쓰기   Reader > [프로그램] > Writer #
+		try {
+		Writer writer  = new FileWriter(file);
+		writer.write("hello");
+		writer.write("java");
+		writer.flush();  // 
+		writer.close();
+		} catch(IOException e) {e.printStackTrace();} 
+		
+		
+		//#4. char 읽기   Reader # > [프로그램] > Writer
+		
+		
+		
+
+	}
+
+}

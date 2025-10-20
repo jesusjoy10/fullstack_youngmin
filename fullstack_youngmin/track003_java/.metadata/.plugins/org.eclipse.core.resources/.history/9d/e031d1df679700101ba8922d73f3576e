@@ -1,0 +1,17 @@
+package com.company.java009;
+
+//1. 클래스는 부품객체
+//2. 클래스는 상태(멤버변수)와 행위 (멤버함수)
+
+class car31{} // 생성자 car31 () - 컴파일러가 기본생성자를 자동생성
+class car32{}
+
+//////////////////////////////////
+public class Class003_constrution {
+	public static void main(String [] args) {
+		
+	}
+
+	
+}
+//////////////////////////////////

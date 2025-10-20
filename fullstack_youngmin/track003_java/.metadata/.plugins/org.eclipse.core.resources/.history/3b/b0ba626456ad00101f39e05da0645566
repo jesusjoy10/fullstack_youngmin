@@ -1,0 +1,34 @@
+package com.company.java016_Javaio;
+
+public class JavaIO002_byte {
+
+	public static void main(String[] args) {
+
+	}
+
+}
+
+/*
+1. Java IO
+- 입력 (input)과 출력(output)
+- 두 대상간의 데이터를 주고 받는 것
+- 스트림이란? 사용연결통로
+
+        입력스트림    →   [프로그램]   →   출력스트림
+              InputStream       OutputStream
+              Reader            Writer
+              
+2. Java IO 분류
+- byte / char 단위
+- byte 단위(InputStream / OutputStream) - 모든종류(그림,멀티미디어,문자)
+- char 단위(Reader      / Writer ) - 문자 
+
+3. 보조스트림
+-------------------------------------------------------------------------
+-   new BufferedReader(new InputStreamReader(new FileInputStream(file)))
+-------------------------------------------------------------------------
+-  	1)new FileInputStream(네트워크나 , 사용자가 넣어준 값) byte[#]/char
+- 	2)new InputStreamReader 바이트를 [문자] 스트림으로 - 텍스트처리가능
+-   3)new BufferedReader  속도향상
+
+*/

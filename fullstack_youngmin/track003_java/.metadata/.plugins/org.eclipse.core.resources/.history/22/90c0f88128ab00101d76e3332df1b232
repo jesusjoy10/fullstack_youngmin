@@ -1,0 +1,18 @@
+package com.company.java015_lamda_stram;
+
+import java.util.Arrays;
+
+public class Stream003 {
+
+	public static void main(String[] args) {
+		Integer[] ages = {17,21,26, 45, 18};  // 객체
+		
+		double avg = Arrays.stream(ages)
+						.mapToInt(age->age) // 객체는 기본값
+						.average() // 평균값처라
+						.orElse(0.0); // 값없으면 0.0
+		System.out.println("평균나이:" + avg);
+		
+	}
+
+}

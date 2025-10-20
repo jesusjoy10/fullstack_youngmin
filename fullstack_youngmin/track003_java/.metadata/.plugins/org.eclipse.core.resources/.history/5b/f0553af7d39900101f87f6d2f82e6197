@@ -1,0 +1,18 @@
+package com.company.java010_bank;
+
+public class Login {
+	   //상태 : 멤버변수
+UserInfo userinfo;
+ //행위 : 멤버함수
+	public Login() { super();  }
+
+	public Login(UserInfo userinfo) { super(); this.userinfo = userinfo; }
+
+	//행위 : 멤버함수
+	public void exex() {
+		//setter / getter 이용해서 유저정보확인 ### 
+	}
+
+}
+/* 기능: 유저정보확인
+*/

@@ -1,0 +1,31 @@
+package com.company.java016_Javaio;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.Calendar;
+
+public class Java005_bufferd {
+
+	public static void main(String[] args) throws IOException  {
+		//#1. 경로
+		Calendar today = Calendar.getInstance(); // 날짜
+		String folder_rel="src/com/company/java016_Javaio_ex/"; //상대경로 (현재작업 폴더기준)
+		String file_path= "io005_ " + today.get(1) + (today.get(2)+1) + today.get(5) + ".txt";
+		//                    년               월                일 		
+		File folder = new File(folder_rel);
+		File file   = new File(folder_rel + file_path);
+		//#2. 폴더 + 파일만들기 [##]
+		try {
+			if(!folder.exists()) {folder.mkdir();}
+			if(!file.exists()) {file.createNewFile();}
+			System.out.println("1) 폴더/파일 만들기");
+		} catch(Exception e) {e.printStackTrace();}
+		
+		//#3. 파일쓰기
+		
+		//#4. 파일읽기
+		
+	
+	}
+
+}

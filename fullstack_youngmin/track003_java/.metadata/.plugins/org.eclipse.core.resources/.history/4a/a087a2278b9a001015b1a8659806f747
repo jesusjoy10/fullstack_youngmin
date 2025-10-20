@@ -1,0 +1,27 @@
+package com.company.java011;
+
+//1. 상속? 클래스의 재사용
+/* 실선- 속이빈 화살표
+   Object
+     ↑
+     A  int a =10
+     ↑
+     B  int b =20
+ *  */
+class A extends Object{
+	int a=10 ;
+	public A() { super();  } 
+}
+class B extends A {
+	int b=20;
+	public B() { super();}	
+	public void show() {System.out.println(super.a+ "\t"+ this.b);}
+	
+}
+public class Extends001 {
+	public static void main(String [] args) {
+		B b1= new B(); b1.show();
+		
+	}
+
+}
