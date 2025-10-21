@@ -17,7 +17,7 @@ class Car32{
 
 //////////////////////////////////
 public class Class003_constrution {
-    public static void main(String [] args) {
+    public void main(String [] args) {
         Car31 ca1 = new Car31(); //1. new (메모리 빌리고, 객체생성)  2. Car31()초기화 3. ca1 번지
         System.out.println(ca1); //Car31@73a28541
         

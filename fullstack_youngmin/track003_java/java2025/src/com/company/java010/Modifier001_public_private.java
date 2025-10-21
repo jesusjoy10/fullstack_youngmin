@@ -14,7 +14,7 @@ class UserSon1 extends UserInfo{
 }
 ///////////////////////////////////////////
 public class Modifier001_public_private {
-	public static void main(String[] args) {
+	public void main(String[] args) {
 		System.out.println("\n\n1.홍길동 아버지 정보"); //본인 : public > protected > default > private (x)
 		UserInfo user = new UserInfo();
 		user.name="홍상직";  //public 아무데서나 접근 (홍길동씨 아버지)
