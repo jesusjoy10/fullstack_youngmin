@@ -1,0 +1,76 @@
+-- 1
+select * 
+from emp;
+
+--2. 집계함수 - sum,count,max,min,avg
+select sum(sal)  -- 1개
+from emp;
+
+--3. 부서의 직업별 급여의 평균
+select deptno, job, avg(sal)
+from emp
+group by deptno, job;
+
+--4. where vs having [급여의 평균]에서 2000이상
+select deptno, job, avg(sal) --5
+from emp              --1 
+where sal>=1500       --2 전체데이터에서 필터링
+group by deptno, job --3 [부서의 직업별], 급여의 평균
+having avg(sal) > 2000; --4 3번에서 나온 급여의 평군으로 having
+
+
+-- 5. rollup , cube, grouping sets / pivot, unpivot
+--     [부서의 직업별], 명수, 급여의 평균
+-- rollup : 10부서의 직업 급여의 평균, 20부서의 급여 평균 , 30부서의 급여 평균 = 전체 총계
+select deptno,job, count(*), round(avg(sal),1)
+from emp
+group by rollup(deptno,job);
+
+-- cube : deptno + job 전체총계, job 총계, deptno 총계, deptno + job 각각의 세부내용  큰 거에서 > 작은걸로
+select deptno,job, count(*), round(avg(sal),1)
+from emp
+group by cube(deptno,job);
+
+--grouping : 뭘로 묶였는지 확인 - 해당컬럼이 실제로 그룹화되었니? 0 그룹화에 포함됨 / 1 그룹화에 포함이 되지 않음
+select deptno,job, grouping(deptno),grouping(job) 
+from emp
+group by cube(deptno,job); --deptno + job ,job,deptno ,둘다세부
+
+--pivot: 행 데이터를 열로
+select *
+from ( select 컬럼1,컬럼2 , 집계대상컬럼 from 테이블명 ) -- 원본데이터 : pivot을 적용할 대상
+pivot (집계함수(집계대상)for 컬럼기준 in (값1,값2,값3,,,)   ); -- 집계함수 : 어떤컬럼 기준으로 만들 것인지 지정
+
+-- 1) job별 부서들의10,20,30 최대급여
+select *
+from (select deptno, job, sal from emp)
+pivot( max(sal) for deptno in(10,20,30) ); -- job 별 부서 10,20,30의 최대급여
+
+-- 2) 직무별 부서별 사원 수 -job별 부서 10,20,30 사원 수 
+select *
+from ( select job , deptno ,empno from emp)
+pivot (count(empno)for deptno in (10,20,30));
+
+-- 3) 부서별 직무 평균 급여
+select *
+from (select deptno, job , sal from emp)
+pivot ( avg(sal) for job in ('CLERK' , 'MANAGER' , 'SALESMAN') );
+
+-- unpivot 열데이터를 행으로
+SELECT deptno, job, sal
+FROM (SELECT deptno,
+MAX(DECODE(job, 'CLERK', sal)) AS CLERK,
+MAX(DECODE(job, 'MANAGER', sal)) AS MANAGER
+FROM emp
+GROUP BY deptno)
+   -- 원본 데이터 : unpivot을 적용할 대상( 열형태로 집계된 데이터)
+UNPIVOT (
+    sal FOR job IN (CLERK, MANAGER) -- unpivot : 열을 행으로 변환, 기준컬럼 열이름이었던 것을 행 값으로 변환
+    );
+--풀이1_ deptno, CLERK (열) , MANAGER (열)
+--풀이2_ deptno, job ,sal
+          --      CLERK
+          --    MANAGER
+
+
+
