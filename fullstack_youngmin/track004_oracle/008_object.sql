@@ -30,7 +30,7 @@ select * from dept_temp;
 
 --Q  appuser_seq 시퀀스 만들기
 desc appuser;
-create sequence appuser_seq;
+create sequence appuser_seq; 
 
 alter table appuser modify email varchar2(100) unique; --유일한 값
 
@@ -41,5 +41,11 @@ WHERE constraint_name IN (
   FROM user_constraints
   WHERE constraint_type = 'U'
 );
+
+delete * from appuser;
+
+select table_name from user_tables;
+
+SELECT sequence_name FROM user_sequences WHERE sequence_name = 'APPUSER_SEQ';
 
 
