@@ -67,5 +67,9 @@ delete from post where id=? and pass=?
 delete from post where id=1 and pass='1111'
 
 
+SELECT    p.*     ,    u.email    email   
+  from post p join appuser u     on p.app_user_id = u.app_user_id
 
 
+select * from post;
+select * from appuser;
