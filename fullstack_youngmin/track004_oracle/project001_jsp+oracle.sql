@@ -73,3 +73,5 @@ SELECT    p.*     ,    u.email    email
 
 select * from post;
 select * from appuser;
+
+select * from post;

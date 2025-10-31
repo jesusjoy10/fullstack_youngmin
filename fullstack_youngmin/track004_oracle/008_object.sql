@@ -49,3 +49,5 @@ select table_name from user_tables;
 SELECT sequence_name FROM user_sequences WHERE sequence_name = 'APPUSER_SEQ';
 
 
+
+
