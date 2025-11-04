@@ -29,10 +29,10 @@ public class PostDao {
         String sql = "INSERT INTO post (id, app_user_id, title, content, pass) "
                    + "VALUES (post_seq.nextval, ?, ?, ?, ?)";
 
-        try (
+        try {
             Connection conn = getConnection();
             PreparedStatement pstmt = conn.prepareStatement(sql);
-        ) {
+        
             pstmt.setInt(1, dto.getAppUserId());
             pstmt.setString(2, dto.getTitle());
             pstmt.setString(3, dto.getContent());
@@ -42,7 +42,11 @@ public class PostDao {
             if (rows > 0) result = 1;
         } catch (Exception e) {
             e.printStackTrace();
-        }
+		} finally {
+			if( rset  != null ) { try { rset.close(); } catch (SQLException e) { e.printStackTrace(); } }
+			if( pstmt != null ) { try { pstmt.close(); } catch (SQLException e) { e.printStackTrace(); } }
+			if( conn  != null ) { try { conn.close(); } catch (SQLException e) { e.printStackTrace(); } }
+		}  
         return result;
     }
 
