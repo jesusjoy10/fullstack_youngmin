@@ -80,8 +80,8 @@ public class PostDao {
     				//public PostDto(int recId, String userId, int foodId, String type, String feedback, Date createdAt) {
     				while(rset.next()) {
     					result.add(new PostDto(
-    							rset.getInt("recId"), rset.getString("userId"),rset.getInt("foodId")
-    							,rset.getString("type"), rset.getString("feedback")  , rset.getTimestamp("created_at").toLocalDateTime()  ));
+    							rset.getInt("RECID"), rset.getString("ID"),rset.getInt("FOODID")
+    							,rset.getString("TYPE"), rset.getString("FEEDBACK")  , rset.getTimestamp("CREATEDAT").toLocalDateTime()  ));
     				}
     			} catch (Exception e) { e.printStackTrace();
     			} finally {
@@ -118,8 +118,8 @@ public class PostDao {
 			//recId, id, foodId, type, feedback
 			while(rset.next()) {
 				result.add(new PostDto(
-						rset.getInt("recId"), rset.getString("userId"),rset.getInt("foodId")
-						,rset.getString("type"), rset.getString("feedback")  , rset.getTimestamp("created_at").toLocalDateTime()  ));
+						rset.getInt("RECID"), rset.getString("ID"),rset.getInt("FOODID")
+						,rset.getString("TYPE"), rset.getString("FEEDBACK")  , rset.getTimestamp("CREATEDAT").toLocalDateTime()  ));
 			}
 		} catch (Exception e) { e.printStackTrace();
 		} finally {
@@ -162,7 +162,12 @@ public class PostDao {
 			if( conn  != null ) { try { conn.close(); } catch (SQLException e) { e.printStackTrace(); } }
 		}  
 		return result;
-    }		
+    }
+
+	public PostDto select(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}		
 }   //end class
 
 

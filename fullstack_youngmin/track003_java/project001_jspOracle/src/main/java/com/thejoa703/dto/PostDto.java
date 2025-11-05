@@ -10,6 +10,9 @@ public class PostDto{
 	private String type;
 	private String feedback;
 	private LocalDateTime createdAt;
+	private int id;
+	private String pass;
+
 	public int getRecId() {
 		return recId;
 	}
@@ -64,7 +67,17 @@ public class PostDto{
 	public void setRecId(int recId) {
 		this.recId = recId;
 	}
+	  public void setId(int id) {
+	        this.id = id;
+	    }
 	
+	    public void setPass(String pass) {
+	        this.pass = pass;
+	    }
+	    public String getPass() {
+	        return pass;
+	    }
+
 	
 				
 }

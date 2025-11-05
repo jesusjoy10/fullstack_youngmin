@@ -15,7 +15,7 @@
 </head>
 <body>
    <div class="container card  my-5">
-      <h3  class="card-header">  insert</h3>
+      <h3  class="card-header">  INSERT</h3>
   <%--       <%
       PostDao dao = new PostDao();
       PostDto dto = new PostDto();
@@ -26,21 +26,24 @@
       out.println(dao.insert(dto));      
       %>   --%>  
       <h3  class="card-header">SELECT</h3>
-    <%--   <%
+     <%--   <%
       PostDao dao = new PostDao();
       out.println(dao.selectAll());
-      %> --%>
+      %>  --%>
        
       <h3  class="card-header">  SELECT</h3>
-      <%
+       <%-- <%
       PostDao dao = new PostDao(); 
       out.println(dao.selectByUser("user01"));
-      %>  
+      %>    --%>
       <h3  class="card-header">  DELETE</h3>
-    <%--   <%
+      <%
       PostDao dao = new PostDao(); // recId = 1 삭제
-	  out.println(dao.delete(1));
-      %> --%>
+      PostDto dto = new PostDto();
+      dto.setRecId(4);
+	  dto.setId("user01");
+	  out.println(dao.delete(dto));
+      %>  
       
 
    </div>

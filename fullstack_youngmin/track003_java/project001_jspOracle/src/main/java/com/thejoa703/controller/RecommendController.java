@@ -4,12 +4,21 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.thejoa703.service.RecommendDelete;
+import com.thejoa703.service.RecommendInsert;
+import com.thejoa703.service.RecommendSelect;
+import com.thejoa703.service.RecommendSelectAll;
+import com.thejoa703.service.RecommendService;
 
-//@WebServlet("*.rec")
+
+
+
+@WebServlet("*.recommend")
 public class RecommendController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -28,29 +37,44 @@ public class RecommendController extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		String path = request.getServletPath();
-		System.out.println(path);
-/*
-		RecommendService service = null;
+		
+		RecommendService service = null;   //##
+		
+		 if(path.equals("/regForm.recommend")) {
+				request.getRequestDispatcher("/recommendType/write.jsp").forward(request, response);
 
-		if (path.equals("")) {
-			service = new RecommendInsert();
-			service.exec(request, response);
-			String result = (String) request.getAttribute("result");
-			if ("1".equals(result)) {
-				out.print("<script>alert('추천 등록 성공!'); location.href='list.rec';</script>");
-			} else {
-				out.print("<script>alert('추천 등록 실패!'); history.go(-1);</script>");
-			}
+		 }else if(path.equals("/reg.recommend")) {
+				service = new RecommendInsert();
+				service.exec(request, response);
+				out.println("<script>alert('등록했습니다.'); location.href='recommendAll.recommend'; </script>");
 
-		} else if (path.equals("")) {
-			service = new RecommendList();
-			service.exec(request, response);
-			request.getRequestDispatcher("recommend/recommendList.jsp").forward(request, response);
+		 }else if(path.equals("/recommendAll.recommend")) {
+				service = new RecommendSelectAll();
+				service.exec(request, response);
+				request.getRequestDispatcher("/recommendType/list.jsp").forward(request, response);
 
-		} else if (path.equals("/insertView.rec")) {
-			request.getRequestDispatcher("recommend/recommendInsert.jsp").forward(request, response);
-			
+		 }else if(path.equals("/recommend.recommend")) {
+				service = new RecommendSelect();
+				service.exec(request, response);
+				request.getRequestDispatcher("/recommendType/detail.jsp").forward(request, response);
+
+		 }else if(path.equals("/updateForm.recommend")) {
+				// 수정 폼 보여줄 때도 RecommendSelect 사용 가능
+				service = new RecommendSelect();
+				service.exec(request, response);
+				request.getRequestDispatcher("/recommendType/edit.jsp").forward(request, response);
+
+		 }else if(path.equals("/update.recommend")) {
+				service = new RecommendInsert(); // 수정용 클래스가 없으니 임시로 insert 사용
+				service.exec(request, response);
+				out.println("<script>alert('수정했습니다.'); location.href='recommend.recommend'; </script>");
+
+		 }else if(path.equals("/delete.recommend")) {
+				service = new RecommendDelete();
+				service.exec(request, response);
+				out.println("<script>alert('삭제했습니다.'); location.href='recommendAll.recommend'; </script>");
+		 }
 		}
-		*/
 	}
-}
+
+

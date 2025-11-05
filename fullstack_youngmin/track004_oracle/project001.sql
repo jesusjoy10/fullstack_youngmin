@@ -83,12 +83,13 @@ VALUES (RECOMMEND_TB_seq.nextval, 'user01', 100001, 'AI', '단백질부족' );
 
 SELECT * FROM Recommend_tb order BY createdAt desc;
 
-SELECT * FROM Recommend_tb where id = 'user01'  order BY createdAt desc;
+SELECT * FROM Recommend_tb where id = 'user01' ;
 
-DELETE FROM Recommend_tb where recId = 1;
-
+DELETE  FROM Recommend_tb where recId = 5;
+--SELECT * FROM Recommend_tb WHERE recId = 4 AND id = 'user01';
 
 desc RECOMMEND_TB;
+
 
 
 /*
@@ -101,4 +102,5 @@ TYPE      NOT NULL VARCHAR2(30)
 FEEDBACK           VARCHAR2(200) 
 CREATEDAT          DATE 
 */
+
 

@@ -13,12 +13,12 @@
   </welcome-file-list>
    
   <servlet>
-  	<servlet-name>MbtiController</servlet-name>
-  	<servlet-class>com.thejoa703.controller.MbtiController</servlet-class>
+  	<servlet-name>RecommendController</servlet-name>
+  	<servlet-class>com.thejoa703.controller.RecommendController</servlet-class>
   </servlet> 
    
   <servlet-mapping>
-  	<servlet-name>MbtiController</servlet-name>
+  	<servlet-name>RecommendController</servlet-name>
   	<url-pattern>*.do</url-pattern>
   </servlet-mapping> 
   
