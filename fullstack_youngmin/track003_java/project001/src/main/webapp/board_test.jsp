@@ -1,5 +1,5 @@
-<%@page import="com.thejoa703.dto.PostDto"%>
-<%@page import="com.thejoa703.dao.PostDao"%>
+<%@page import="com.thejoa703.dto.SerchDto"%>
+<%@page import="com.thejoa703.dao.SerchDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -41,10 +41,12 @@
      
      3. select
      <%
-     PostDao dao = new PostDao();
+p
+
+     SerchDao dao = new SerchDao();
      out.println(dao.update_hit(8));  
      out.println(dao.select(8));
-     %>
+%>
      
        <pre class="alert alert-success">
        4. update     

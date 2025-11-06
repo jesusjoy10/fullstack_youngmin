@@ -1,5 +1,5 @@
-<%@page import="com.thejoa703.dto.PostDto"%>
-<%@page import="com.thejoa703.dao.PostDao"%>
+<%@page import="com.thejoa703.dto.SerchDto"%>
+<%@page import="com.thejoa703.dao.SerchDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -38,11 +38,13 @@
       %>    --%>
       <h3  class="card-header">  DELETE</h3>
       <%
-      PostDao dao = new PostDao(); // recId = 1 삭제
-      PostDto dto = new PostDto();
-      dto.setRecId(4);
-	  dto.setId("user01");
-	  out.println(dao.delete(dto));
+      
+
+                  SerchDao dao = new SerchDao(); // recId = 1 삭제
+                  SerchDto dto = new SerchDto();
+                  dto.setRecId(4);
+            	  dto.setId("user01");
+            	  out.println(dao.delete(dto));
       %>  
       
 

@@ -33,6 +33,8 @@ CREATE TABLE RECOMMEND_TB (
 );
 create sequence RECOMMEND_TB_seq;
 
+SELECT * FROM RECOMMEND_TB where id ='user01';
+
 CREATE TABLE COMMUNITY_TB (
     postId      NUMBER(8) PRIMARY KEY,      -- 게시글 ID
     id      VARCHAR2(30) NOT NULL,      -- 작성자
@@ -77,7 +79,7 @@ SELECT * FROM RECOMMEND_TB;
 SELECT * FROM RECOMMEND_TB WHERE id = 'user01';
 
 
-
+------------------------------------------------------------------------
 INSERT INTO Recommend_tb (recId, id, foodId, type, feedback)  
 VALUES (RECOMMEND_TB_seq.nextval, 'user01', 100001, 'AI', '단백질부족' );
 
@@ -87,6 +89,7 @@ SELECT * FROM Recommend_tb where id = 'user01' ;
 
 DELETE  FROM Recommend_tb where recId = 5;
 --SELECT * FROM Recommend_tb WHERE recId = 4 AND id = 'user01';
+------------------------------------------------------------------------
 
 desc RECOMMEND_TB;
 
@@ -102,5 +105,77 @@ TYPE      NOT NULL VARCHAR2(30)
 FEEDBACK           VARCHAR2(200) 
 CREATEDAT          DATE 
 */
+
+
+
+desc COMMUNITY_TB;
+
+------------------------------------------------------------------------
+```sql
+
+CREATE TABLE COMMUNITY_TB (
+    postId      NUMBER(8) PRIMARY KEY,      -- 게시글 ID
+    id           NUMBER(30) NOT NULL,      -- 작성자
+    title        VARCHAR2(200) NOT NULL,    -- 제목
+    content      CLOB NOT NULL,             -- 본문
+    categoryId  NUMBER(3) NOT NULL,           -- 카테고리 번호
+    views        NUMBER(6) DEFAULT 0,       -- 조회수
+    createdAt   DATE DEFAULT SYSDATE,       -- 작성일
+    updatedAt   DATE DEFAULT SYSDATE,                       -- 수정일
+    FOREIGN KEY (id) REFERENCES users(APPUSERID),
+    FOREIGN KEY (categoryId) REFERENCES CATEGORY_TB(categoryId)
+);
+
+select * from users;
+create sequence COMMUNITY_TB_seq;
+
+```
+
+INSERT INTO COMMUNITY_TB (
+    postId,
+    id,
+    title,
+    content,
+    categoryId,
+    views,
+    createdAt,
+    updatedAt
+) VALUES (
+    1,               -- postId (NUMBER)
+    1,               -- id (NUMBER, users.id 외래키)
+    '테스트 제목',    -- title (VARCHAR2)
+    '테스트 내용',    -- content (CLOB)
+    1,               -- categoryId (NUMBER, CATEGORY_TB 외래키)
+    0,               -- views (NUMBER)
+    SYSDATE,         -- createdAt (DATE)
+    SYSDATE          -- updatedAt (DATE)
+);
+
+commit;
+
+===
+
+CREATE TABLE CATEGORY_TB (
+    categoryId   NUMBER(3)       PRIMARY KEY,   -- 카테고리 ID
+    categoryName VARCHAR2(50)    NOT NULL       -- 카테고리명 (예: 한식, 양식, 중식, 일식)
+);
+
+CREATE TABLE users (
+    APPUSERID         NUMBER(8)     PRIMARY KEY,                 -- 사용자 고유 ID
+    password    VARCHAR2(100)    NOT NULL,                -- 비밀번호 (암호화 저장)
+    nickname    VARCHAR2(50)     NOT NULL,                -- 닉네임
+    email         VARCHAR2(100)    UNIQUE,                      -- 이메일 (로그인용)
+    mobile      VARCHAR2(20)    UNIQUE,                      -- 이메일 (로그인용)
+    joinDate   DATE            DEFAULT SYSDATE               -- 가입일   ###
+);
+
+INSERT INTO users (APPUSERID, password, nickname, email, mobile,joinDate)
+VALUES (1, '1234', '테스트유저', 'test@example.com', '010-1234-5678','');
+
+------------------------------------------------------------------------
+
+DROP TABLE CATEGORY_TB;
+
+
 
 
