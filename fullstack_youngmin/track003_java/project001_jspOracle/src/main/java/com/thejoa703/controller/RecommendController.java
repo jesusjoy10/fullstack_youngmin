@@ -4,16 +4,15 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.thejoa703.service.RecommendDelete;
-import com.thejoa703.service.RecommendInsert;
-import com.thejoa703.service.RecommendSelect;
+import com.thejoa703.service.RecommendDetail;
 import com.thejoa703.service.RecommendSelectAll;
 import com.thejoa703.service.RecommendService;
+import com.thejoa703.service.Recommendwrite;
 
 
 
@@ -44,7 +43,7 @@ public class RecommendController extends HttpServlet {
 				request.getRequestDispatcher("/recommendType/write.jsp").forward(request, response);
 
 		 }else if(path.equals("/reg.recommend")) {
-				service = new RecommendInsert();
+				service = new Recommendwrite();
 				service.exec(request, response);
 				out.println("<script>alert('등록했습니다.'); location.href='recommendAll.recommend'; </script>");
 
@@ -54,25 +53,26 @@ public class RecommendController extends HttpServlet {
 				request.getRequestDispatcher("/recommendType/list.jsp").forward(request, response);
 
 		 }else if(path.equals("/user.recommend")) {
-				service = new RecommendSelect(); service.exec(request, response);
+				service = new RecommendDetail(); service.exec(request, response);
 				request.getRequestDispatcher("/recommendType/detail.jsp").forward(request, response);
 
 		 }else if(path.equals("/updateForm.recommend")) {
 				// 수정 폼 보여줄 때도 RecommendSelect 사용 가능
-				service = new RecommendSelect();
+				service = new RecommendDetail();
 				service.exec(request, response);
 				request.getRequestDispatcher("/recommendType/edit.jsp").forward(request, response);
 
 		 }else if(path.equals("/update.recommend")) {
-				service = new RecommendInsert(); // 수정용 클래스가 없으니 임시로 insert 사용
+				service = new Recommendwrite(); // 수정용 클래스가 없으니 임시로 insert 사용
 				service.exec(request, response);
 				out.println("<script>alert('수정했습니다.'); location.href='recommend.recommend'; </script>");
 
-		 }else if(path.equals("/delete.recommend")) {
-				service = new RecommendDelete(); service.exec(request, response);
-				int recId = Integer.parseInt(request.getParameter("recId"));;
-				System.out.println(recId);
-		         String result = (String) request.getAttribute("result");
+	 }else if(path.equals("/delete.recommend")) {
+			service = new RecommendDelete(); service.exec(request, response);
+				
+				int tableId = Integer.parseInt(request.getParameter("tableId"));;
+				System.out.println(tableId);
+		         String result = (String) request.getAttribute("tableId");
 				/*
 				 request.setAttribute("id", id);
 	    		request.setAttribute("result", String.valueOf(dao.delete(dto))); 

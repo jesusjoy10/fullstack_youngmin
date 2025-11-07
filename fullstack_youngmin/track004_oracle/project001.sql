@@ -20,11 +20,16 @@ CREATE TABLE FOOD_TB (
     regDate         DATE             DEFAULT SYSDATE,    -- 등록일 
     FOREIGN KEY (categoryId) REFERENCES CATEGORY_TB(categoryId)
 );
+--CREATE TABLE RECOMMEND_TB ( recId NUMBER(8) PRIMARY KEY,        -- 추천 고유번호
+--id VARCHAR2(30) NOT NULL,       -- 사용자 ID foodId NUMBER(6) ,          -- 추천된 음식, 아직 확정되지않아 NULL가능으로 만듦. type VARCHAR2(30) NOT NULL,         -- 추천 유형 (선호식단, AI, 재료기반) feedback VARCHAR2(200),             -- AI 피드백 (예: 단백질 부족)
+--createdAt DATE DEFAULT SYSDATE,      -- 추천 일시
+--FOREIGN KEY (id) REFERENCES users(id), FOREIGN KEY (foodId) REFERENCES FOOD_TB(foodId)
+--);
 
 CREATE TABLE RECOMMEND_TB (
-    recId NUMBER(8) PRIMARY KEY,        -- 추천 고유번호  
-    id VARCHAR2(30) NOT NULL,       -- 사용자 ID
-    foodId NUMBER(6) ,          -- 추천된 음식, 아직 확정되지않아 NULL가능으로 만듦.
+    tableId NUMBER PRIMARY KEY,        -- 추천 고유번호  
+    id NUMBER NOT NULL,       -- 사용자 ID
+    foodId NUMBER ,          -- 추천된 음식, 아직 확정되지않아 NULL가능으로 만듦.
     type VARCHAR2(30) NOT NULL,         -- 추천 유형 (선호식단, AI, 재료기반)
     feedback VARCHAR2(200),             -- AI 피드백 (예: 단백질 부족)   
     createdAt DATE DEFAULT SYSDATE,      -- 추천 일시  
@@ -81,7 +86,7 @@ SELECT * FROM RECOMMEND_TB WHERE id = 'user01';
 
 ------------------------------------------------------------------------
 INSERT INTO Recommend_tb (recId, id, foodId, type, feedback)  
-VALUES (RECOMMEND_TB_seq.nextval, 'user01', 100001, 'AI', '단백질부족' );
+VALUES (RECOMMEND_TB_seq.nextval, 1, 100001, '한식', '단백질부족' );
 
 SELECT * FROM Recommend_tb order BY createdAt desc;
 
@@ -178,4 +183,31 @@ DROP TABLE CATEGORY_TB;
 
 
 
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+CREATE TABLE RECOMMEND_TB (
+    tableId     NUMBER PRIMARY KEY,           -- 추천 고유번호
+    id          NUMBER NOT NULL,              -- 사용자 ID (정수형으로 변경)
+    foodId      NUMBER,                       -- 추천된 음식 ID (nullable)
+    type        VARCHAR2(30) NOT NULL,        -- 추천 유형 (예: AI, 선호식단)
+    category    VARCHAR2(30),                 -- 음식 대분류 (한식, 양식 등)
+    kind        VARCHAR2(30),                 -- 음식 종류 (육류, 해산물 등)
+    method      VARCHAR2(30),                 -- 조리 방식 (볶음, 구이 등)
+    feedback    VARCHAR2(200),                -- AI 피드백
+    createdAt   DATE DEFAULT SYSDATE,         -- 추천 일시
+
+    FOREIGN KEY (id) REFERENCES USERS(id),       -- 사용자 테이블 참조
+    FOREIGN KEY (foodId) REFERENCES FOOD_TB(foodId) -- 음식 테이블 참조
+);
+
+
+
+CREATE SEQUENCE RECOMMEND_TB_SEQ START WITH 1 INCREMENT BY 1;
+
+INSERT INTO RECOMMEND_TB (
+    tableId, id, foodId, type, category, kind, method, feedback
+) VALUES (
+    RECOMMEND_TB_SEQ.NEXTVAL, 101, 100001, 'AI', '한식', '육류', '구이', '단백질 부족'
+);
+------------------------------------------------------------------------------------------------------------------------------------------------
 

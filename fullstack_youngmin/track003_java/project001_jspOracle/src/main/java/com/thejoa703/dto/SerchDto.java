@@ -3,40 +3,50 @@ package com.thejoa703.dto;
 import java.time.LocalDateTime;
 
 public class SerchDto {
-	private int recId;
-	private String id;
+	private int tableId ;
+	private int id;
 	private int foodId;
 	private String type;
+	private String category;     // 음식 대분류 (한식, 양식 등)
+    private String kind;         // 음식 종류 (육류, 해산물 등)
+    private String method;       // 조리 방식 (볶음, 구이 등)
 	private String feedback;
 	private LocalDateTime createdAt;
 	public SerchDto() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public SerchDto(int recId, String id, int foodId, String type, String feedback, LocalDateTime createdAt) {
+	public SerchDto(int tableId , int id, int foodId, String type,String category, String kind, String method, String feedback, LocalDateTime createdAt) {
 		super();
-		this.recId = recId;
+		this.tableId  = tableId ;
 		this.id = id;
 		this.foodId = foodId;
 		this.type = type;
+		this.category = category;
+		this.kind = kind;
+		this.method = method;
 		this.feedback = feedback;
 		this.createdAt = createdAt;
 	}
 	@Override
 	public String toString() {
-		return "PostDto [recId=" + recId + ", id=" + id + ", foodId=" + foodId + ", type=" + type + ", feedback="
+		return "SerchDto [tableId =" + tableId  + ", id=" + id + ", foodId=" + foodId + ", type=" + type + ","
+				+ " \"category='\" + category + '\\'' +\r\n"
+				+ "            \", kind='\" + kind + '\\'' +\r\n"
+				+ "            \", method='\" + method + '\\'' +\r\n"
+				+ " feedback="
 				+ feedback + ", createdAt=" + createdAt + "]";
 	}
-	public int getRecId() {
-		return recId;
+	public int getTableId() {
+		return tableId ;
 	}
-	public void setRecId(int recId) {
-		this.recId = recId;
+	public void setTableId(int tableId) {
+		this.tableId  = tableId;
 	}
-	public String getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public int getFoodId() {
@@ -63,6 +73,28 @@ public class SerchDto {
 	public void setCreatedAt(LocalDateTime createdAt) {
 		this.createdAt = createdAt;
 	}
+	
+	public String getCategory() {
+	    return category;
+	}
+	public void setCategory(String category) {
+	    this.category = category;
+	}
+
+	public String getKind() {
+	    return kind;
+	}
+	public void setKind(String kind) {
+	    this.kind = kind;
+	}
+
+	public String getMethod() {
+	    return method;
+	}
+	public void setMethod(String method) {
+	    this.method = method;
+	}
+
 	
 	
 }

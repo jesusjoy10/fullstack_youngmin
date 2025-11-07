@@ -14,17 +14,17 @@ public class RecommendDelete implements RecommendService {
 	public void exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		//1.데이터넘겨받기		
-		int recId = Integer.parseInt(request.getParameter("recId"));
+		int tableId = Integer.parseInt(request.getParameter("tableId"));
 
 		
 		//2.드커프리
 		SerchDao dao = new SerchDao();
 		SerchDto dto = new SerchDto();
-		dto.setRecId(recId);
+		dto.setTableId(tableId);
 		System.out.println(dto);
 		
 		//3.데이터넘겨주기		 
-		request.setAttribute("recId", recId);
+		request.setAttribute("tableId", tableId);
 	    request.setAttribute("result", String.valueOf(dao.delete(dto)));
 
 	    /*
