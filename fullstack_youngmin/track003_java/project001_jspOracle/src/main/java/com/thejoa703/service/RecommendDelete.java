@@ -10,37 +10,15 @@ import com.thejoa703.dao.SerchDao;
 import com.thejoa703.dto.SerchDto;
 
 public class RecommendDelete implements RecommendService {
-	@Override
-	public void exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		//1.데이터넘겨받기		
-		int tableId = Integer.parseInt(request.getParameter("tableId"));
+	   @Override
+	    public void exec(HttpServletRequest request, HttpServletResponse response) {
+	        int tableId = Integer.parseInt(request.getParameter("tableId"));
+	        SerchDto dto = new SerchDto();
+	        dto.setTableId(tableId);
 
-		
-		//2.드커프리
-		SerchDao dao = new SerchDao();
-		SerchDto dto = new SerchDto();
-		dto.setTableId(tableId);
-		System.out.println(dto);
-		
-		//3.데이터넘겨주기		 
-		request.setAttribute("tableId", tableId);
-	    request.setAttribute("result", String.valueOf(dao.delete(dto)));
+	        SerchDao dao = new SerchDao();
+	        int result = dao.delete(dto); // 삭제 결과: 1이면 성공
 
-	    /*
-	              //2.
-         ComuDao dao = new ComuDao();
-         ComuDto dto = new ComuDto();
-         dto.setPostId(postId);
-
-         // 3.
-         request.setAttribute("postId", postId);
-         request.setAttribute("result", String.valueOf(dao.delete(dto)));
-          
-	     
-	     */
-		
-
+	        request.setAttribute("deleteResult", result); // 삭제 결과를 request에 담아서 넘김
+	    }
 	}
-
-}

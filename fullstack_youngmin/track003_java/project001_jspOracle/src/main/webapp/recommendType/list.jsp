@@ -15,6 +15,8 @@
           <th scope="col">피드백</th>
           <th scope="col">추천 음식</th>         
           <th scope="col">추천일시</th>
+           <th scope="col">삭제</th> <!-- 삭제 버튼 컬럼 추가 -->
+          
         </tr>
       </thead>
       <tbody>
@@ -25,22 +27,23 @@
               <a href="<%=request.getContextPath()%>/user.recommend?tableId=${dto.tableId}">
                 ${dto.foodId}
               </a>
-            </td>
+            </td>          
             <td>${dto.feedback}</td>
             <td>${dto.type}</td>
             <td>${dto.createdAt}</td>
-          </tr>
-        </c:forEach>
-      </tbody>
-    </table>
+        <td>
+          <form action="${pageContext.request.contextPath}/delete.recommend" method="post" onsubmit="return confirm('정말 삭제할까요?');">
+            <input type="hidden" name="tableId" value="${dto.tableId}" />
+            <button type="submit" class="btn btn-sm btn-danger">삭제</button>   <!-- 각 행마다 삭제버튼  -->
+          </form>
+        </td>
+      </tr>
+    </c:forEach>
+  </tbody>
+</table>
 
-    <% if(email != null){ %>
-      <p class="text-end">
-        <a href="${pageContext.request.contextPath}/writeView.do" class="btn btn-primary">글쓰기</a>
-      </p>
-    <% } else { %>
-      <p class="alert alert-primary">로그인 해주세요</p>
-    <% } %>
+
+   
   </div>
 </div>
 

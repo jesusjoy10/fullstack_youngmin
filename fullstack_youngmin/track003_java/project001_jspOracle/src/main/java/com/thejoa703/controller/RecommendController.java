@@ -12,12 +12,12 @@ import com.thejoa703.service.RecommendDelete;
 import com.thejoa703.service.RecommendDetail;
 import com.thejoa703.service.RecommendSelectAll;
 import com.thejoa703.service.RecommendService;
+import com.thejoa703.service.RecommendUpdate;
 import com.thejoa703.service.Recommendwrite;
 
+// 🔹 음식 등록 서비스 클래스 import 추가
+import com.thejoa703.service.FoodInsert;
 
-
-
-//@WebServlet
 public class RecommendController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -36,72 +36,55 @@ public class RecommendController extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		String path = request.getServletPath();
+
+		RecommendService service = null;
+
+		if(path.equals("/regForm.recommend")) {
+			request.getRequestDispatcher("/recommendType/write.jsp").forward(request, response);
+
+		}else if(path.equals("/reg.recommend")) {
+			service = new Recommendwrite();
+			service.exec(request, response);
+			out.println("<script>alert('등록했습니다.'); location.href='recommendAll.recommend'; </script>");
+
+		}else if(path.equals("/recommendAll.recommend")) {
+			service = new RecommendSelectAll();
+			service.exec(request, response);
+			request.getRequestDispatcher("/recommendType/list.jsp").forward(request, response);
+
+		}else if(path.equals("/user.recommend")) {
+			service = new RecommendDetail();
+			service.exec(request, response);
+			request.getRequestDispatcher("/recommendType/detail.jsp").forward(request, response);
+
+		}else if(path.equals("/edit.recommend")) {
+			service = new RecommendDetail();
+			service.exec(request, response);
+			request.getRequestDispatcher("/recommendType/edit.jsp").forward(request, response);
+
+		}else if(path.equals("/update.recommend")) {
+			service = new RecommendUpdate();
+			service.exec(request, response);
+			out.println("<script>alert('수정했습니다.'); location.href='recommendAll.recommend'; </script>");
+
+		}else if(path.equals("/delete.recommend")) {
+		    service = new RecommendDelete();
+		    service.exec(request, response);
+
+		    Integer result = (Integer) request.getAttribute("deleteResult"); // 삭제 결과 받기
+
+		    if(result != null && result > 0) {
+		        out.println("<script>alert('삭제했습니다.'); location.href='recommendAll.recommend'; </script>");
+		    } else {
+		        out.println("<script>alert('삭제 실패'); history.go(-1); </script>");
+		    }
 		
-		RecommendService service = null;   //##
-		
-		 if(path.equals("/regForm.recommend")) {
-				request.getRequestDispatcher("/recommendType/write.jsp").forward(request, response);
 
-		 }else if(path.equals("/reg.recommend")) {
-				service = new Recommendwrite();
-				service.exec(request, response);
-				out.println("<script>alert('등록했습니다.'); location.href='recommendAll.recommend'; </script>");
 
-		 }else if(path.equals("/recommendAll.recommend")) {
-				service = new RecommendSelectAll();
-				service.exec(request, response);
-				request.getRequestDispatcher("/recommendType/list.jsp").forward(request, response);
-
-		 }else if(path.equals("/user.recommend")) {
-				service = new RecommendDetail(); service.exec(request, response);
-				request.getRequestDispatcher("/recommendType/detail.jsp").forward(request, response);
-
-		 }else if(path.equals("/updateForm.recommend")) {
-				// 수정 폼 보여줄 때도 RecommendSelect 사용 가능
-				service = new RecommendDetail();
-				service.exec(request, response);
-				request.getRequestDispatcher("/recommendType/edit.jsp").forward(request, response);
-
-		 }else if(path.equals("/update.recommend")) {
-				service = new Recommendwrite(); // 수정용 클래스가 없으니 임시로 insert 사용
-				service.exec(request, response);
-				out.println("<script>alert('수정했습니다.'); location.href='recommend.recommend'; </script>");
-
-	 }else if(path.equals("/delete.recommend")) {
-			service = new RecommendDelete(); service.exec(request, response);
-				
-				int tableId = Integer.parseInt(request.getParameter("tableId"));;
-				System.out.println(tableId);
-		         String result = (String) request.getAttribute("tableId");
-				/*
-				 request.setAttribute("id", id);
-	    		request.setAttribute("result", String.valueOf(dao.delete(dto))); 
-				 
-				 */
-		         if(result.equals("1")) {
-		        	 out.println("<script>alert('삭제했습니다.'); location.href='recommendAll.recommend'; </script>");
-		             } else {
-		                out.println("<script>alert('아이디를 확인해주세요.'); history.go(-1) </script>");
-		             }
-	
-		 }
-		 
-		 /*
-		  else if(path.equals("/delete.co")) {
-         //■ MbtiDelete /알림창 + list.do
-         service = new ComuDelete();  service.exec(request, response);
-         int postId = Integer.parseInt(request.getParameter("postId"));
-         System.out.println(postId);
-         String result = (String) request.getAttribute("result");
-         if(result.equals("1")) {
-             out.println("<script>alert('글삭제에 성공했습니다.'); location.href='list.co'; </script>");
-             } else {
-                out.println("<script>alert('아이디를 확인해주세요.'); history.go(-1) </script>");
-             }
-      }
-		  
-		  */
+		// 🔹 음식 등록 처리 추가
+		}else if(path.equals("/insert.food")) {
+			service = new FoodInsert();
+			service.exec(request, response);
 		}
 	}
-
-
+}

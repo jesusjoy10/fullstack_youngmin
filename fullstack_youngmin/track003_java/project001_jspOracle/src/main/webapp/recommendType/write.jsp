@@ -2,7 +2,7 @@
 <%@ include file="../inc/header.jsp" %>
 
 <div class="container card my-5">
-  <h3 class="card-header">추천 등록하기</h3>
+  <h3 class="card-header">음식 추천 등록하기</h3>
   <form action="<%=request.getContextPath()%>/reg.recommend" method="post">
     <input type="hidden" name="id" value="101">
     <input type="hidden" name="foodId" value="100001">
@@ -58,7 +58,7 @@
       <textarea class="form-control" id="feedback" name="feedback" placeholder="피드백을 입력해주세요 (추후 AI 연동)" rows="3"></textarea>
     </div>
 
-    <button type="submit" class="btn btn-primary">등록하기</button>
+    <button type="submit" class="btn btn-primary">추천 음식 보기</button>
     <a href="<%=request.getContextPath()%>/recommendAll.recommend" class="btn btn-secondary">목록보기</a>
   </form>
 </div>

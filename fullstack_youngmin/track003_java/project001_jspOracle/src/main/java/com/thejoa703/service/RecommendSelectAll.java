@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.thejoa703.dao.SerchDao;
 import com.thejoa703.dto.SerchDto;
 
+// 전체목록 페이지
+
 public class RecommendSelectAll implements RecommendService {
 
     @Override
@@ -14,7 +16,8 @@ public class RecommendSelectAll implements RecommendService {
         SerchDao dao = new SerchDao();
         
         List<SerchDto> list = dao.selectAll(); // DAO에서 전체 목록 가져오기
-        System.out.println("....."+list);
+        System.out.println( list.size());
         request.setAttribute("list", list); // JSP에서 사용할 수 있도록 request에 저장
+        
     }
 }

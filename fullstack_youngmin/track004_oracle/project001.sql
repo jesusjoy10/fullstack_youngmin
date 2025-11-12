@@ -179,7 +179,7 @@ VALUES (1, '1234', '테스트유저', 'test@example.com', '010-1234-5678','');
 
 ------------------------------------------------------------------------
 
-DROP TABLE CATEGORY_TB;
+DROP TABLE RECOMMEND_TB;
 
 
 
@@ -187,7 +187,7 @@ DROP TABLE CATEGORY_TB;
 ------------------------------------------------------------------------------------------------------------------------------------------------
 CREATE TABLE RECOMMEND_TB (
     tableId     NUMBER PRIMARY KEY,           -- 추천 고유번호
-    id          NUMBER NOT NULL,              -- 사용자 ID (정수형으로 변경)
+    id          NUMBER NOT NULL,              -- 사용자 ID 
     foodId      NUMBER,                       -- 추천된 음식 ID (nullable)
     type        VARCHAR2(30) NOT NULL,        -- 추천 유형 (예: AI, 선호식단)
     category    VARCHAR2(30),                 -- 음식 대분류 (한식, 양식 등)
@@ -210,4 +210,21 @@ INSERT INTO RECOMMEND_TB (
     RECOMMEND_TB_SEQ.NEXTVAL, 101, 100001, 'AI', '한식', '육류', '구이', '단백질 부족'
 );
 ------------------------------------------------------------------------------------------------------------------------------------------------
+
+SELECT * FROM RECOMMEND_TB ORDER BY CREATEDAT DESC;
+
+
+INSERT INTO RECOMMEND_TB (tableId, id, foodId, type, category, kind, method, feedback, createdAt)
+VALUES (RECOMMEND_TB_seq.nextval, 1, 1001, 'AI', '한식', '육류', '구이', '단백질 부족', SYSDATE);
+SELECT * FROM RECOMMEND_TB ORDER BY CREATEDAT DESC;
+
+
+
+
+
+
+
+SELECT sequence_name, last_number
+FROM user_sequences
+WHERE sequence_name = 'RECOMMEND_TB_SEQ';
 
