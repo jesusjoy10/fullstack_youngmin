@@ -36,27 +36,29 @@ public class Test1_Board {
 	 @Test public void test5() throws UnknownHostException { 
 		//5. 
 //				Sboard1Dto dto = new Sboard1Dto();
-//				dto.setId(41);   dto.setBpass("1"); 
-//				System.out.println(service.delete(dto));
+//				dto.setId(45);   dto.setBpass("1"); 
+//				System.out.println("삭제결과:"+ service.delete(dto));
+				
 		// 4. 
-		//		Sboard1Dto dto = new Sboard1Dto();
-		//    	dto.setAppUserId(24);  dto.setBtitle("title-new");   dto.setBcontent("content-new");  dto.setBpass("1");   dto.setId(41);
-		//    	System.out.println(service.update(dto));
+				Sboard1Dto dto = new Sboard1Dto();
+		    	dto.setAppUserId(24);  dto.setBtitle("title-new");   dto.setBcontent("content-new");  dto.setBpass("1");   dto.setId(46);
+		    	System.out.println(service.update(dto));
 		 
 		// 3.		
-		System.out.println(service.select(42));
+		//System.out.println(service.select(45));  //42
 		
 		//  2. insert  	
 //		Sboard1Dto dto = new Sboard1Dto();
 //		dto.setAppUserId(24);  dto.setBtitle("title");   dto.setBcontent("content");  dto.setBpass("1"); 
 //		System.out.println(service.insert(dto));
-//		 
+		 
 		 
 		//    	//  1. selectAll
-//		System.out.println(service.selectAll());
+		System.out.println(service.selectAll());  //bhit가 없다는것은~! 테이블만들때 default값 안잡은거~!
 	}
 	
-	
+//	 alter table sboard1  modify  bhit default 0;
+//	 alter table sboard1  modify  create_at timestamp default sysdate;
 	
 	
 	

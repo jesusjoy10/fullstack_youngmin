@@ -14,7 +14,7 @@
 		<result property="bfile" column="BFILE" />
 		<result property="bhit" column="BHIT" />
 		<result property="bip" column="BIP" />
-		<result property="createdAt" column="CREATED_AT" />
+		<result property="createdAt" column="CREATE_AT" />
 	</resultMap>
 	
 	

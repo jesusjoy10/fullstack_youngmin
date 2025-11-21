@@ -18,5 +18,6 @@ public class Sboard1Dto {
 	private String file;
 	private int bhit;
 	private String bip;
-	private LocalDateTime createdAt;
+	//private LocalDateTime createdAt;
+	private String createdAt;
 }
