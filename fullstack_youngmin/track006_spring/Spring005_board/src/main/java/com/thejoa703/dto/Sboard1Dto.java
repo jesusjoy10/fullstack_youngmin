@@ -15,7 +15,7 @@ public class Sboard1Dto {
 	private String btitle;
 	private String bcontent;
 	private String bpass;
-	private String file;
+	private String bfile;
 	private int bhit;
 	private String bip;
 	//private LocalDateTime createdAt;

@@ -13,9 +13,9 @@
 		  <tbody class="table-info">
 		    <tr>
 		      <!-- 왼쪽 이미지 셀: 3줄 병합 -->
-		      <td rowspan="3">
+		     <%--  <td rowspan="3">
 		        <img src="${pageContext.request.contextPath}/upload/${dto.ufile}"   alt="" style="width:100%" />
-		      </td>
+		      </td> --%>
 		      <th scope="row">Email</th>
 		      <td>${dto.email}</td>
 		    </tr>

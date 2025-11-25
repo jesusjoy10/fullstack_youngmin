@@ -8,8 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.thejoa703.dto.AppUserDto;
@@ -51,7 +49,7 @@ public class AppUserController {
 			result ="로그인 성공"; 
 		}
 		rttr.addFlashAttribute("success", result);
-		return  ok==1? "redirect:/mypage.users" : "redirect:/login.users" ; 
+		return ok==1? "redirect:/mypage.users" : "redirect:/login.users";
 	}
 	
 	@RequestMapping("/mypage.users") //상세보기

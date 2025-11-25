@@ -14,4 +14,4 @@ update appuser set password='1234', MBTI_TYPE_ID=2 where app_user_id=43;
 -- delete : 탈퇴
 delete from appuser where app_user_id=43 and password='1234';
 
-
+desc sboard1;

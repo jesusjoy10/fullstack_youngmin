@@ -23,8 +23,8 @@
 		(sboard1_seq.nextval ,#{appUserId}, #{btitle},#{bcontent},#{bpass},
 		#{bip}) </insert>
 		
-	<insert id="insert2" parameterType="Sboard1Dto"> insert into sboard1 ( ID ,
-		APP_USER_ID , BTITLE , BCONTENT , BPASS , BFILE , BIP) values
+	<insert id="insert2" parameterType="Sboard1Dto"> 
+		insert into sboard1 ( ID ,APP_USER_ID , BTITLE , BCONTENT , BPASS , BFILE , BIP) values
 		(sboard1_seq.nextval ,#{appUserId}, #{btitle},#{bcontent},#{bpass},
 		#{bfile} , #{bip}) </insert>
 		
@@ -36,9 +36,10 @@
 		BTITLE=#{btitle} , BCONTENT=#{bcontent} where id=#{id} and BPASS=
 		#{bpass} </update>
 		
-	<update id="update2" parameterType="Sboard1Dto"> update sboard1 set
-		BTITLE=#{btitle} , BCONTENT=#{bcontent} , BFILE=#{bfile} where
-		id=#{id} and BPASS= #{bpass} </update>
+	<update id="update2" parameterType="Sboard1Dto"> 
+		update sboard1 		
+		set BTITLE=#{btitle} , BCONTENT=#{bcontent} , BFILE=#{bfile} 		
+		where id=#{id} and BPASS= #{bpass} </update>
 		
 	<delete id="delete" parameterType="Sboard1Dto"> delete from sboard1 where
 		id=#{id} and BPASS= #{bpass} </delete>

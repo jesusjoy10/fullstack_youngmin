@@ -37,6 +37,8 @@
 		parameterType="AppUserDto"> select count(*) cnt from appuser where email=#{email}
 		and password=#{password} </select>
 		
+		
+		
 	<!-- upload -->
 	<!-- upload 
 	<insert id="insert2" parameterType="AppUserDto"> insert into appuser

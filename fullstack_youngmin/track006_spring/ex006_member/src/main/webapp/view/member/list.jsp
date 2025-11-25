@@ -19,7 +19,20 @@
       		</tr>	
       	</thead>
       	<tbody>   
+      	<c:forEach var="dto" items="${list}" varStatus="status">
+      	<tr>
+      	<td>${list.size()-status.index}</td>
+      	<td>${dto.appUserId}</td>
+      	<td> <a href="${pageContext.request.contextPath}/mypage.users?appUserId=${dto.appUserId}">
+      	${dto.email}</a></td>
+      	<td>${dto.mbtiTypeId}</td>
+      	<td>${dto.createdAt}</td>
+      	<tr>
+      	</c:forEach>
       	</tbody>
+      	</table>
+      	</div>
+      <!-- 	</tbody>
       </table>        
    </div>
    <div class="show-result container card  my-5 p-4">   
@@ -144,7 +157,7 @@ function  userDelete(){
 	}); 
 }
 
-</script>   
+</script>    -->
    
 <%@include file="../inc/footer.jsp" %>
 

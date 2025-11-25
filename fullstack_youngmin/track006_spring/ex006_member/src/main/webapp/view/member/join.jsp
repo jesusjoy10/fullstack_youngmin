@@ -3,14 +3,15 @@
 <!-- 	header		 --> 
 <div class="container mt-5">
 	<h3>WELCOME! 회원가입</h3>
-	<form action="${pageContext.request.contextPath}/uploadJoin.users"  	
-			method="post"  encType="multipart/form-data" >
+	<form action="${pageContext.request.contextPath}/join.users"  	
+			method="post"  >
+			 <!-- encType="multipart/form-data -->
 		<div class="mb-3 mt-3">
 			<label  for="email" class="form-label">Email:</label> 
 			<input  type="email" class="form-control" id="email"
 					placeholder="이메일을 입력해주세요" required  name="email">
-			<div class="iddouble_result"></div>	
-			<script>
+			
+			<!-- <script>
 			$(function(){
 				//1. 대상찾아오기   아이디가 이메일의 값을 찾아오려고함. 
 					console.log( "1. " +  (0 ==  false )   );   // true   자동형변환
@@ -46,17 +47,17 @@
 					}
 				}); 
 			});
-			</script>	
+			</script>	 -->
 		</div>
 		<div class="mb-3">
 			<label for="password" class="form-label">Password:</label> 
 			<input type="password" class="form-control" id="password"
 					placeholder="비밀번호를 입력해주세요" name="password">
 		</div>
-		  <div class="mb-3">
+		<!--   <div class="mb-3">
 		    <label for="file" class="form-label">프로필사진 (추후에 업데이트가능합니다!) </label>
 		    <input type="file" class="form-control" id="file" placeholder="파일을 입력해주세요" name="file">
-		  </div>			
+		  </div>	 -->		
 		<div class="mb-3">
 			<label class="form-check-label"  for="mbti">MBTI TYPE : </label>  
 			<select   name="mbtiTypeId"  id="mbti"  class="form-control">

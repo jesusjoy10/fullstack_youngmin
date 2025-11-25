@@ -15,5 +15,8 @@ public interface Sboard1Dao {
 	public List<Sboard1Dto> selectAll();
 	public Sboard1Dto      select(int id);
 	
+	public int insert2(Sboard1Dto dto);
+	public int update2(Sboard1Dto dto);
+	
 
 }

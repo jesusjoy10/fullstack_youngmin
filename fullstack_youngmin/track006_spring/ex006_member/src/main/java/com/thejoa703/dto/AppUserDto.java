@@ -1,5 +1,9 @@
 package com.thejoa703.dto;
 
+
+
+
+
 import lombok.Data;
 
 @Data
@@ -8,6 +12,6 @@ public class AppUserDto {
 	private String email;
 	private String password;
 	private int mbtiTypeId;
-	private String createdAt; 
+	private String  createdAt; 
 
 }
