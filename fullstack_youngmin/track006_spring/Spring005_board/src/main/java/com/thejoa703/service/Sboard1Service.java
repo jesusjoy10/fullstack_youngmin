@@ -1,5 +1,6 @@
 package com.thejoa703.service;
 
+
 import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
@@ -15,8 +16,11 @@ public interface Sboard1Service {
 	public Sboard1Dto       selectUpdateForm(int id);
 
 	/* Upload */
+	
 	public int insert2(MultipartFile file, Sboard1Dto dto);
 	public int update2(MultipartFile file, Sboard1Dto dto);
 	
+	/* Search - Ajax */
+	public List<Sboard1Dto> SelectSearch(String keyword);
 	
 }

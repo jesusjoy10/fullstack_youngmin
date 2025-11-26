@@ -25,10 +25,10 @@
       			<th scope="col">HIT</th>
       		</tr>	
       	</thead>
-      	<tbody>        
-      	   <c:forEach  var="dto"  items="${list}"  varStatus="status">  	
+      	<tbody>  
+      	  <c:forEach  var="dto"  items="${list}"  varStatus="status">  	
 	  		<tr>
-	  		   <%--  <td>${dto}</td>  --%>
+	  		    <%-- <td>${dto}</td> --%>
 	  			<td>${list.size()-status.index}</td> <!-- 3-0=3  3-1=2  3=2=1  -->
 	  			<td> <a href="${pageContext.request.contextPath}/detail.quest?id=${dto.id}">
 	  				${dto.btitle}
@@ -36,7 +36,7 @@
 	  			<td>${dto.appUserId}</td>
 	  			<td>${dto.createdAt}</td>
 	  			<td>${dto.bhit}</td>
-	  		 <tr>
+	  		 </tr>
 	  	  </c:forEach> 
       	</tbody>
       </table> 
@@ -75,15 +75,34 @@
 		  $("#search").on("keyup" , function(){    // keyup (키보드뗐을때)
 				console.log( $(this).val().trim()  ); 
 				let keyword = $(this).val().trim();
-		
+				/////////////////////////////
+				if(keyword===""){
+					$("#resultArea tbody")
+					.empty()
+					.append("<tr><td colspan='5'> 검색어를 입력하세요.</td></tr>");
+				}else{		
 				$.ajax({
 					url:"${pageContext.request.contextPath}/selectSearch",
 					type:"GET",
 					data:{  search : keyword },
 					success:function(res){
 						console.log(res);   //view 값 받아오는지 확인~!
+						$("#resultArea tbody").empty();
+						$.each(res,function(index,dto) {
+							let row= "<tr>"
+							+"<td>"+(res.length-index)+"</td>"
+							+"<td><a href='${pageContext.request.contextPath}/detail.quest?id="+dto.id+"'>"
+							+dto.btitle+"</a></td>"
+							+"<td>"+dto.appUserId+"</td>"
+							+"<td>"+dto.createdAt+"</td>"
+							+"<td>"+dto.bhit+"</td>"
+							+"</tr>";
+							$("#resultArea tbody").append(row);
+						});
 					}
-				}); 
+				});  
+				}
+				
 		  });
 	  });
 	  </script>	

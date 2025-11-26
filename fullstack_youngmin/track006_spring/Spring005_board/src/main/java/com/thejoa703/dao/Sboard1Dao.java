@@ -1,5 +1,6 @@
 package com.thejoa703.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -15,8 +16,12 @@ public interface Sboard1Dao {
 	public List<Sboard1Dto> selectAll();
 	public Sboard1Dto      select(int id);
 	
+	/*upload*/
 	public int insert2(Sboard1Dto dto);
 	public int update2(Sboard1Dto dto);
+	
+	/* Ajax */
+	public List<Sboard1Dto> selectSearch( HashMap<String, String> para);
 	
 
 }

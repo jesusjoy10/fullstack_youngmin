@@ -27,6 +27,8 @@
       	${dto.email}</a></td>
       	<td>${dto.mbtiTypeId}</td>
       	<td>${dto.createdAt}</td>
+      	<td><input type="button" value="수정" class="btn btn-primary" /></td>
+      	<td><input type="button" value="삭제" class="btn btn-danger" /></td>     	
       	<tr>
       	</c:forEach>
       	</tbody>

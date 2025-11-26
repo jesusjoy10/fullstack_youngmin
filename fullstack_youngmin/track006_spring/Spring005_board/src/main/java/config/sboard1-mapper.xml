@@ -54,7 +54,8 @@
 		
 	<!-- ajax - search -->
 	<select resultMap="sboard1Map" id="selectSearch"
-		parameterType="java.util.HashMap"> select * from sboard1 where btitle like #{search}
+		parameterType="java.util.HashMap"> 
+		select * from sboard1 where btitle like #{search}
 	</select>
 	
 </mapper>

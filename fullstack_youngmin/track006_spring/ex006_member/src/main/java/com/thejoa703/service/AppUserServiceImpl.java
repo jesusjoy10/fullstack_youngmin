@@ -24,38 +24,39 @@ public class AppUserServiceImpl  implements AppUserService{
 
 //	
 //	/* Upload */
-//	@Override public int insert2(MultipartFile file, AppUserDto dto) { 
-//	   String fileName   = null;
-//	   if(  !file.isEmpty() ) {  // 파일이 비어있는게 아니라면
-//		   fileName   = file.getOriginalFilename(); // 원본파일이름
-//		   String uploadPath = "C:/file/";
-//		   File   img        = new File(uploadPath + fileName);  //java.io.File
-//		   try { file.transferTo(img); //파일올리기 
-//		   }catch (IOException e) { e.printStackTrace(); }
-//	   }else {
-//		   fileName = "user" + ((int)((Math.random()*7)+1)) + ".png";
-//	   }
-//
-//	   dto.setUfile(fileName); 
-//	   return dao.insert2(dto);
-//	}
-//	@Override public int update2(MultipartFile file, AppUserDto dto) { 
-//		// 기존에 bfile 이 있어서 값이 처리됨.
-//	   if(  !file.isEmpty() ) {  // 파일이 비어있는게 아니라면
-//		   String fileName   = file.getOriginalFilename(); // 원본파일이름
-//		   String uploadPath = "C:/file/";
-//		   File   img        = new File(uploadPath + fileName);  //java.io.File
-//		   try { 
-//			   file.transferTo(img); //파일올리기
-//			   dto.setUfile(fileName); 
-//		   }catch (IOException e) { e.printStackTrace(); }
-//	   }
-//	   return dao.update2(dto);
-//	}
+	@Override public int insert2(MultipartFile file, AppUserDto dto) { 
+	   String fileName   = null;
+	   if(  !file.isEmpty() ) {  // 파일이 비어있는게 아니라면
+		   fileName   = file.getOriginalFilename(); // 원본파일이름
+		   String uploadPath = "C:/file/";
+		   File   img        = new File(uploadPath + fileName);  //java.io.File
+		   try { file.transferTo(img); //파일올리기 
+		   }catch (IOException e) { e.printStackTrace(); }
+	   }else {
+		   fileName = "user" + ((int)((Math.random()*7)+1)) + ".png";
+	   }
+
+	   dto.setUfile(fileName); 
+	   return dao.insert2(dto);
+	}
+	@Override public int update2(MultipartFile file, AppUserDto dto) { 
+		// 기존에 bfile 이 있어서 값이 처리됨.
+	   if(  !file.isEmpty() ) {  // 파일이 비어있는게 아니라면
+		   String fileName   = file.getOriginalFilename(); // 원본파일이름
+		   String uploadPath = "C:/file/";
+		   File   img        = new File(uploadPath + fileName);  //java.io.File
+		   try { 
+			   file.transferTo(img); //파일올리기
+			   dto.setUfile(fileName); 
+		   }catch (IOException e) { e.printStackTrace(); }
+	   }
+	   return dao.update2(dto);
+	}
+	
+	@Override public int iddouble(String email) { return  dao.iddouble(email); }
 //	
-//	@Override public int iddouble(String email) { return  dao.iddouble(email); }
-//	
-//	@Override public int deleteAdmin(AppUserDto dto) { return dao.deleteAdmin(dto); }
-//	@Override public int updateAdmin(AppUserDto dto) { return dao.updateAdmin(dto); }
+	@Override public int deleteAdmin(AppUserDto dto) { return dao.deleteAdmin(dto); }
+	@Override public int updateAdmin(AppUserDto dto) { return dao.updateAdmin(dto); }
+	
  
 }

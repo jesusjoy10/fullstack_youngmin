@@ -19,7 +19,8 @@ public class QuestController {
 	@RequestMapping("/list.quest")
 	public String list(Model model) {
 		model.addAttribute("list",service.selectAll());
-		return "quest_board/list"; 	}
+		return "quest_board/list";
+	}
 	
 	//글쓰기폼
 	@RequestMapping(value="/write.quest", method=RequestMethod.GET)

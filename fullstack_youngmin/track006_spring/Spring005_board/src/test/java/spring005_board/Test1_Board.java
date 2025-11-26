@@ -2,6 +2,7 @@ package spring005_board;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.util.HashMap;
 
 import javax.sql.DataSource;
 
@@ -33,16 +34,24 @@ public class Test1_Board {
 	@Ignore@Test public void test2() {System.out.println(ds);}
 	@Ignore@Test public void test3() {System.out.println(session);}
 	
-	 @Test public void test5() throws UnknownHostException { 
+	@Test public void test6() throws UnknownHostException { 
+		HashMap<String,String> para = new HashMap<>();
+		para.put("search", "%t%");
+		
+		System.out.println(dao.selectSearch(para));
+		}
+	
+	
+	@Ignore @Test public void test5() throws UnknownHostException { 
 		//5. 
 //				Sboard1Dto dto = new Sboard1Dto();
 //				dto.setId(45);   dto.setBpass("1"); 
 //				System.out.println("삭제결과:"+ service.delete(dto));
 				
 		// 4. 
-				Sboard1Dto dto = new Sboard1Dto();
-		    	dto.setAppUserId(24);  dto.setBtitle("title-new");   dto.setBcontent("content-new");  dto.setBpass("1");   dto.setId(46);
-		    	System.out.println(service.update(dto));
+//				Sboard1Dto dto = new Sboard1Dto();
+//		    	dto.setAppUserId(24);  dto.setBtitle("title-new");   dto.setBcontent("content-new");  dto.setBpass("1");   dto.setId(46);
+//		    	System.out.println(service.update(dto));
 		 
 		// 3.		
 		//System.out.println(service.select(45));  //42
@@ -54,7 +63,7 @@ public class Test1_Board {
 		 
 		 
 		//    	//  1. selectAll
-		System.out.println(service.selectAll());  //bhit가 없다는것은~! 테이블만들때 default값 안잡은거~!
+		//System.out.println(service.selectAll());  //bhit가 없다는것은~! 테이블만들때 default값 안잡은거~!
 	}
 	
 //	 alter table sboard1  modify  bhit default 0;

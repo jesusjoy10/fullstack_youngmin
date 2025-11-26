@@ -1,9 +1,11 @@
 package com.thejoa703.service;
 
+
 import java.io.File;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +46,18 @@ public class Sboard1ServiceImpl  implements Sboard1Service {
 		   catch(UnknownHostException e) {e.printStackTrace();}
 		   return dao.insert2(dto);
 	   }	
+	   
+	   /* Search - Ajax */
+	   public List<Sboard1Dto> SelectSearch(String keyword){
+		   HashMap<String,String>para=new HashMap<>();
+		   para.put("search", "%" + keyword + "%"); // keyword가 포함되어 있는
+		   return dao.selectSearch(para);
+	   }
+//	@Override
+//	public int update2(MultipartFile file, Sboard1Dto dto) {
+//		// TODO Auto-generated method stub
+//		return 0;
+//	}
 	 
 	   @Override public int update2(MultipartFile file, Sboard1Dto dto) {
 		   //기존에 bfile 이 있어서 값이 처리됨 
@@ -57,7 +71,8 @@ public class Sboard1ServiceImpl  implements Sboard1Service {
 			   	   	}catch (IOException e) {e.printStackTrace();}
 		   }		  
 		   return dao.update2(dto);
-	   }	
+	   }
+	
 	   
 	   
 	

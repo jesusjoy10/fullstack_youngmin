@@ -28,7 +28,31 @@ public class Test1_Board {
 	@Ignore@Test public void  test2() {System.out.println(ds);}
 	@Ignore@Test public void  test3() {System.out.println(session);}
 	
-	@Test public void  test4() {
+
+		
+	
+	@Test public void test7() {
+		//4. 삭제
+		AppUserDto dto = new AppUserDto();
+		dto.setAppUserId(67);		
+		System.out.println(dao.updateAdmin(dto));
+		//3. 해당값유저확인
+		System.out.println(dao.select(67));
+		//2. 수정
+//		AppUserDto dto = new AppUserDto();
+//		dto.setMbtiTypeId(3); dto.setAppUserId(67);		
+//		System.out.println(dao.updateAdmin(dto));
+		//1. 전체
+		System.out.println(dao.selectAll());
+		
+	}
+	
+	@Ignore@Test public void test6() {
+		System.out.println(dao.iddouble("1@1")); //1		
+		System.out.println(dao.iddouble("9@9")); //0
+	}
+	
+	@Ignore@Test public void  test4() {
 		AppUserDto dto = new AppUserDto();
 		dto.setPassword("1"); dto.setAppUserId(47);
 		System.out.println("6."+ dao.delete(dto));
