@@ -57,10 +57,9 @@
 		parameterType="java.util.HashMap"> 
 		select * from sboard1 where btitle like #{search}
 	</select>
+ 	<!-- paging -->
 	
-	<!-- paging -->
-	
-	<select resultMap = "sboard1Map" id="select10" parameterType="java.util.HashMap">
+	<select resultMap = "sboard1Map"    id="select10"   parameterType="java.util.HashMap">
 	select *
 	from (
 	   select row_number() over(order by create_at desc) as rnum,

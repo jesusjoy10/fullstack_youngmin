@@ -15,5 +15,31 @@
 </foreach> 
   </where>
   </select>
+  
+    
+    <resultMap id="authMap" type="com.thejoa703.dto.AuthDto">
+        <result property="email" column="email"/> 
+        <result property="auth" column="auth"/> 
+    </resultMap>
+
+    <resultMap id="appUserAuthMap" type="com.thejoa703.dto.AppUserAuthDto">
+        <result property="email" column="email"/> 
+        <result property="password" column="password"/> 
+        <collection property="authList" resultMap="authMap"/>
+    </resultMap>
+
+    <select id="readAuth" 
+            parameterType="com.thejoa703.dto.AppUserAuthDto" 
+            resultMap="appUserAuthMap">
+        SELECT u.email, password, auth
+        FROM appuser u 
+        LEFT JOIN authorities a ON (u.email = a.email)
+        WHERE u.email = #{email}
+    </select>
+    
+   
 
 </mapper>
+  
+  
+ 
