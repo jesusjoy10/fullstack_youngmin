@@ -1,4 +1,4 @@
-package com.thejoa703.Controller;
+package com.thejoa703.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;

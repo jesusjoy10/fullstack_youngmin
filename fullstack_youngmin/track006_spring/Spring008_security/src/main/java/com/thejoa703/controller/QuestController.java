@@ -1,4 +1,4 @@
-package com.thejoa703.Controller;
+package com.thejoa703.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

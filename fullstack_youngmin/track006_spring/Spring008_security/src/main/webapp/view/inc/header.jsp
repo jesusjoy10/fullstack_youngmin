@@ -20,28 +20,34 @@
   <p>각종 보드들의 기능익히기 - PAGING + UPLOAD + BOARD</p> 
 </div>
 
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>  <!-- ## -->
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
   <div class="container-fluid">
     <ul class="navbar-nav"> 
-    <c:if test="${not empty sessionScope.email}">
+    <sec:authorize   access="isAuthenticated()">  <!-- ##  로그인을 했다면 -->
     	  <li class="nav-item">
 	        <a class="nav-link"   href="${pageContext.request.contextPath}/list.users">유저관리</a>
 	      </li>  
-    	  <li class="nav-item">
-	        <a class="nav-link"   href="${pageContext.request.contextPath}/mypage.users">${sessionScope.email}</a>
+    	  <li class="nav-item">	  	
+	        <a class="nav-link"   href="${pageContext.request.contextPath}/security/mypage"> 
+	        	<sec:authentication  property="principal.dto.email"  />
+	        </a>
 	      </li>  
 	      <li class="nav-item">
-	        <a class="nav-link"   href="${pageContext.request.contextPath}/logout.users">로그아웃</a>
+	        <form  action="${pageContext.request.contextPath}/security/logout"   method="post">
+	        	<input type="hidden"   name="${_csrf.parameterName}"    value="${_csrf.token}"/>
+ 	        	<input type="submit"   value="로그아웃"   class="btn btn-danger" /> 
+	        </form>
 	      </li>    
-	</c:if> 
-	<c:if test="${empty sessionScope.email}"> 
+	</sec:authorize>
+    <sec:authorize   access="isAnonymous()">  <!-- ##  아무나다 접근가능하게 -->
 	      <li class="nav-item">
-	        <a class="nav-link"    href="${pageContext.request.contextPath}/login.users">LOGIN</a>
+	        <a class="nav-link"    href="${pageContext.request.contextPath}/security/login">LOGIN</a>
 	      </li>
 	      <li class="nav-item">
-	        <a class="nav-link"    href="${pageContext.request.contextPath}/join.users">JOIN</a>
+	        <a class="nav-link"    href="${pageContext.request.contextPath}/security/join">JOIN</a>
 	      </li> 
-	</c:if>	         
+	</sec:authorize>     
 	      <li class="nav-item">  
 	      	 <a class="nav-link" href="${pageContext.request.contextPath}/list.quest">Quest Board</a>  
 	      </li>   

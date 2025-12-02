@@ -1,6 +1,6 @@
 
 
-package com.thejoa703.Controller;
+package com.thejoa703.controller;
  
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;

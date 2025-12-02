@@ -39,7 +39,10 @@ SELECT COUNT(*) FROM sboard1;
 
 SHOW USER;
 
-DESC sboard1;
+DESC appuser;
+
+delete from appuser;
+commit;
 
 
 
@@ -50,3 +53,5 @@ CREATE TABLE authorities (
     email VARCHAR2(50),
     auth VARCHAR2(30)
 );
+
+

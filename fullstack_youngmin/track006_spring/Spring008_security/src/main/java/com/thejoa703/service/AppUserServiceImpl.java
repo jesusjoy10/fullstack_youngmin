@@ -9,7 +9,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.thejoa703.dao.AppUserDao;
+import com.thejoa703.dto.AppUserAuthDto;
 import com.thejoa703.dto.AppUserDto;
+import com.thejoa703.dto.AuthDto;
 
 @Service
 public class AppUserServiceImpl  implements AppUserService{
@@ -56,5 +58,13 @@ public class AppUserServiceImpl  implements AppUserService{
 	
 	@Override public int deleteAdmin(AppUserDto dto) { return dao.deleteAdmin(dto); }
 	@Override public int updateAdmin(AppUserDto dto) { return dao.updateAdmin(dto); }
+	
+	/* security */
+	@Override public int insertAuth(AuthDto dto) { return dao.insertAuth(dto);}
+	@Override public AppUserAuthDto readAuth (String email) {
+		AppUserAuthDto dto = new AppUserAuthDto(); dto.setEmail(email);
+		return dao.readAuth(dto);
+	}
+	
 	
 }

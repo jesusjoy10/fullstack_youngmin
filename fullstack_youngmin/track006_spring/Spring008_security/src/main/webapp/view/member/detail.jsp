@@ -12,7 +12,7 @@
    
    </script>
    <div class="container card  my-5 p-4">
-      <h3 class="card-header"> MBTI  QUEST 상세보기 <%-- ${dto} --%></h3>
+      <h3 class="card-header"> MBTI  QUEST 상세보기 <%-- ${dto} --%> </h3>
 	  <div> 
 	      <input type="hidden"   name="app_user_id"  value=""> 
 		  <div class="mb-3 mt-3">
@@ -31,8 +31,8 @@
 		  </div> 
 		  <div class="mb-3">
 		    <label for="bfile" class="form-label">파일:</label> 
-		    <img src="${pageContext.request.contextPath}/upload/${dto.bfile}" alt=""  class="w-50"/>
-		  </div> 		  
+		    <img src="${pageContext.request.contextPath}/upload/${dto.bfile}" alt="" />
+		  </div> 	 	  
 		  
 			<div class="mb-3">
 			<a href="${pageContext.request.contextPath}/edit.quest?id=${dto.id}" class="btn btn-success form-control">글수정</a>

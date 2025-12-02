@@ -67,13 +67,10 @@
       	</tfoot>
       </table> 
       
-    <sec:authorize   access="isAuthenticated()"> 
 		<p class="text-end">
-			<a href="${pageContext.request.contextPath}/write.quest" 
-					class="btn btn-primary">글쓰기</a>
+			<a href="${pageContext.request.contextPath}/write.quest" class="btn btn-primary">글쓰기</a>
 		</p>	 
 		<p class="text-end alert alert-primary">로그인을 하면 글쓰기가능합니다.</p> 
-	</sec:authorize>
 		
 	  <div class="mb-3 mt-3 alert alert-primary">
 	    <label for="search" class="form-label">	SEARCH</label>

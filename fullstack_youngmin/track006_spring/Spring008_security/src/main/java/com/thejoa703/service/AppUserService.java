@@ -3,7 +3,9 @@ import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import com.thejoa703.dto.AppUserAuthDto;
 import com.thejoa703.dto.AppUserDto;
+import com.thejoa703.dto.AuthDto;
 
 public interface AppUserService {
 	public int  insert(AppUserDto dto);
@@ -27,5 +29,9 @@ public interface AppUserService {
 	 * 				  / 수정하기 updateAdmin 
 	 * 				  / 삭제하기 deleteAdmin    */
 	public int   deleteAdmin(AppUserDto dto);
-	public int   updateAdmin(AppUserDto dto); 
+	public int   updateAdmin(AppUserDto dto);
+	
+	AppUserAuthDto readAuth(String email);
+	int insertAuth(AuthDto dto);
+	
 }

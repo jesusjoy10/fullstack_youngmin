@@ -1,7 +1,10 @@
 package com.thejoa703.dao;
 
 import java.util.List;
+
+import com.thejoa703.dto.AppUserAuthDto;
 import com.thejoa703.dto.AppUserDto;
+import com.thejoa703.dto.AuthDto;
 
 @MbtiDao
 public interface AppUserDao {
@@ -26,4 +29,9 @@ public interface AppUserDao {
 	 * 				  / 삭제하기 deleteAdmin    */
 	public int   deleteAdmin(AppUserDto dto);
 	public int   updateAdmin(AppUserDto dto);
+	
+	/* security */
+	public int insertAuth(AuthDto dto);
+	
+	public AppUserAuthDto readAuth(AppUserAuthDto dto);
 }
