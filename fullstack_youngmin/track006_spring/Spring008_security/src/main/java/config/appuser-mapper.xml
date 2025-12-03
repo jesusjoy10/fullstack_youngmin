@@ -93,6 +93,10 @@
 		where app_user_id=#{appUserId}
 	</update>	
 	
+	<delete id="delete3" parameterType="AppUserDto">
+    DELETE FROM appuser
+    WHERE app_user_id = #{appUserId}
+	</delete>
 </mapper>
 
 

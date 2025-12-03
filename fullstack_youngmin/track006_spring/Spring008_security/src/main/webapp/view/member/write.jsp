@@ -7,6 +7,7 @@
       <!-- APP_USER_ID , BTITLE , BCONTENT , BPASS  -->
 	  <form action="${pageContext.request.contextPath}/upload.quest"  method="post" enctype="multipart/form-data" > 
 	      <input type="hidden"   name="app_User_Id"  value="1"> 
+	  	  <input  type="hidden" name="${_csrf.parameterName}"  value="${_csrf.token}" />
 		  <div class="mb-3 mt-3">
 		    <label for="btitle" class="form-label">TITLE:</label>
 		    <input type="text" class="form-control" id="btitle" placeholder="내용을 입력해주세요" name="btitle">
@@ -29,6 +30,8 @@
 		  </div>
 	 </form> 
    </div>
+   
+    <input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token}" />
    
 <%@include file="../inc/footer.jsp" %>
 

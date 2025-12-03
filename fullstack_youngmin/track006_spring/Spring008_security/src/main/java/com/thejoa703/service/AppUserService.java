@@ -33,5 +33,10 @@ public interface AppUserService {
 	
 	AppUserAuthDto readAuth(String email);
 	int insertAuth(AuthDto dto);
+	public int insert3(MultipartFile file, AppUserDto dto);
+	
+	public int update3(MultipartFile file, AppUserDto dto);
+	
+	public int delete3(AppUserDto dto);
 	
 }

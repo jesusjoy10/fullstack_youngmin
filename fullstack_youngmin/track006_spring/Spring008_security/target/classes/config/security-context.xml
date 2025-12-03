@@ -24,6 +24,7 @@
 	 class="com.thejoa703.security.CustomUserDetailsService"/>
 
 	<security:http>
+		<security:csrf/>
 		<security:intercept-url pattern="/security/all"			access="permitAll" />
 		<security:intercept-url	pattern="/security/member" 		access="hasRole('ROLE_MEMBER')" />
 		<security:intercept-url  pattern="/security/login" 		access="permitAll"/>

@@ -34,4 +34,6 @@ public interface AppUserDao {
 	public int insertAuth(AuthDto dto);
 	
 	public AppUserAuthDto readAuth(AppUserAuthDto dto);
+	public int  update3(AppUserDto dto);
+	public int delete3(AppUserDto dto);
 }

@@ -1,37 +1,53 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@include file="../inc/header.jsp" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 
-  <div class="container card  my-5 p-4">
-     <h3 class="card-header"> MBTI QUEST 글수정</h3>
-  <form action="${pageContext.request.contextPath}/updateEdit.quest" method="post"   enctype="multipart/form-data"> 
-     <input type="hidden"   name="id"  value="${dto.id}">  
-	  <div class="mb-3 mt-3">
-	    <label for="btitle" class="form-label">TITLE:</label>
-	    <input type="text" class="form-control" id="btitle" 
-	    	  placeholder="내용을 입력해주세요" name="btitle"  value="${dto.btitle}">
-	  </div>
-	  <div class="mb-3">
-	    <label for="bpass" class="form-label">PASS:</label>
-	    <input type="password" class="form-control" id="bpass" 
-	    	placeholder="비밀번호를 입력해주세요" name="bpass">
-	  </div>
-	  <div class="mb-3">
-	    <label for="bcontent" class="form-label">CONTENT:</label>
-	    <textarea class="form-control" id="bcontent"
-	    	 placeholder="내용을 입력해주세요" name="bcontent">${dto.bcontent}</textarea>
-	  </div> 
-	  <div class="mb-3">
-	 	<input type="text" class="form-control" id="bfile"   readonly  name="bfile"  value="${dto.bfile}">	 	
-	    <label for="file" class="form-label">FILE:</label>
-	    <input type="file" class="form-control" id="file" placeholder="파일을 입력해주세요" name="file">
-	    </div>	  		   
-	  <div class="mb-3  text-end">
-	  	<button type="submit" class="btn btn-primary">글수정</button>
-	  	<a href="javascript:history.go(-1)"  class="btn btn-danger">BACK</a>
-	  </div>
- </form>
-  </div>
-   
-<%@include file="../inc/footer.jsp" %>
+<%@ include file="../inc/header.jsp"%>
+<!-- 	header		 --> 
+<div class="container mt-5">
+	<h3>유저정보수정</h3>
+	<form action="${pageContext.request.contextPath}/security/update.users" 	
+		method="post"  encType="multipart/form-data" > 
+	    <input type="hidden"   name="appUserId"  value="${dto.appUserId}">  
+	    <input  type="hidden" name="${_csrf.parameterName}"  value="${_csrf.token}" />
+		<div class="mb-3 mt-3">
+			<label  for="email" class="form-label">Email:</label> 
+			<input  type="email" class="form-control" id="email"
+					placeholder="이메일을 입력해주세요" required  name="email"  value="${dto.email}"  readonly>
+		</div>
+		<div class="mb-3">
+			<label for="password" class="form-label">Password:</label> 
+			<input type="password" class="form-control" id="password"
+					placeholder="비밀번호를 입력해주세요" name="password">
+		</div>
+		  <div class="mb-3">
+		    <label for="file" class="form-label">프로필이미지 수정</label>
+		    <input type="file" class="form-control" id="file" placeholder="파일을 입력해주세요" name="file">
+		</div>
+		  <div class="mb-3">
+		  	<input type="text" class="form-control" id="ufile"   readonly  name="ufile"  value="${dto.ufile}">
+		  </div>			
+		<div class="mb-3">
+			<label class="form-check-label"  for="mbtiTypeId">MBTI TYPE : </label>  
+			<select   name="mbtiTypeId"  id="mbtiTypeId"  class="form-control">
+				<option value="1">ISTJ</option>
+				<option value="2">ISFJ</option>
+				<option value="3">INFJ</option>
+			</select>
+		</div>
+		<button type="submit" class="btn btn-primary">정보수정-비밀번호/MBTI TYPE</button>
+	</form>
+</div>
+<!-- ctrl + shift + f -->
+<!-- 	footer		 --> 
+<%@ include file="../inc/footer.jsp"%>
 
-<!-- [ mbtiBoard - list.jsp ]  -->
+
+
+
+
+	
+<!-- 				
+	action="join_process.jsp"
+	method="post"
+	name="email"   name="password"  name="mbti_type_id" 
+-->
