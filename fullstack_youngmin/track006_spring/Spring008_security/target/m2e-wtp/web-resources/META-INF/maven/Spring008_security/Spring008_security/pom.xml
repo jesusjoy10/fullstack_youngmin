@@ -2,16 +2,19 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>spring005_board</groupId>
-	<artifactId>spring005_board</artifactId>
+	<groupId>Spring008_security</groupId>
+	<artifactId>Spring008_security</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<dependencies>
+
+
+	<dependencies> 
 		<dependency>
 			<groupId>com.sun.activation</groupId>
 			<artifactId>javax.activation</artifactId>
-			<version>1.2.0</version>
+			<version>1.2.0</version> 
 		</dependency>
+	 
 		<!-- https://mvnrepository.com/artifact/junit/junit -->
 		<dependency>
 			<groupId>junit</groupId>
@@ -32,6 +35,7 @@
 			<version>4.3.27.RELEASE</version>
 			<scope>test</scope>
 		</dependency>
+
 		<!-- LOMBOK -->
 		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
 		<dependency>
@@ -55,6 +59,7 @@
 			<artifactId>spring-jdbc</artifactId>
 			<version>4.3.20.RELEASE</version>
 		</dependency>
+
 		<!-- MYBATIS -->
 		<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
 		<dependency>
@@ -68,6 +73,7 @@
 			<artifactId>mybatis-spring</artifactId>
 			<version>2.0.6</version>
 		</dependency>
+
 		<!-- HikariCP -->
 		<!-- https://mvnrepository.com/artifact/com.zaxxer/HikariCP -->
 		<dependency>
@@ -75,14 +81,18 @@
 			<artifactId>HikariCP</artifactId>
 			<version>2.7.4</version>
 		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/org.bgee.log4jdbc-log4j2/log4jdbc-log4j2-jdbc4 -->
+
 		<dependency>
 			<groupId>org.bgee.log4jdbc-log4j2</groupId>
 			<artifactId>log4jdbc-log4j2-jdbc4.1</artifactId>
 			<version>1.16</version>
 		</dependency>
+
 		<!-- <dependency> <groupId>org.lazyluke</groupId> <artifactId>log4jdbc-remix</artifactId> 
 			<version>0.2.7</version> </dependency> -->
+
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-core</artifactId>
@@ -98,6 +108,7 @@
 			<artifactId>log4j-slf4j-impl</artifactId>
 			<version>2.17.2</version>
 		</dependency>
+
 		<!-- spring-webmvc -->
 		<!-- spring-webmvc -->
 		<!-- spring-webmvc -->
@@ -115,11 +126,13 @@
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
+
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
+
 		<!-- aspectj :CCTV -->
 		<!-- aspectj :CCTV -->
 		<!-- https://mvnrepository.com/artifact/org.aspectj/aspectjrt -->
@@ -142,6 +155,7 @@
 			<artifactId>spring-aop</artifactId>
 			<version>4.3.28.RELEASE</version>
 		</dependency>
+
 		<!-- jackson -->
 		<!-- jackson -->
 		<!-- https://mvnrepository.com/artifact/org.codehaus.jackson/jackson-mapper-asl -->
@@ -150,8 +164,7 @@
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
-			<version>2.17.2</version>
-			<!-- 최신 안정 버전 사용 -->
+			<version>2.17.2</version> <!-- 최신 안정 버전 사용 -->
 		</dependency>
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
@@ -163,6 +176,7 @@
 			<artifactId>jackson-annotations</artifactId>
 			<version>2.17.2</version>
 		</dependency>
+
 		<!-- XML -->
 		<!-- https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api -->
 		<dependency>
@@ -190,6 +204,7 @@
 			<artifactId>commons-fileupload</artifactId>
 			<version>1.3.1</version>
 		</dependency>
+
 		<!-- commons-io -->
 		<dependency>
 			<groupId>commons-io</groupId>
@@ -198,6 +213,7 @@
 		</dependency>
 		<!-- img upload -->
 		<!-- img upload -->
+
 		<!-- Swagger 2 (Springfox) -->
 		<!-- Swagger 2 (Springfox) -->
 		<dependency>
@@ -210,8 +226,10 @@
 			<artifactId>springfox-swagger-ui</artifactId>
 			<version>2.9.2</version>
 		</dependency>
+
 		<!-- Swagger 2 (Springfox) -->
 		<!-- Swagger 2 (Springfox) -->
+
 		<!-- SECURITY -->
 		<!-- SECURITY -->
 		<!-- SECURITY -->
@@ -240,13 +258,18 @@
 		<!-- SECURITY -->
 		<!-- SECURITY -->
 		<!-- SECURITY -->
+
+
 	</dependencies>
+
+
 	<build>
 		<resources>
 			<resource>
 				<directory>src/main/resources</directory>
 			</resource>
 		</resources>
+
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>

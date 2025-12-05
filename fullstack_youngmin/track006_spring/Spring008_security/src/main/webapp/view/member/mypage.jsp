@@ -20,8 +20,8 @@
 		      <td>${dto.email}</td>
 		    </tr>
 		    <tr>
-		      <th scope="row">MBTI TYPE</th>
-		      <td>${dto.mbtiTypeId}</td>
+		      <th scope="row">지역</th>
+		      <td>${dto.region}</td>
 		    </tr>
 		    <tr>
 		      <th scope="row">회원가입날짜</th>

@@ -3,6 +3,8 @@
     
 <%@include file="../inc/header.jsp" %> 
 
+
+
    <script>
    $(function(){
 	   let result = '${success}';
@@ -12,7 +14,7 @@
    
    </script>
    <div class="container card  my-5 p-4">
-      <h3 class="card-header"> MBTI  QUEST 상세보기 <%-- ${dto} --%> </h3>
+      <h3 class="card-header"> 게시판 상세보기 <%-- ${dto} --%> </h3>
 	  <div> 
 	      <input type="hidden"   name="app_user_id"  value=""> 
 		  <div class="mb-3 mt-3">
@@ -47,4 +49,4 @@
    </div> 
 <%@include file="../inc/footer.jsp" %>
 
-<!-- [ mbtiBoard - list.jsp ]  -->
+<!-- [ runnigcrewBoard - list.jsp ]  -->

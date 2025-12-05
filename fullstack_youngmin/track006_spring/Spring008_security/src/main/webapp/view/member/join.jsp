@@ -1,6 +1,62 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../inc/header.jsp"%>
 <!-- 	header		 --> 
+
+<style>
+.container {
+  background: #fff;
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+}
+.container:hover {
+  transform: scale(1.02);
+}
+
+body {
+  background: linear-gradient(135deg, #a8e6cf, #dcedc1, #f0fff4); /* 잔디+풀빛 느낌 */
+  font-family: 'Noto Sans KR', sans-serif;
+  color: #2f4f2f; /* 짙은 녹색 글자 */
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease;
+}
+
+.container:hover {
+  transform: scale(1.02);
+}
+
+h3 {
+  color: #228b22; /* 숲 느낌의 녹색 */
+  font-weight: bold;
+  text-align: center;
+}
+.btn-primary {
+  background: linear-gradient(90deg, #4caf50, #81c784); /* 러닝크루 그린톤 버튼 */
+  border: none;
+  border-radius: 30px;
+  padding: 12px 24px;
+  color: #fff;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+.btn-primary:hover {
+  background: linear-gradient(90deg, #81c784, #4caf50);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+</style>
+<!-- css -->
+
+
 <div class="container mt-5">
 	<h3>WELCOME! 회원가입</h3>
 	<form action="${pageContext.request.contextPath}/security/join"   method="post"  encType="multipart/form-data" >
@@ -21,11 +77,15 @@
 		    <input type="file" class="form-control" id="file" placeholder="파일을 입력해주세요" name="file">
 		  </div>			
 		<div class="mb-3">
-			<label class="form-check-label"  for="mbti">MBTI TYPE : </label>  
-			<select   name="mbtiTypeId"  id="mbti"  class="form-control">
-				<option value="1">ISTJ</option>
-				<option value="2">ISFJ</option>
-				<option value="3">INFJ</option>
+			<label class="form-check-label"  for="region">지역 : </label>  
+			<select   name="region"  id="region"  class="form-control">
+				<option value="서울">서울</option>
+				<option value="인천">인천</option>
+				<option value="경기">경기</option>
+				<option value="강원">강원</option>
+				<option value="충청">충청</option>
+				<option value="경상">경상</option>
+				<option value="전라">전라</option>
 			</select> 
 		</div>
 		<button type="submit" class="btn btn-primary">회원가입</button>
@@ -75,9 +135,3 @@
 
 
 
-	
-<!-- 				
-	action="join_process.jsp"
-	method="post"
-	name="email"   name="password"  name="mbti_type_id" 
--->

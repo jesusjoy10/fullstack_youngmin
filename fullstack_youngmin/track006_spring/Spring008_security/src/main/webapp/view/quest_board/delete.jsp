@@ -4,7 +4,7 @@
 <%@include file="../inc/header.jsp" %>
 
    <div class="container card  my-5 p-4 ">
-      <h3 class="card-header"> MBTI 글삭제</h3>
+      <h3 class="card-header"> 글삭제</h3>
 	  <%-- <form action="${pageContext.request.contextPath}/delete.do?id=${param.id}"     method="post">  --%> 
 	  <form action="${pageContext.request.contextPath}/delete.quest"  method="post">  
 	      <input type="hidden"   name="id"  value="${param.id}"> 

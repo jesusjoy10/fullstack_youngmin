@@ -28,6 +28,7 @@
 	</bean>
 	
 	<mvc:resources mapping="/upload/**"   location="file:///C:/file/"/>
+	<mvc:resources mapping="/images/**"   location="/images/"/>
 	
 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 </beans>

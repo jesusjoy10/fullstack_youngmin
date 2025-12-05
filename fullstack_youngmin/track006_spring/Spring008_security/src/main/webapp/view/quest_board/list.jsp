@@ -13,11 +13,11 @@
    
    </script>
    <div class="container card  my-5 p-4">
-      <h3 class="card-header"> MBTI QUEST BOARD</h3>  
+      <h3 class="card-header">Running Crew Board</h3>  
 <%--       <div>${list}</div> 
       <div>${paging}</div>--%>
       <table class="table table-striped table-bordered table-hover">
-      	<caption>mbti </caption>
+      	<caption>Running Crew </caption>
       	<thead>
       		<tr>
       			<th scope="col">NO</th>

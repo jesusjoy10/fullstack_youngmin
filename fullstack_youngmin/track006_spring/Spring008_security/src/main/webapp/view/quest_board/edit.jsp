@@ -2,7 +2,7 @@
 <%@include file="../inc/header.jsp" %>
 
   <div class="container card  my-5 p-4">
-     <h3 class="card-header"> MBTI QUEST 글수정</h3>
+     <h3 class="card-header">글수정</h3>
   <form action="${pageContext.request.contextPath}/updateEdit.quest"  
   		method="post"  encType="multipart/form-data"  > 
      <input type="hidden"   name="id"  value="${dto.id}">  

@@ -9,17 +9,17 @@
 	    <result property="appUserId" 	  column="APP_USER_ID"/>
 	    <result property="email"    	  column="EMAIL"/>
 	    <result property="password"  	  column="PASSWORD"/>
-	    <result property="mbtiTypeId"     column="MBTI_TYPE_ID"/>
+	    <result property="region"     column="REGION"/>
 	    <result property="createdAt" 	  column="CREATED_AT"/>
 	    <result property="ufile" 	  	  column="UFILE"/>
 	  </resultMap>
 
 	<insert id="insert"  parameterType="AppUserDto">
-		insert into appuser (APP_USER_ID , EMAIL, PASSWORD, MBTI_TYPE_ID)  
-		values (appuser_seq.nextval, #{email} , #{password},#{mbtiTypeId})
+		insert into appuser (APP_USER_ID , EMAIL, PASSWORD, REGION)  
+		values (appuser_seq.nextval, #{email} , #{password},#{region, jdbcType=VARCHAR})
 	</insert>
 	<update id="update"  parameterType="AppUserDto">
-		update appuser  set  password=#{password} , MBTI_TYPE_ID=#{mbtiTypeId}  
+		update appuser  set  password=#{password} , REGION=#{region, jdbcType=VARCHAR}  
 		where app_user_id=#{appUserId}
 	</update>
 	<delete id="delete"  parameterType="AppUserDto">
@@ -43,11 +43,11 @@
 	<!-- upload -->
 	<!-- upload -->
 	<insert id="insert2"  parameterType="AppUserDto">
-		insert into appuser (APP_USER_ID , EMAIL, PASSWORD, MBTI_TYPE_ID , UFILE)  
-		values (appuser_seq.nextval, #{email} , #{password},#{mbtiTypeId} ,#{ufile , jdbcType=VARCHAR})
+		insert into appuser (APP_USER_ID , EMAIL, PASSWORD, REGION , UFILE)  
+		values (appuser_seq.nextval, #{email} , #{password},#{region, jdbcType=VARCHAR} ,#{ufile , jdbcType=VARCHAR})
 	</insert>
 	<update id="update2"  parameterType="AppUserDto">
-		update appuser  set  password=#{password} , MBTI_TYPE_ID=#{mbtiTypeId}  ,UFILE=#{ufile , jdbcType=VARCHAR}
+		update appuser  set  password=#{password} , REGION=#{region, jdbcType=VARCHAR}  ,UFILE=#{ufile , jdbcType=VARCHAR}
 		where app_user_id=#{appUserId}
 	</update>
 	<!-- upload -->
@@ -64,7 +64,7 @@
 		delete from appuser where app_user_id=#{appUserId}   
 	</delete>
 	<update id="updateAdmin"  parameterType="AppUserDto">
-		update appuser  set  MBTI_TYPE_ID=#{mbtiTypeId}  
+		update appuser  set  REGION=#{region}  
 		where app_user_id=#{appUserId}
 	</update>
 	
@@ -89,7 +89,7 @@
 	
 
 	<update id="update3"  parameterType="AppUserDto">
-		update appuser  set  MBTI_TYPE_ID=#{mbtiTypeId}   ,UFILE=#{ufile , jdbcType=VARCHAR}
+		update appuser  set  REGION=#{region, jdbcType=VARCHAR}   ,UFILE=#{ufile , jdbcType=VARCHAR}
 		where app_user_id=#{appUserId}
 	</update>	
 	

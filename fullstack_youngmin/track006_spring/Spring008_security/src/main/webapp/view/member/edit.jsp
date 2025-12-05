@@ -27,14 +27,18 @@
 		  	<input type="text" class="form-control" id="ufile"   readonly  name="ufile"  value="${dto.ufile}">
 		  </div>			
 		<div class="mb-3">
-			<label class="form-check-label"  for="mbtiTypeId">MBTI TYPE : </label>  
-			<select   name="mbtiTypeId"  id="mbtiTypeId"  class="form-control">
-				<option value="1">ISTJ</option>
-				<option value="2">ISFJ</option>
-				<option value="3">INFJ</option>
+			<label class="form-check-label"  for="region">지역 : </label>  
+			<select   name="region"  id="region"  class="form-control">
+				<option value="서울">서울</option>
+				<option value="인천">인천</option>
+				<option value="경기">경기</option>
+				<option value="강원">강원</option>
+				<option value="충청">충청</option>
+				<option value="경상">경상</option>
+				<option value="전라">전라</option>
 			</select>
 		</div>
-		<button type="submit" class="btn btn-primary">정보수정-비밀번호/MBTI TYPE</button>
+		<button type="submit" class="btn btn-primary">정보수정-비밀번호/지역</button>
 	</form>
 </div>
 <!-- ctrl + shift + f -->
@@ -45,9 +49,4 @@
 
 
 
-	
-<!-- 				
-	action="join_process.jsp"
-	method="post"
-	name="email"   name="password"  name="mbti_type_id" 
--->
+

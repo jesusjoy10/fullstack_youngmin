@@ -9,7 +9,7 @@
 </c:if>
 
    <div class="container card  my-5 p-3">
-      <h3  class="card-header"> MYPAGE </h3> 
+      <h3  class="card-header"> 내 정보 </h3> 
     <%@  taglib  uri="http://www.springframework.org/security/tags"  prefix="sec" %>   
 	<table class="table table-striped table-bordered table-hover align-middle">
 	  <colgroup>
@@ -27,8 +27,8 @@
 		      <td>${dto.email}</td>
 		    </tr>
 		    <tr>
-		      <th scope="row">MBTI TYPE</th>
-		      <td>${dto.mbtiTypeId}</td>
+		     <th scope="row">지역</th>
+		      <td>${dto.region}</td>
 		    </tr>
 		    <tr>
 		      <th scope="row">회원가입날짜</th>

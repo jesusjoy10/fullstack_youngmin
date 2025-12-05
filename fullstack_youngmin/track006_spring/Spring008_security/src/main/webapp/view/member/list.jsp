@@ -2,6 +2,62 @@
     pageEncoding="UTF-8"%>
     
 <%@include file="../inc/header.jsp" %>
+
+<style>
+.container {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease;
+}
+.container:hover {
+  transform: scale(1.02);
+}
+
+body {
+  background: linear-gradient(135deg, #a8e6cf, #dcedc1, #f0fff4); /* 러닝크루 느낌 */
+  font-family: 'Noto Sans KR', sans-serif;
+  color: #2f4f2f;
+  margin: 0;
+  padding: 0;
+}
+
+h3 {
+  color: #228b22; /* 숲 느낌의 녹색 */
+  font-weight: bold;
+  text-align: center;
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, #4caf50, #81c784);
+  border: none;
+  border-radius: 30px;
+  padding: 12px 24px;
+  color: #fff;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+.btn-primary:hover {
+  background: linear-gradient(90deg, #81c784, #4caf50);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+</style>
+
+
+<script>
+$(function(){
+   let result = '${success}';
+   if(result == '비밀번호를 확인해주세요'){  
+       alert(result);  
+       history.go(-1); 
+   } else if(result && result.length != 0){  
+       alert(result); 
+   }
+});
+</script>
+
+
    <script>
    $(function(){
 	   let result = '${success}';
@@ -13,11 +69,11 @@
    
    </script>
    <div class="container card  my-5 p-4">
-      <h3 class="card-header"> MBTI QUEST BOARD</h3>  
+      <h3 class="card-header">Running Crew Board</h3>  
 <%--       <div>${list}</div> 
       <div>${paging}</div>--%>
       <table class="table table-striped table-bordered table-hover">
-      	<caption>mbti </caption>
+      	<caption>Running Crew </caption>
       	<thead>
       		<tr>
       			<th scope="col">NO</th>
@@ -79,7 +135,7 @@
 	    <!-- 						 -->
 	    <div  id="resultArea">
 	      <table class="table table-striped table-bordered table-hover  my-3">
-		    <caption>mbti</caption>
+		    <caption>Running Crew</caption>
 		    <thead>
 		      <tr>
 		        <th scope="col">NO</th>
@@ -138,4 +194,4 @@
    
 <%@include file="../inc/footer.jsp" %>
 
-<!-- [ mbtiBoard - list.jsp ]  -->
+<!-- [ Running Crew - list.jsp ]  -->

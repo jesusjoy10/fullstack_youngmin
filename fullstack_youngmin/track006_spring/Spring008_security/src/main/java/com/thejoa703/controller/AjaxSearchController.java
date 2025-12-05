@@ -50,10 +50,10 @@ public class AjaxSearchController {
     // @RequestParam   int appUserId →  ?appUserId=68
     @RequestMapping("/updateAdmin")
     public Map<String, Object>   updateAdmin(@RequestParam int appUserId ,
-    										 @RequestParam int mbtiTypeId ){
+    										 @RequestParam String region ){
     	Map<String, Object>   result = new HashMap<>();
     	AppUserDto dto  = new AppUserDto();
-    	dto.setAppUserId(appUserId);   dto.setMbtiTypeId(mbtiTypeId);
+    	dto.setAppUserId(appUserId);   dto.setRegion(region);
     	result.put("result", service.updateAdmin(dto));
     	return result;
     }

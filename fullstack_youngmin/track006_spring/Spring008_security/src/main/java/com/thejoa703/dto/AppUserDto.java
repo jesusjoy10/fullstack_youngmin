@@ -7,10 +7,13 @@ public class AppUserDto {
 	private int  appUserId;
 	private String email;
 	private String password;
-	private int mbtiTypeId;
+	private String region;
 	private String createdAt;
 	private String ufile;
-}
+
+		
+	}
+
 
 /*
 
@@ -20,6 +23,6 @@ public class AppUserDto {
 --		APP_USER_ID                               NOT NULL NUMBER(5)
 --		EMAIL                                     NOT NULL VARCHAR2(100)
 --		PASSWORD                                           VARCHAR2(100)
---		MBTI_TYPE_ID                                       NUMBER(3)
+--		region                                    		  VARCHAR2(50)
 --		CREATED_AT                                         DATE
 */

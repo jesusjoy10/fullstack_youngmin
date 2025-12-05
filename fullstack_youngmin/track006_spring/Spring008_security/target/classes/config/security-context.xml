@@ -29,6 +29,8 @@
 		<security:intercept-url	pattern="/security/member" 		access="hasRole('ROLE_MEMBER')" />
 		<security:intercept-url  pattern="/security/login" 		access="permitAll"/>
 		<security:intercept-url  pattern="/security/join" 		access="permitAll"/>
+		<security:intercept-url  pattern="/images/**" 			access="permitAll"/>
+		
 		
 		<security:form-login
 		    login-page="/security/login" 
