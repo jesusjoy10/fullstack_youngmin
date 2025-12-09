@@ -28,6 +28,7 @@ select sboard1_seq.nextval, APP_USER_ID, btitle , bcontent, bpass, bfile, bip fr
 SELECT COUNT(*) FROM sboard1;
 
 delete FROM sboard1;
+commit;
 
 
 select * 
@@ -40,9 +41,20 @@ SELECT COUNT(*) FROM sboard1;
 SHOW USER;
 
 DESC appuser;
+ALTER TABLE appuser ADD MBTI_TYPE_ID NUMBER(3);
+
+-- 휴대폰 번호 컬럼 추가
+ALTER TABLE appuser 
+  ADD mobile VARCHAR2(50);
+
+-- 닉네임 컬럼 추가
+ALTER TABLE appuser 
+  ADD nickname VARCHAR2(50);
+
 
 delete from appuser;
 commit;
+
 
 
 
@@ -66,7 +78,5 @@ ORDER BY app_user_id DESC;
 SELECT app_user_id, email, region FROM appuser;
 
 
-UPDATE appuser SET region = '인천' WHERE app_user_id = 85;
-UPDATE appuser SET region = '서울' WHERE app_user_id = 84;
-UPDATE appuser SET region = '서울' WHERE app_user_id = 86;
+
 
