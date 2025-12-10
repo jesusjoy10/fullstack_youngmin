@@ -80,3 +80,28 @@ SELECT app_user_id, email, region FROM appuser;
 
 
 
+CREATE TABLE SBOARD2 (
+    ID          NUMBER       PRIMARY KEY,
+    APP_USER_ID NUMBER       NOT NULL,
+    BTITLE      VARCHAR2(1000) NOT NULL,
+    BCONTENT    CLOB         NOT NULL,
+    BPASS       VARCHAR2(255) NOT NULL,
+    BFILE       VARCHAR2(255),
+    BHIT        NUMBER DEFAULT 0,
+    BIP         VARCHAR2(255) NOT NULL,
+    CREATED_AT  DATE default sysdate
+);
+
+CREATE SEQUENCE SBOARD2_SEQ;
+DESC sboard2;
+
+delete from sboard2;
+
+commit;
+
+drop sequence sboard2_seq;
+
+create sequence sboard2_seq;
+
+
+

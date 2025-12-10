@@ -50,9 +50,30 @@ public class AppUserSecurityServiceImpl implements AppUserSecurityService{
 
 	@Override public int iddouble(String email) { return  dao.iddouble(email); }
 
+	/*
+	 * @Override public int delete(AppUser dto) { // TODO Auto-generated method stub
+	 * return 0; }
+	 */
+	
+	
+		@Override public int delete(AppUser dto) {
+		//db에서 사용자정보조회	
+		AppUserAuthDto  dbUser =dao.readAuth(dto);
+		if(dbUser == null) {   return 0; }
+		System.out.println("........  delete>" + dbUser);
+		System.out.println("........  delete> " + pwencoder.matches(dto.getPassword(), dbUser.getPassword()));
+		
+		//입력한 비밀번호와 db비밀번호를 비교해서 같다면
+		if(pwencoder.matches(dto.getPassword(), dbUser.getPassword())) {  //## 두개비교
+			return dao.delete(dto); 
+		}else { return 0;  }
+	}
+
 	@Override
-	public int delete(AppUser dto) {
+	public int update(MultipartFile file, AppUser dto) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	
+
 }

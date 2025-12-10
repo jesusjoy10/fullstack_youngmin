@@ -6,8 +6,10 @@
    <div class="container card  my-5 p-4 ">
       <h3 class="card-header">탈퇴</h3>
 	  <%-- <form action="${pageContext.request.contextPath}/delete.do?id=${param.id}"     method="post">  --%> 
-	  <form action="${pageContext.request.contextPath}/delete.users"  method="post">  
-	      <input type="hidden"   name="appUserId"  value="${param.appUserId}"> 
+	 <form action="${pageContext.request.contextPath}/security/delete" method="post">
+	      <input type="hidden"   name="appUserId"  value="${dto.appUserId}"> 
+	      <input type="hidden"   name="email"  value="${dto.email}"> 
+	  	  <input  type="hidden" name="${_csrf.parameterName}"  value="${_csrf.token}" />
 		  <div class="my-3">
 		    <label for="password" class="form-label">PASS:</label>
 		    <input type="password" class="form-control" 

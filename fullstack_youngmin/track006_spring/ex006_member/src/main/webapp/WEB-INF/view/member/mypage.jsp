@@ -30,8 +30,8 @@
 	  </tbody>
 	</table>
   	<div class="text-end">
-	  		<a href=""  class="btn btn-danger">UPDATE</a>
-            <a href=""  class="btn btn-primary">DELETE</a>
+  		<a href="${pageContext.request.contextPath}/security/update"  class="btn btn-danger">UPDATE</a>
+        <a href="${pageContext.request.contextPath}/security/delete"  class="btn btn-primary">DELETE</a>
 	 </div>
 </div>
 <%@ include file="../inc/footer.jsp" %>

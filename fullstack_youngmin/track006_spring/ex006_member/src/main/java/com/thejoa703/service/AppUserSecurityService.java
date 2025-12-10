@@ -9,4 +9,5 @@ public interface AppUserSecurityService {
 	public AppUser         selectEmail(  String email);  //마이페이지
 	public int iddouble(String email);
 	public int delete(AppUser dto);
+	public int update(MultipartFile file, AppUser dto);
 }

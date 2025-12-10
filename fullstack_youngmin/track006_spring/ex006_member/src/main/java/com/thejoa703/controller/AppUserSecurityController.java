@@ -81,24 +81,51 @@ public class AppUserSecurityController {
 		return "/member/mypage";   
 	}  
 	
-	@RequestMapping("/delete")  
-	public String delete_get(  ) {  
-		return "member/delete"; 
+	
+	@RequestMapping("/delete")
+	public String delete(  Principal  principal , Model model ) {
+		model.addAttribute("dto" , service.selectEmail( principal.getName()));
+		return "/member/delete";
 	}
 	
-	
+	 @PreAuthorize("isAuthenticated()")    // 로그인한유저
 	@RequestMapping(value="/delete" , method=RequestMethod.POST) //삭제기능
-	public String delete_post(AppUser dto , RedirectAttributes rttr ,HttpServletRequest  request) { 
-		String result = "비밀번호를 확인해주세요";
-		if( service.delete(dto)  > 0  ) {  
-			result ="탈퇴 성공";   HttpSession session = request.getSession();  
-			session.invalidate();  
-		}
-		rttr.addFlashAttribute("success" , result);
+	public String delete_post(AppUser dto , RedirectAttributes rttr 
+			,HttpServletRequest  request ,HttpServletResponse  response) { 
 		
-		return "redirect:/login.users"; 
-	}
-	 
+		String result = "비밀번호를 확인해주세요";
+		if( service.delete(dto)  > 0  ) {  // 삭제 성공 → 로그아웃 처리 
+			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	        if (auth != null) { new SecurityContextLogoutHandler().logout(request, response, auth); }   //화면자체에서 로그아웃처리
+	        result = "회원탈퇴가 완료되었습니다.";  
+			rttr.addFlashAttribute("success" , result); 
+			return "redirect:/security/login"; 
+	        
+		} else {
+			result = "비밀번호를 확인해주세요.";
+			rttr.addFlashAttribute("deleteError", result);
+			return "redirect:/security/mypage";
+		} 
+	}   
+		////////////////////////////////////
+		@RequestMapping("/update")
+		public String updateForm(  Principal  principal , Model model ) {
+			model.addAttribute("dto" , service.selectEmail( principal.getName()));
+			return "/member/edit";
+		}
+		 
+		@PreAuthorize("isAuthenticated()")  // 로그인을 했다면
+		@RequestMapping(value="/update" , method=RequestMethod.POST  , headers=("content-type=multipart/*"))  //수정기능
+		public String update( @RequestParam("file")  MultipartFile file, AppUser dto , RedirectAttributes rttr  ) {  
+			
+			String result ="비밀번호를 확인해주세요";
+			if(  service.update(file, dto)  > 0 ) {   result="수정 성공";  }
+			rttr.addFlashAttribute("success" , result);
+			return "redirect:/security/mypage";  
+		}
+	
+	
+	
 }
 
 
