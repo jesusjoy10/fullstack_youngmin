@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.thejoa703.dto.Sboard2Dto;
+
 @Mapper
 public interface Sboard2Dao {
 			    

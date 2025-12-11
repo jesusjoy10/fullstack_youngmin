@@ -17,7 +17,7 @@
 
 	<insert     id="insert"  parameterType="Sboard2Dto">
 	insert into sboard2 ( ID    , APP_USER_ID , BTITLE , BCONTENT , BPASS , BFILE , BIP)  
-	values (sboard2_seq.nextval ,#{appUserId}, #{btitle},#{bcontent},#{bpass},  #{bfile , jdbcType=VARCHAR} , #{bip})
+	values (sboard2_seq.nextval ,#{appUserId}, #{btitle},#{bcontent},#{bpass},  #{bfile , jdbcType=VARCHAR} , #{bip, jdbcType=VARCHAR})
 	</insert>
 
 	<update     id="update"  parameterType="Sboard2Dto">

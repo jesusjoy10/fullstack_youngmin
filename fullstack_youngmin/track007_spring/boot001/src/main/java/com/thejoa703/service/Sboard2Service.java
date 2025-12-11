@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.thejoa703.dto.Sboard2Dto;
-@Mapper
+
 public interface Sboard2Service {
 			    
 	   

@@ -46,9 +46,9 @@ class Boot001ApplicationTests {
      	System.out.println(boardService.update(u_file, dto_u));
      	 
      	//5. delete
-     	Sboard2Dto dto_d = new Sboard2Dto();
-     	dto_d.setBpass("1111");  dto_d.setId(1);
-     	System.out.println(boardService.delete(dto_d));
+//     	Sboard2Dto dto_d = new Sboard2Dto();
+//     	dto_d.setBpass("1111");  dto_d.setId(1);
+//     	System.out.println(boardService.delete(dto_d));
 	}
 	
 	
