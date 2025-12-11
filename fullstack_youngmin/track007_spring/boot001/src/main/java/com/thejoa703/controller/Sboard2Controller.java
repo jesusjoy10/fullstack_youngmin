@@ -6,11 +6,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.thejoa703.dto.Sboard2Dto;
 import com.thejoa703.service.Sboard2Service;
+import com.thejoa703.util.UtilPaging;
 
 @Controller
 @RequestMapping("/board")   // 공통 prefix
@@ -20,8 +22,9 @@ public class Sboard2Controller {
 	private Sboard2Service service;
 	
 	@GetMapping("/list")
-	public String list(Model model) {
-		model.addAttribute("list", service.selectAll());
+	public String list(Model model, @RequestParam(value="pageNo", defaultValue="1") int pageNo) {
+		model.addAttribute("paging", new UtilPaging(service.selectTotalCnt(), pageNo));
+		model.addAttribute("list", service.select10(pageNo));
 		return "board/list";
 	}
 	

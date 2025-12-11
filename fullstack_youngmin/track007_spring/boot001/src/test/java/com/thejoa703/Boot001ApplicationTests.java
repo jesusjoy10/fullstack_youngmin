@@ -2,6 +2,7 @@ package com.thejoa703;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.util.HashMap;
 
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -23,8 +24,28 @@ class Boot001ApplicationTests {
 	@Autowired Sboard2Dao dao;
 	@Autowired Sboard2Service boardService;
 	
-	@Test 
+	@Test
+	public void test4_paging() {
+		//1. 10개씩 가져오기
+		HashMap<String, Integer> para= new HashMap<>();
+		para.put("start", 1);
+		para.put("end", 10);
+		System.out.println("............." + dao.select10(para));
+		
+		//2. 전체갯수
+		System.out.println("............." + dao.selectTotalCnt());
+		
+		//3. 검색어 + 3개씩 가져오기
+		HashMap<String,Object>para2 =new HashMap<>();
+		para2.put("search", "t");
+		para2.put("start", 1);
+		para2.put("end", 3);
+		System.out.println("......." + dao.select3(para2));
+	}
+	
+	@Disabled @Test 
 	public void test3_sboardService() throws UnknownHostException{
+		/*
 		//1. selectAll
      	System.out.println(dao.selectAll());
      	 
@@ -49,7 +70,10 @@ class Boot001ApplicationTests {
 //     	Sboard2Dto dto_d = new Sboard2Dto();
 //     	dto_d.setBpass("1111");  dto_d.setId(1);
 //     	System.out.println(boardService.delete(dto_d));
+  */
+ 
 	}
+	
 	
 	
 	 @Disabled @Test void contextLoads() { // Junit4:@ignore  5:@Disabled

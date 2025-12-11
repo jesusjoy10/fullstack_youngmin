@@ -3,6 +3,7 @@ package com.thejoa703.service;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,7 +54,38 @@ public class Sboard2ServiceImpl implements Sboard2Service {
 } 
  @Override  public Sboard2Dto  selectUpdateForm(int id) {
 	return dao.select(id);
+}
+
+
+@Override
+public List<Sboard2Dto> select10(int pageNo) {
+	HashMap<String,Integer> para= new HashMap<>();
+	int start = (pageNo-1)*10+1;
+	int end   = start +9;
+	
+	para.put("start", start);
+	para.put("end", end);
+	return dao.select10(para);
+}
+
+
+@Override
+public int selectTotalCnt() {
+	return dao.selectTotalCnt();
 } 
+
+@Override
+public List<Sboard2Dto> select3(String search, int pageNo) {
+	HashMap<String,Object> para= new HashMap<>();
+	int pageSize=3;
+	int start = (pageNo-1)* pageSize +1;
+	int end   = start +pageSize -1;
+	
+	para.put("start", start);
+	para.put("search", search);
+	para.put("end", end);
+	return dao.select3(para);
+}
 	   
 
 }

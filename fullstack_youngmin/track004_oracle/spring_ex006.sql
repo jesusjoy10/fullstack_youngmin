@@ -103,5 +103,7 @@ drop sequence sboard2_seq;
 
 create sequence sboard2_seq;
 
+insert into sboard2 ( ID    , APP_USER_ID , btitle, bcontent, bpass, bfile,  bip )
+select  sboard2_seq.nextval , APP_USER_ID , btitle, bcontent, bpass, bfile,  bip   from sboard2;
 
-
+commit;

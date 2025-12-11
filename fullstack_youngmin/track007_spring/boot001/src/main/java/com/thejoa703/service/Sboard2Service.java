@@ -26,6 +26,15 @@ public interface Sboard2Service {
 	   public Sboard2Dto  select(int id);
 	   // 수정하기 폼 
 	   public Sboard2Dto  selectUpdateForm(int id);
+	   
+	   /* paging */
+	   public List<Sboard2Dto> select10(int pageNo);
+	   public int selectTotalCnt();
+
+	List<Sboard2Dto> select3(String search, int pageNo);
+
+	
+	   
 		   
 	   
 
