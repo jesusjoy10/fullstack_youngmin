@@ -74,18 +74,32 @@ public int selectTotalCnt() {
 	return dao.selectTotalCnt();
 } 
 
-@Override
-public List<Sboard2Dto> select3(String search, int pageNo) {
-	HashMap<String,Object> para= new HashMap<>();
-	int pageSize=3;
-	int start = (pageNo-1)* pageSize +1;
-	int end   = start +pageSize -1;
-	
-	para.put("start", start);
-	para.put("search", search);
-	para.put("end", end);
-	return dao.select3(para);
-}
-	   
+//@Override
+//public List<Sboard2Dto> select3(String search, int pageNo) {
+//	HashMap<String,Object> para= new HashMap<>();
+//	int pageSize=3;
+//	int start = (pageNo-1)* pageSize +1;
+//	int end   = start +pageSize -1;
+//	
+//	para.put("start", start);
+//	para.put("search", search);
+//	para.put("end", end);
+//	return dao.select3(para);
+//}
+  /* Paging + Search */
+ 	@Override
+ 	public List<Sboard2Dto> select3(String keyword, int pageNo){
+ 		HashMap<String, Object> para = new HashMap<>();
+ 		int pageSize=3;
+ 		para.put("search", keyword);
+ 		int start = (pageNo-1)* pageSize +1;
+ 		para.put("start", start);
+ 		para.put("end", start + pageSize-1);
+ 		return dao.select3(para);
+ 	}
+
+
+	 @Override
+	 public int selectSearchTotalCnt(String keyword) {return dao.selectSearchTotalCnt(keyword);}
 
 }

@@ -18,8 +18,9 @@ public interface Sboard2Dao {
        public int updateHit(int id);      
        public List<Sboard2Dto> select10(HashMap<String,Integer>para);
        public List<Sboard2Dto> select3(HashMap<String,Object>para);
-       public int   selectTotalCnt();
-
+       public int   selectTotalCnt();    
+       
+       public int selectSearchTotalCnt(String search);
 
 	  
 

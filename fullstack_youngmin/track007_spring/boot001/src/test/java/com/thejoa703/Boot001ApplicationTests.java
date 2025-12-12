@@ -41,6 +41,9 @@ class Boot001ApplicationTests {
 		para2.put("start", 1);
 		para2.put("end", 3);
 		System.out.println("......." + dao.select3(para2));
+		
+		//4. 검색어 + 3개씩 가져오기
+	    System.out.println("........." + dao.selectSearchTotalCnt("t"));
 	}
 	
 	@Disabled @Test 

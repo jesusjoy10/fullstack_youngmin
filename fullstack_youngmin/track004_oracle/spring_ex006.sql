@@ -107,3 +107,76 @@ insert into sboard2 ( ID    , APP_USER_ID , btitle, bcontent, bpass, bfile,  bip
 select  sboard2_seq.nextval , APP_USER_ID , btitle, bcontent, bpass, bfile,  bip   from sboard2;
 
 commit;
+
+
+DESC appuser;SELECT table_name 
+FROM user_tables 
+WHERE table_name = 'SBOARD2';
+
+
+
+ALTER TABLE appuser ADD PROVIDER VARCHAR2(50);
+
+ALTER TABLE "APPUSER" ADD ("PROVIDER_ID" VARCHAR2(100));
+
+desc authorities;
+
+
+ALTER TABLE authorities
+MODIFY (
+    EMAIL       VARCHAR2(255),
+    AUTH        VARCHAR2(255),
+    AUTH_ID     NUMBER(5),
+    APP_USER_ID NUMBER(5)
+);
+
+  
+CREATE SEQUENCE authorities_seq;
+
+
+desc appuser;
+DROP table REGION  ;
+
+ALTER TABLE appuser
+DROP COLUMN REGION;
+
+ALTER TABLE authorities
+MODIFY (
+    AUTH_ID NUMBER(5) NOT NULL,
+    AUTH    VARCHAR2(255) NOT NULL
+);
+
+
+DROP TABLE authorities CASCADE CONSTRAINTS;
+
+CREATE TABLE authorities (
+    EMAIL        VARCHAR2(255)  ,
+    AUTH         VARCHAR2(255)   NOT NULL,
+    AUTH_ID      NUMBER(5)       NOT NULL,
+    APP_USER_ID  NUMBER(5)      
+);
+
+
+select * from appuser;
+
+delete from appuser;
+delete from authorities;
+commit;
+
+
+SELECT constraint_name, column_name
+FROM user_cons_columns
+WHERE table_name = 'APPUSER';
+
+SELECT EMAIL, COUNT(*)
+FROM APPUSER
+GROUP BY EMAIL
+HAVING COUNT(*) > 1;
+
+ALTER TABLE APPUSER ADD CONSTRAINT uq_appuser_email UNIQUE (EMAIL);
+
+DELETE FROM APPUSER WHERE EMAIL = '1@1';
+
+ALTER TABLE APPUSER DROP CONSTRAINT uq_appuser_email;
+
+

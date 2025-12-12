@@ -59,4 +59,12 @@
 		as rnum, id, app_user_id, btitle, bcontent, bpass, bfile, bip, bhit,
 		created_at from sboard2   WHERE btitle LIKE '%' || #{search} || '%' ) A where A.rnum between #{start} and #{end}
 	</select>
+	
+	   <!-- 페이징+검색어(4) 검색어 기준 전체 건수 -->
+   <select id="selectSearchTotalCnt" parameterType="string" resultType="int">
+       SELECT COUNT(*)
+       FROM sboard2
+       WHERE btitle LIKE '%' || #{search} || '%'
+   </select>
+	
 </mapper>

@@ -17,15 +17,18 @@ public class UtilPaging {
 	   private  int start;          //#7) 하단에 페이지수 이전 [11] 12 13 14 15 다음
 	   private  int end;  			//#8) 하단에 페이지수 이전 [11] 12,,,19 [20]다음
 	   
+	   public UtilPaging(int listtotal, int pageNo ) {
+		   this(listtotal,pageNo,10,10);
+	   }
 	   
-	public UtilPaging(int listtotal, int pageNo) { //(1) 1, 10 (2) 11, 20
-		super();
+	   // ## 오버로딩된 생성자 (페이크 크기와 하단네비크기를 직접지정)
+	public UtilPaging(int listtotal, int pageNo, int onepagelist, int bottomlist) { //(1) 1, 10 (2) 11, 20		
 		this.listtotal 	 = (listtotal<=0)? 1: listtotal;
 		this.onepagelist = 10; //# 기본값: 한페이지 10개
 		this.pagetotal	 = (int)Math.ceil(this.listtotal/(double)onepagelist);
 		// 193/10 -> 19.3 -> 올림 -> 20개
 		// 200/10 =20 -> 올림 -> 20개
-		this.bottomlist = 10;
+		this.bottomlist = bottomlist;
 		// 하단페이지 블록 계산
 		this.current = pageNo;  //23-> start=21 , end=30
 		this.start = ((current-1)/bottomlist)*bottomlist+1;
@@ -33,7 +36,10 @@ public class UtilPaging {
 		//30 -> (30-1)/10 -> 앞자리2로 *10 +1		
 		this.end = start + bottomlist -1; 
 		if(end>pagetotal) {end = pagetotal; } // 30 > 26 마지막은 26번으로
+		// DB 조회 시작 번호  ######
+        this.pstartno = (pageNo - 1) * onepagelist + 1;
+   }      
 	}      
 	
 
-}
+
