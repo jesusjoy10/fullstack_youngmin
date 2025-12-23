@@ -1,0 +1,15 @@
+package com.company.java006_ex;
+
+public class Test008 {
+	public static void main(String[] args) {
+	    int[] nums = new int[3];
+	    int data = 10;
+
+	    for (int i = 0; i < nums.length; i++) {
+	        nums[i] = data; data += 10;}
+
+	    for (int i = 0; i < nums.length; i++) {
+	        System.out.print(nums[i] + " ");
+	    }
+	}
+}

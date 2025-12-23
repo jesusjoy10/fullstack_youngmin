@@ -1,0 +1,17 @@
+package com.company.java005_ex;
+
+import java.util.Scanner;
+
+public class Test001 {
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("문자 하나 입력하시오");
+		
+		char ch = scanner.next().charAt(0);
+		
+		if(ch=='x') {System.out.println("x-ray");}
+		else if(ch=='y') {System.out.println("yogurt");}
+		else if(ch=='z') {System.out.println("zebra");}
+		else {System.out.println("x,z,y아닙니다 ");}
+	}
+}

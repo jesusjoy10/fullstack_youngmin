@@ -1,0 +1,16 @@
+# IDE
+.metadata/
+.idea/
+.vscode/
+
+# Java / Spring
+target/
+build/
+.gradle/
+
+# Node
+node_modules/
+
+# OS
+.DS_Store
+Thumbs.db

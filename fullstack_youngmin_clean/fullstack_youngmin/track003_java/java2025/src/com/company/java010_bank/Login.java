@@ -1,0 +1,34 @@
+package com.company.java010_bank;
+
+import java.util.Scanner;
+
+public class Login {
+	   //상태 : 멤버변수
+UserInfo userinfo;
+ //행위 : 멤버함수
+	public Login() { super();  }
+
+	public Login(UserInfo userinfo) { super(); this.userinfo = userinfo; }
+
+	//행위 : 멤버함수
+	public int exec() {
+		//setter / getter 이용해서 유저정보확인 ### 
+		//변수
+		int find= -1;
+		//입력 -사용자에게 아이디입력받기 / 비밀번호 입력받기
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("ID를 입력하세요");
+		String tempId=scanner.next();
+		System.out.println("Pass를 입력하세요");
+		String tempPass=scanner.next();
+		//처리 -입력한 아이디와 userinfo.id가 같고 입력한 비밀번호와 userinfo.pass가 같다면 find=1; 찾으면 1
+		if(tempId.equals(this.userinfo.getId()) && tempPass.equals(this.userinfo.getPass())) {find=1;}
+		else {find=-1;}
+		
+		//출력-
+		return find;
+	}
+
+}
+/* 기능: 유저정보확인
+*/

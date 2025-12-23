@@ -1,0 +1,42 @@
+package com.company.java008_ex;
+
+public class Repeat019 {
+	public static void main(String[] args) {
+		System.out.println("탐사로봇이가동합니다!");
+		start();
+
+		System.out.println("행성스캔중");
+		scan(5, '#');
+
+		System.out.println("신호강도분석결과");
+		System.out.println("신호등급: " + signalGrade(65));
+		System.out.println("배터리 충전 중");
+		System.out.println("충전완료: " + charge(40, 40) + "%");
+	}
+
+	public static void start() {
+		System.out.println("부우웅..");
+	}
+
+	public static void scan(int a, char b) {
+		for (int i = 0; i < a; i++) {
+			System.out.print(b);
+		}
+		System.out.println();
+	}
+
+	public static String signalGrade(int strength) {
+		if (strength >= 90)
+			return "A";
+		else if (strength >= 80)
+			return "B";
+		else if (strength >= 70)
+			return "C";
+		else
+			return "D";
+	}
+
+	public static int charge(int current, int added) {
+		return current + added;
+	}
+}

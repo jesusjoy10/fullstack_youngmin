@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<!--
+이 문서는 HTML5 문서예요.
+브라우저에게 "최신 HTML 문서입니다!" 라고 알려주는 역할.
+-->
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<!--
+글자 인코딩 설정
+한글, 영어, 특수문자가 깨지지 않고 정상적으로 보이도록 함
+-->
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--
+화면 크기를 기기에 맞추기 위한 코드
+스마트폰, 태블릿, PC에서 화면이 자동으로 맞춰지도록 해줌
+-->
+
+<title>김영민 포트폴리오</title>
+<!--
+웹페이지 탭에 표시될 제목
+-->
+
+<!-- Bootstrap CSS 불러오기 -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<!--
+Bootstrap을 사용하면 버튼, 카드, 레이아웃 등 CSS 스타일을 직접 안 써도 쉽게 예쁘게 꾸밀 수 있음
+-->
+
+<!-- Bootstrap 아이콘 불러오기 -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+<!--
+<i class="bi bi-person-fill"></i> 같은 아이콘을 쓸 수 있음
+-->
+
+<!-- jQuery 불러오기 -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<!--
+jQuery를 사용하면 HTML 요소를 쉽게 선택하고, 클릭, 입력, 마우스 이벤트 등 다양한 동작을 처리할 수 있음
+-->
+
+<style>
+/* 구글 폰트 불러오기 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600&display=swap');
+
+* { 
+  font-family: 'Noto Sans KR', sans-serif; /* 글씨체 전체 적용 */
+  margin:0; /* 기본 여백 제거 */
+  padding:0; /* 기본 패딩 제거 */
+  box-sizing:border-box; /* 패딩과 테두리를 전체 너비/높이에 포함시킴 */
+}
+
+/* 전체 페이지 배경과 글자색 */
+body { 
+  background:#242121; /* 배경 어둡게 */
+  color:#eee; /* 글자 밝게 */
+  line-height:1.6; /* 줄 간격 넓게 */
+}
+
+/* 헤더 스타일 */
+header { 
+  text-align:center; /* 가운데 정렬 */
+  padding:80px 20px 40px; /* 위80px, 좌우20px, 아래40px */
+  opacity:0; /* 처음에는 안보이게 */
+  transition:opacity 1s ease-in; /* 점점 나타나는 애니메이션 */
+}
+
+/* 스크롤 내려서 보여줄 때 */
+header.active { opacity:1; }
+
+/* 섹션 전체 스타일 */
+section { 
+  max-width:900px; /* 최대 넓이 900px */
+  margin:60px auto; /* 위/아래 60px 여백, 좌우 가운데 정렬 */
+  padding:0 20px; /* 좌우 패딩 20px */
+}
+
+/* 제목 h2 스타일 */
+h2 { 
+  text-align:center; 
+  margin-bottom:40px; 
+  font-size:1.8rem; 
+  position:relative; 
+}
+
+/* 제목 밑에 줄 넣기 */
+h2::after { 
+  content:""; 
+  width:60px; 
+  height:3px; 
+  background:#ffb400; 
+  display:block; 
+  margin:10px auto 0; /* 가운데 정렬 */
+  border-radius:3px; 
+}
+
+/* ABOUT 영역 그리드 */
+.about-grid { 
+  display:grid; /* 격자 구조 */
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); /* 최소 250px, 자동으로 칸 배치 */
+  gap:20px; /* 칸 사이 간격 */
+  text-align:center; 
+}
+
+/* ABOUT 개별 박스 */
+.about-item { 
+  background:#2a2a2a; /* 어두운 배경 */
+  border-radius:12px; /* 모서리 둥글게 */
+  padding:20px; /* 안쪽 여백 */
+  transition:0.3s; /* 마우스 올릴 때 부드럽게 변화 */
+}
+
+/* 마우스 올리면 살짝 커지면서 색 바뀜 */
+.about-item:hover { 
+  transform:scale(1.05); 
+  background:#333; 
+}
+
+/* 아이콘 스타일 */
+.about-item i { 
+  font-size:28px; 
+  color:#ffb400; /* 노란색 */
+  margin-bottom:10px; 
+  display:block; 
+}
+
+/* 글씨 굵게 */
+.about-item p strong { 
+  display:block; 
+  word-break: break-word; /* 글자가 박스 밖으로 안 나가도록 */
+}
+
+/* 링크 스타일 */
+.about-item a { 
+  color:#ffb400; 
+  text-decoration:none; 
+  word-break: break-word; 
+}
+.about-item a:hover { text-decoration:underline; }
+
+/* SKILLS 영역 */
+.skills-grid { 
+  display:flex; 
+  flex-wrap:wrap; /* 버튼 여러 줄 가능 */
+  justify-content:center; 
+  gap:15px; 
+  margin-bottom:50px; 
+}
+
+/* 스킬 버튼 스타일 */
+.skill-btn { 
+  background:#2a2a2a; 
+  color:#eee; 
+  border:none; 
+  border-radius:8px; 
+  padding:15px 25px; 
+  cursor:pointer; 
+  font-size:16px; 
+  transition:0.3s; 
+}
+.skill-btn:hover { 
+  background:#ffb400; 
+  color:#111; 
+  transform:scale(1.05); 
+}
+
+/* PROJECT 영역 */
+.project-grid { 
+  display:grid; 
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); 
+  gap:20px; 
+  perspective:1000px; /* 3D 효과 */
+}
+
+/* 프로젝트 카드 */
+.project-card { 
+  position:relative; 
+  width:100%; 
+  height:200px; 
+  cursor:pointer; 
+  transform-style:preserve-3d; /* 3D 회전 가능 */
+  transition:0.6s; 
+  border-radius:12px; 
+}
+
+/* 카드 앞면, 뒷면 공통 */
+.project-card .front, .project-card .back { 
+  position:absolute; 
+  width:100%; 
+  height:100%; 
+  backface-visibility:hidden; /* 뒤집었을 때 뒷면 숨김 */
+  border-radius:12px; 
+  display:flex; 
+  align-items:center; 
+  justify-content:center; 
+  padding:20px; 
+  text-align:center; 
+}
+
+/* 앞면 스타일 */
+.project-card .front { 
+  background:#2a2a2a; 
+  color:#eee; 
+  font-weight:600; 
+  font-size:1.1rem; 
+}
+
+/* 뒷면 스타일 */
+.project-card .back { 
+  background: linear-gradient(135deg, #ffb400, #ff7f50); 
+  color:#111; 
+  transform:rotateY(180deg); /* 뒤집혀서 보여짐 */
+  font-size:0.95rem; 
+}
+
+/* 클릭하면 카드 뒤집기 */
+.project-card.flipped { transform: rotateY(180deg); }
+
+/* CONTACT 폼 */
+#contactForm { 
+  display:flex; 
+  flex-direction:column; 
+  gap:10px; 
+  max-width:500px; 
+  margin:0 auto; 
+}
+
+/* 입력창 */
+#contactForm input, #contactForm textarea { 
+  background:#2a2a2a; 
+  border:1px solid #444; 
+  color:#eee; 
+  border-radius:8px; 
+  padding:10px; 
+}
+
+/* 보내기 버튼 */
+#contactForm button { 
+  background:#ffb400; 
+  color:#111; 
+  border:none; 
+  border-radius:8px; 
+  padding:12px; 
+  cursor:pointer; 
+  font-weight:600; 
+  transition:0.3s; 
+}
+#contactForm button:hover { transform:scale(1.05); }
+
+/* FOOTER */
+footer { 
+  text-align:center; 
+  padding:40px 0 20px; 
+  color:#777; 
+  font-size:14px; 
+}
+
+/* 스크롤 애니메이션 */
+.fade-slide-on-scroll { 
+  opacity:0; /* 처음 안 보임 */
+  transform:translateY(20px); /* 살짝 아래에서 나타남 */
+  transition:0.8s ease-out;
+}
+.fade-slide-on-scroll.active { 
+  opacity:1; 
+  transform:translateY(0); /* 원래 위치로 올라오면서 나타남 */
+}
+
+/* iframe: 유튜브 영상 */
+iframe { 
+  width:100%; 
+  height:200px; 
+  border:none; 
+  border-radius:12px; 
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="fade-slide-on-scroll">
+  <h1>김영민</h1>
+  <p>WEB DEVELOPER PORTFOLIO.</p>
+</header>
+
+<!-- ABOUT ME -->
+<section id="about" class="fade-slide-on-scroll">
+  <h2>ABOUT ME</h2>
+  <div class="about-grid">
+    <div class="about-item"><i class="bi bi-person-fill"></i><p>이름<br><strong>김영민</strong></p></div>
+    <div class="about-item"><i class="bi bi-calendar-event-fill"></i><p>생년월일<br><strong>2000.02.24</strong></p></div>
+    <div class="about-item"><i class="bi bi-geo-alt-fill"></i><p>위치<br><strong>인천광역시</strong></p></div>
+    <div class="about-item"><i class="bi bi-telephone-fill"></i><p>연락처<br><strong>010-6351-****</strong></p></div>
+    <div class="about-item"><i class="bi bi-envelope-fill"></i><p>이메일<br><strong>dudals5292xn@naver.com</strong></p></div>
+    <div class="about-item"><i class="bi bi-github"></i><p>GitHub<br><a href="https://github.com/jesusjoy10/fullstack_youngmin.git" target="_blank">github.com/jesusjoy10</a></p></div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="fade-slide-on-scroll">
+  <h2>SKILLS</h2>
+  <div class="skills-grid">
+    <button class="skill-btn" data-skill="HTML">HTML</button>
+    <button class="skill-btn" data-skill="CSS">CSS</button>
+    <button class="skill-btn" data-skill="JS">JavaScript</button>
+    <button class="skill-btn" data-skill="GIT">Git / GitHub</button>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="fade-slide-on-scroll">
+  <h2>PROJECTS</h2>
+  <div class="project-grid">
+    <div class="project-card" data-project="p1">
+      <div class="front">프로젝트 1 (YouTube) <br>자바 콘솔 바디프로필 챌린지</div>
+      <div class="back">
+        <iframe src="https://www.youtube.com/embed/TZhNvTL7h_U" allowfullscreen></iframe>
+      </div>
+    </div>
+    <div class="project-card" data-project="p2">
+      <div class="front">프로젝트 2</div>
+      <div class="back">HTML/CSS 기반 반응형 웹 페이지</div>
+    </div>
+    <div class="project-card" data-project="p3">
+      <div class="front">프로젝트 3</div>
+      <div class="back">jQuery와 JS 활용 인터랙티브 기능 구현</div>
+    </div>
+    <div class="project-card" data-project="p4">
+      <div class="front">프로젝트 4</div>
+      <div class="back">팀 협업 GitHub 프로젝트</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="fade-slide-on-scroll">
+  <h2>CONTACT</h2>
+  <form id="contactForm">
+    <input type="text" id="name" placeholder="이름">
+    <input type="email" id="email" placeholder="이메일">
+    <textarea id="message" placeholder="메시지"></textarea>
+    <button type="submit">보내기</button>
+  </form>
+</section>
+
+<!-- FOOTER -->
+<footer class="fade-slide-on-scroll">
+  <p>© 2025 김영민 | <a href="https://github.com/jesusjoy10/fullstack_youngmin.git" target="_blank" style="color:#ffb400;">GitHub</a></p>
+</footer>
+
+<!-- SKILL MODAL -->
+<div class="modal fade" id="skillModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content bg-dark text-light">
+      <div class="modal-header border-0">
+        <h5 class="modal-title"></h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- jQuery 스크립트 -->
+<script>
+// CONTACT 폼: 제출 시
+$("#contactForm").on("submit", function(e){
+  e.preventDefault(); // 페이지 새로고침 막기
+  const name=$("#name").val().trim();
+  const email=$("#email").val().trim();
+  const msg=$("#message").val().trim();
+  if(!name||!email||!msg){ alert("모든 칸을 입력해주세요!"); return; }
+  alert("이메일이 성공적으로 전송되었습니다! (테스트용)");
+  this.reset(); // 입력창 초기화
+});
+
+// PROJECT 카드 클릭 시 뒤집기
+$(".project-card").on("click", function(){ $(this).toggleClass("flipped"); });
+
+// SKILL 버튼 클릭 시 모달 표시
+const skillDesc = {
+  HTML: "시맨틱 구조 설계 및 접근성을 고려한 마크업 경험이 있습니다.",
+  CSS: "Flex, Grid, Transform, Animation을 활용해 반응형 디자인 구현.",
+  JS: "폼 검증, 인터랙션 제어 등 동적 기능 구현 경험.",
+  GIT: "Git Flow 전략과 GitHub 협업 (브랜치/PR) 경험."
+};
+$(".skill-btn").on("click", function(){
+  const key=$(this).data("skill");
+  $("#skillModal .modal-title").text(key);
+  $("#skillModal .modal-body").text(skillDesc[key]);
+  new bootstrap.Modal($("#skillModal")).show();
+});
+
+// 스크롤 내리면 fade 애니메이션
+function handleScroll(){
+  $(".fade-slide-on-scroll").each(function(){
+    const elemTop=$(this).offset().top;
+    const scrollTop=$(window).scrollTop();
+    const winHeight=$(window).height();
+    if(scrollTop+winHeight>elemTop+50){ $(this).addClass("active"); }
+  });
+}
+$(window).on("scroll load", handleScroll);
+</script>
+
+</body>
+</html>
