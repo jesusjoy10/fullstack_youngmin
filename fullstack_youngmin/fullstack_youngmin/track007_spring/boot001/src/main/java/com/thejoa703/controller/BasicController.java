@@ -20,9 +20,9 @@ public class BasicController {
 		return "basic2";
 		}
 	
-	@GetMapping("/")
-	public String index() {
-		return "index";
-	}
+//	@GetMapping("/")
+//	public String index() {
+//		return "index";
+//	}
 
 }

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/layout}">
+
+<div layout:fragment="content">
+
+    <h4 class="mb-4">리뷰 목록</h4>
+
+    <!-- 리뷰 없을 때 -->
+    <div th:if="${#lists.isEmpty(reviewList)}" class="text-muted">
+        아직 작성된 리뷰가 없습니다.
+    </div>
+
+    <!-- 리뷰 리스트 -->
+    <div th:each="review : ${reviewList}" class="card mb-3 shadow-sm">
+        <div class="card-body">
+
+            <!-- ⭐ 별점 -->
+            <div class="mb-2">
+                <span th:each="i : ${#numbers.sequence(1, review.rating)}">
+                    <i class="bi bi-star-fill text-warning"></i>
+                </span>
+                <span th:each="i : ${#numbers.sequence(review.rating + 1, 5)}">
+                    <i class="bi bi-star text-secondary"></i>
+                </span>
+            </div>
+
+            <!-- 리뷰 내용 -->
+            <p class="card-text" th:text="${review.commentText}"></p>
+
+            <!-- 작성일 -->
+            <small class="text-muted"
+                   th:text="${#dates.format(review.createdAt, 'yyyy-MM-dd HH:mm')}">
+            </small>
+
+        </div>
+    </div>
+
+</div>
+</html>
