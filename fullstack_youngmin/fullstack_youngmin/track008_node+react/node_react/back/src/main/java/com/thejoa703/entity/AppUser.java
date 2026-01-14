@@ -120,7 +120,7 @@ public class AppUser {
    
    // 좋아요
    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-   private List<PostLike> postLikes = new ArrayList<>();
+   private List<PostLike> Likes = new ArrayList<>();
    
 }
 
