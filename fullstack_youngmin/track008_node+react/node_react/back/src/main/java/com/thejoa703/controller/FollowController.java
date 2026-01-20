@@ -41,29 +41,29 @@ public class FollowController {
         }
     }
 
-//    @GetMapping("/me/followings")
-//    public ResponseEntity<List<FollowResponseDto>> getMyFollowings(Authentication authentication) {
-//        Long followerId = authUserJwtService.getCurrentUserId(authentication);
-//        return ResponseEntity.ok(followService.getFollowings(followerId));
-//    }
-//
-//    @GetMapping("/me/followers")
-//    public ResponseEntity<List<FollowResponseDto>> getMyFollowers(Authentication authentication) {
-//        Long followeeId = authUserJwtService.getCurrentUserId(authentication);
-//        return ResponseEntity.ok(followService.getFollowers(followeeId));
-//    }
-//
-//    @GetMapping("/me/followings/count")
-//    public ResponseEntity<Long> countMyFollowings(Authentication authentication) {
-//        Long followerId = authUserJwtService.getCurrentUserId(authentication);
-//        return ResponseEntity.ok(followService.countFollowings(followerId));
-//    }
-//
-//    @GetMapping("/me/followers/count")
-//    public ResponseEntity<Long> countMyFollowers(Authentication authentication) {
-//        Long followeeId = authUserJwtService.getCurrentUserId(authentication);
-//        return ResponseEntity.ok(followService.countFollowers(followeeId));
-//    }
+    @GetMapping("/me/followings")
+    public ResponseEntity<List<FollowResponseDto>> getMyFollowings(Authentication authentication) {
+        Long followerId = authUserJwtService.getCurrentUserId(authentication);
+        return ResponseEntity.ok(followService.getFollowings(followerId));
+    }
+
+    @GetMapping("/me/followers")
+    public ResponseEntity<List<FollowResponseDto>> getMyFollowers(Authentication authentication) {
+        Long followeeId = authUserJwtService.getCurrentUserId(authentication);
+        return ResponseEntity.ok(followService.getFollowers(followeeId));
+    }
+
+    @GetMapping("/me/followings/count")
+    public ResponseEntity<Long> countMyFollowings(Authentication authentication) {
+        Long followerId = authUserJwtService.getCurrentUserId(authentication);
+        return ResponseEntity.ok(followService.countFollowings(followerId));
+    }
+
+    @GetMapping("/me/followers/count")
+    public ResponseEntity<Long> countMyFollowers(Authentication authentication) {
+        Long followeeId = authUserJwtService.getCurrentUserId(authentication);
+        return ResponseEntity.ok(followService.countFollowers(followeeId));
+    }
 
     @DeleteMapping
     public ResponseEntity<?> unfollow(Authentication authentication,

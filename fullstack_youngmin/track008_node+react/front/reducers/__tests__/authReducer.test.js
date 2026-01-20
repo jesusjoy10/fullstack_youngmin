@@ -97,40 +97,29 @@ describe( 'auth reducer' , ()=>{
         const state = reducer( initialState , updateNicknameRequest() );
         expect(state.loading).toBe(true); 
     }); 
-
-       it( ('updateProfileImageSuccess') , ()=>{
-        const state = reducer( initialState , updateProfileImageSuccess({user:{id:1, nickname:"new"}}) );
+    it( ('updateNicknameSuccess') , ()=>{
+        const state = reducer( initialState , 
+                            updateNicknameSuccess({ user: {id:1, nickname:"new"}}) );
         expect(state.user).toEqual({id:1, nickname:"new"}); 
         expect(state.loading).toBe(false); 
     });
-
-      it( ('updateNicknameFailure') , ()=>{
+    it( ('updateNicknameFailure') , ()=>{
         const state = reducer( initialState , updateNicknameFailure('fail') );
-        expect(state.error).toBe('fail'); 
-        expect(state.loading).toBe(false); 
+        expect(state.error).toBe('fail');    expect(state.loading).toBe(false); 
     }); 
-
-
-
-
     // --- 프로필 이미지 변경 ---
-      it( ('updateProfileImageRequest') , ()=>{
+    it( ('updateProfileImageRequest') , ()=>{
         const state = reducer( initialState , updateProfileImageRequest() );
         expect(state.loading).toBe(true); 
-    }); 
-
-     it( ('updateProfileImageSuccess') , ()=>{
-        const state = reducer( initialState , updateProfileImageSuccess({user:{id:1, ufile:"1.png"}}) );
+    });     
+    it( ('updateProfileImageSuccess') , ()=>{
+        const state = reducer( initialState , 
+                            updateProfileImageSuccess({ user: {id:1, ufile:"1.png"}}) );
         expect(state.user).toEqual({id:1, ufile:"1.png"}); 
         expect(state.loading).toBe(false); 
     });
-
     it( ('updateProfileImageFailure') , ()=>{
         const state = reducer( initialState , updateProfileImageFailure('fail') );
-        expect(state.error).toBe('fail'); 
-        expect(state.loading).toBe(false); 
+        expect(state.error).toBe('fail');   expect(state.loading).toBe(false); 
     }); 
-
-
-
 });

@@ -46,4 +46,29 @@ public class FollowService {
             .ifPresent(followRepository::delete);
         return followeeId;
     } 
+    //////////////////////////////////////////////////////
+    // ✅ Followings 조회  
+    @Transactional(readOnly = true)
+    public List<FollowResponseDto> getFollowings(Long followerId) {
+        return followRepository.findByFollower_Id(followerId).stream()
+            .map(f -> FollowResponseDto.of(f, f.getFollowee(), false))  
+            .collect(Collectors.toList());
+    }
+    // ✅ Followers 조회
+    @Transactional(readOnly = true)
+    public List<FollowResponseDto> getFollowers(Long followeeId) {
+        return followRepository.findByFollowee_Id(followeeId).stream()
+            .map(f -> FollowResponseDto.of(f, f.getFollower(), false))  
+            .collect(Collectors.toList());
+    }
+
+    @Transactional(readOnly = true)
+    public long countFollowings(Long followerId) {
+        return getFollowings(followerId).size();
+    }
+
+    @Transactional(readOnly = true)
+    public long countFollowers(Long followeeId) {
+        return getFollowers(followeeId).size();
+    }
 }
