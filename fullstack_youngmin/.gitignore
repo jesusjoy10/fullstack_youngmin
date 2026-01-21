@@ -20,5 +20,5 @@ tmp/
 # OS 자동 생성 파일
 .DS_Store
 Thumbs.db
-
+application-oauth.properties
 .env

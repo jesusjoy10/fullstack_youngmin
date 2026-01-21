@@ -3,8 +3,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux"; // 리듀서 상태관리
 import { Row, Col, Form, Input, Button, Spin, message } from "antd";  // 컴포넌트
 import { useRouter } from "next/router"; // 경로
-import { loginRequest, loginSuccess, logout } from "../reducers/authReducer"; //액션 - 로그인성공, 로그아웃
-import api from "../api/axios";  // 비동기 localhost:8484
+import { loginRequest} from "../reducers/authReducer"; //액션 - 로그인성공, 로그아웃
 
 export default function LoginPage(){
     // 코드
@@ -12,7 +11,7 @@ export default function LoginPage(){
     const router   = useRouter();
     const {user,loading,error} = useSelector( (state) => state.auth );
 
-    // //로그인 버튼
+    //로그인 버튼
     // const onFinish = async(values)=>{ 
     //     try{    // api.post → saga 
     //         const res = await  api.post("/auth/login"
@@ -35,10 +34,10 @@ export default function LoginPage(){
     //     } 
     // };
 
-    const onFinish = async(values)=>{
-        dispatch(loginRequest({}))
+    const onFinish = async(values)=>{ 
+        dispatch( loginRequest({...values , provider:"local"}))
     }
-
+ 
     //소셜 로그인 핸들러추가
     const handleSocialLogin=(provider)=>{ 
         window.location.href = `http://localhost:8484/oauth2/authorization/${provider}`;
@@ -101,8 +100,7 @@ export default function LoginPage(){
     );
 }
 
-// SSR 단순렌더: 서버에서 데이터를 가져오거나 가공하지 않고, 그냥 페이지 컴포넌트를 서버에서 그려서 내겨주는 것
+// SSR 단순렌더 : 서버에서 데이터를 가져오거나 가공하지 않고, 그냥 페이지 컴포넌트를 서버에서 그려서 내겨주는것.
 export async function getServerSideProps() {
   return { props: {} };
 }
-
