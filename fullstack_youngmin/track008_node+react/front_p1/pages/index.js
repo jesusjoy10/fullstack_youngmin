@@ -1,196 +1,75 @@
-import React, { useState } from 'react';
-import { Button, Card, Row, Col, Divider, Modal, Progress } from 'antd';
-import axios from 'axios';
+import React, { useState, useCallback } from 'react';
+import { Button, Card, Row, Col, Divider, Empty } from 'antd';
+import { useSelector } from 'react-redux';
+import RecommendModal from '../components/RecommendModal';
 
 const Home = () => {
-  const [recipes, setRecipes] = useState([]);
-  const [loading, setLoading] = useState(false);
-  
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const [step, setStep] = useState(1);
-  const [selections, setSelections] = useState({
-    mealType: '',
-    categoryName: '',
-    maxTime: 180,
-    difficulty: ''
-  });
+  
+  // recommendReducer에서 정의한 상태값 가져오기
+  const { recommendations, loadRecommendationsLoading, hasSearched } = useSelector((state) => state.recommend);
 
-  const showModal = () => {
-    setStep(1);
+  const showModal = useCallback(() => {
     setIsModalVisible(true);
-  };
-
-  const handleNext = async () => {
-    if (step < 4) {
-      setStep(step + 1);
-    } else {
-      setIsModalVisible(false);
-      fetchRecommendedRecipes();
-    }
-  };
-
-  const fetchRecommendedRecipes = async () => {
-    setLoading(true);
-    try {
-      const response = await axios.get(`http://localhost:8484/api/recipe/recommend`, {
-        params: {
-          categoryName: selections.categoryName,
-          difficulty: selections.difficulty,
-          maxTime: selections.maxTime
-        }
-      });
-      setRecipes(response.data);
-    } catch (error) {
-      alert("데이터를 가져오는데 실패했어요!");
-    }
-    setLoading(false);
-  };
+  }, []);
 
   return (
-    <div style={{ padding: '30px', maxWidth: '800px', margin: '0 auto' }}>
-      <h1>🥘 오늘 뭐 먹지?</h1>
-      
-      <Button type="primary" size="large" onClick={showModal} style={{ backgroundColor: '#FF6B00', borderColor: '#FF6B00' }}>
-        나에게 딱 맞는 레시피 찾기 🔍
-      </Button>
+    <div style={{ padding: '30px', maxWidth: '900px', margin: '0 auto' }}>
+      <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+        <h1 style={{ fontSize: '2.5rem', fontWeight: 'bold' }}>🥘 오늘 뭐 먹지?</h1>
+        <p style={{ color: '#666' }}>결정 장애를 해결해드리는 맞춤형 레시피 추천 서비스</p>
+        <Button 
+          type="primary" 
+          size="large" 
+          onClick={showModal} 
+          style={{ backgroundColor: '#FF6B00', borderColor: '#FF6B00', height: '50px', padding: '0 40px', borderRadius: '25px', marginTop: '20px' }}
+        >
+          맞춤 레시피 찾기 시작! 🔍
+        </Button>
+      </div>
 
       <Divider />
 
-      <Row gutter={[16, 16]}>
-        {recipes.map((recipe) => (
-          <Col span={12} key={recipe.recipeId}>
-            <Card title={recipe.title} hoverable cover={<img alt="food" src={recipe.image} />}>
-              <Card.Meta description={`${recipe.cookTime}분 | 난이도: ${recipe.difficulty}`} />
-            </Card>
-          </Col>
-        ))}
-      </Row>
+      {/* 결과 리스트 영역 */}
+      {hasSearched && !loadRecommendationsLoading && recommendations.length === 0 ? (
+        <Empty description="조건에 맞는 레시피가 없네요. 다른 조건으로 시도해보세요!" />
+      ) : (
+        <Row gutter={[20, 20]}>
+          {recommendations.map((item) => (
+            <Col xs={24} sm={12} md={8} key={item.recipeId}>
+              <Card 
+                hoverable
+                loading={loadRecommendationsLoading}
+              cover={
+   
+          <img 
+            alt={item.title} 
+            src={`http://localhost:8484/uploads/${item.image}`} 
+            style={{ height: '200px', objectFit: 'cover' }} 
+          />
+        }
+>
+              
+                <Card.Meta 
+                  title={item.title} 
+                  description={
+                    <div>
+                      <p>{item.categoryName} | {item.difficulty}</p>
+                      <p style={{ color: '#FF6B00', fontWeight: 'bold' }}>{item.cookTime}분 소요</p>
+                    </div>
+                  } 
+                />
+              </Card>
+            </Col>
+          ))}
+        </Row>
+      )}
 
-      <Modal 
+      {/* 분리된 모달 컴포넌트 */}
+      <RecommendModal 
         open={isModalVisible} 
-        onCancel={() => setIsModalVisible(false)} 
-        footer={null} 
-        title="나에게 맞는 레시피 찾기" 
-        centered
-      >
-        <div style={{ marginBottom: '20px' }}>
-          <span>진행 상황 {step}/4</span>
-          <Progress percent={step * 25} strokeColor="#FF6B00" showInfo={false} />
-        </div>
-
-        {/* 1단계: 식사 종류 */}
-        {step === 1 && (
-          <div style={{ minHeight: '200px' }}>
-            <p>어떤 식사를 원하시나요?</p>
-            <Row gutter={[10, 10]}>
-              {['아침 식사', '점심 식사', '저녁 식사', '간식/디저트'].map(meal => (
-                <Col span={12} key={meal}>
-                  <Button 
-                    block 
-                    style={{ 
-                      height: '60px', 
-                      borderRadius: '8px',
-                      borderColor: selections.mealType === meal ? '#FF6B00' : '#d9d9d9'
-                    }}
-                    onClick={() => setSelections({...selections, mealType: meal})}
-                  >
-                    {meal}
-                  </Button>
-                </Col>
-              ))}
-            </Row>
-          </div>
-        )}
-
-        {/* 2단계: 음식 종류 */}
-        {step === 2 && (
-          <div style={{ minHeight: '200px' }}>
-            <p>어떤 음식을 좋아하시나요?</p>
-            <Row gutter={[10, 10]}>
-              {['한식', '양식', '일식', '중식'].map(cat => (
-                <Col span={12} key={cat}>
-                  <Button 
-                    block 
-                    onClick={() => setSelections({...selections, categoryName: cat})}
-                    style={{ 
-                      height: '50px',
-                      borderRadius: '8px',
-                      borderColor: selections.categoryName === cat ? '#FF6B00' : '#d9d9d9' 
-                    }}
-                  >
-                    {cat}
-                  </Button>
-                </Col>
-              ))}
-            </Row>
-          </div>
-        )}
-
-        {/* 3단계: 조리 시간 */}
-        {step === 3 && (
-          <div style={{ minHeight: '200px' }}>
-            <p style={{ fontWeight: 'bold' }}>조리 시간은 어느 정도가 적당한가요?</p>
-            <Row gutter={[10, 10]}>
-              {[
-                { label: '빠르게 (15분 이내)', value: 15 },
-                { label: '적당히 (30분 이내)', value: 30 },
-                { label: '여유롭게 (60분 이내)', value: 60 },
-                { label: '상관없음', value: 180 }
-              ].map(item => (
-                <Col span={24} key={item.value}>
-                  <Button 
-                    block 
-                    style={{ 
-                      height: '50px', 
-                      textAlign: 'left',
-                      borderRadius: '8px',
-                      borderColor: selections.maxTime === item.value ? '#FF6B00' : '#d9d9d9'
-                    }}
-                    onClick={() => setSelections({...selections, maxTime: item.value})}
-                  >
-                    {item.label}
-                  </Button>
-                </Col>
-              ))}
-            </Row>
-          </div>
-        )}
-
-        {/* 4단계: 난이도 */}
-        {step === 4 && (
-          <div style={{ minHeight: '200px' }}>
-            <p style={{ fontWeight: 'bold' }}>어느 정도의 난이도를 원하시나요?</p>
-            <Row gutter={[10, 10]}>
-              {['아무나', '초급', '중급', '고급'].map(level => (
-                <Col span={12} key={level}>
-                  <Button 
-                    block 
-                    style={{ 
-                      height: '80px', 
-                      borderRadius: '8px',
-                      borderColor: selections.difficulty === level ? '#FF6B00' : '#d9d9d9'
-                    }}
-                    onClick={() => setSelections({...selections, difficulty: level})}
-                  >
-                    {level}
-                  </Button>
-                </Col>
-              ))}
-            </Row>
-          </div>
-        )}
-
-        <div style={{ marginTop: '30px', textAlign: 'right' }}>
-          {step > 1 && <Button onClick={() => setStep(step - 1)}>이전</Button>}
-          <Button 
-            type="primary" 
-            style={{ backgroundColor: '#FF6B00', borderColor: '#FF6B00', marginLeft: '10px' }}
-            onClick={handleNext}
-          >
-            {step === 4 ? '결과 보기' : '다음'}
-          </Button>
-        </div>
-      </Modal>
+        setOpen={setIsModalVisible} 
+      />
     </div>
   );
 };

@@ -1,12 +1,17 @@
 package com.bughunter.mapper;
 
-import java.util.List;
-
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import java.util.List;
+import com.bughunter.domain.Recipe; // 엔티티 임포트
 
-import com.bughunter.domain.Recipe;
 @Mapper
 public interface RecipeMapper {
-    // SQL문은 나중에 XML 파일에 작성할 거예요.
-    List<Recipe> findByCategory(String category);
+    // 추천 검색
+    List<Recipe> findRecommended(@Param("categoryName") String categoryName, 
+                                 @Param("difficulty") String difficulty, 
+                                 @Param("maxTime") Integer maxTime);
+
+    // 카테고리 검색
+    List<Recipe> findByCategory(@Param("category") String category);
 }

@@ -78,3 +78,52 @@ COMMIT;
 
 ALTER TABLE RECIPE_OPTIONS ADD NEXT_STEP NUMBER;
 COMMIT;
+
+
+CREATE TABLE MY_RECIPE (  -- 이름을 MY_RECIPE로 변경
+    id NUMBER PRIMARY KEY,
+    title VARCHAR2(100),
+    category VARCHAR2(50),
+    image VARCHAR2(500)
+);
+
+
+-- 테이블 이름이 RECIPE라면 (만약 이름을 바꾸셨다면 바꾼 이름으로!)
+INSERT INTO MY_RECIPE (id, title, category, image) 
+VALUES (1, '얼큰한 김치찌개', '한식', 'https://images.unsplash.com/photo-1583177724763-800124a3f399?w=300');
+
+INSERT INTO MY_RECIPE (id, title, category, image) 
+VALUES (2, '바삭한 돈카츠', '일식', 'https://images.unsplash.com/photo-1591814441348-268e64812566?w=300');
+
+-- ⭐️ 중요: 반드시 COMMIT을 해야 스프링이 데이터를 읽어갈 수 있습니다!
+COMMIT;
+
+-- 예시: 실제 요리 사진 주소로 업데이트
+UPDATE MY_RECIPE 
+SET image = 'https://images.unsplash.com/photo-1583177724763-800124a3f399?w=400'
+WHERE id = 1;
+
+COMMIT; -- 👈 잊지 마세요!
+
+
+UPDATE MY_RECIPE 
+SET image = 'https://via.placeholder.com/300' 
+WHERE id = 1;
+
+COMMIT;
+
+-- 테스트용 이미지 (이 주소는 보통 잘 허용됩니다)
+UPDATE MY_RECIPE 
+SET image = 'https://picsum.photos/300/200' 
+WHERE id = 1;
+
+COMMIT;
+
+
+-- 1번 유저가 올린 '한식(2)', '30분', '쉬움' 레시피
+INSERT INTO RECIPES3 (RECIPE_ID, APPUSERID, TITLE, CATEGORY, COOK_TIME, DIFFICULTY, IMAGE)
+VALUES (seq_recipe3.NEXTVAL, 1, '디자인 시안 김치찌개', 2, 30, '쉬움', 'https://picsum.photos/300/200');
+
+COMMIT;
+
+SELECT IMAGE FROM RECIPES3;
