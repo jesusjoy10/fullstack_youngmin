@@ -127,3 +127,9 @@ VALUES (seq_recipe3.NEXTVAL, 1, '디자인 시안 김치찌개', 2, 30, '쉬움'
 COMMIT;
 
 SELECT IMAGE FROM RECIPES3;
+
+-- 1. 테이블의 모든 데이터를 삭제 (구조는 유지)
+TRUNCATE TABLE POSTS;
+
+-- 2. 혹시 모르니 커밋도 한 번 해주세요 (오라클 환경에 따라)
+COMMIT;
