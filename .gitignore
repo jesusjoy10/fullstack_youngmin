@@ -20,3 +20,5 @@ Thumbs.db
 *.zip
 .env
 application-oauth.properties
+*.pem
+thejoa703-2.pem
