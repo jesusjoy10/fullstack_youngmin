@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- PostMapper.xml -->
+<mapper namespace="com.thejoa703.mapper.SearchHistoryMapper">
+
+   <select id="findStoresByFilters" resultType="com.thejoa703.entity.Post">
+    SELECT DISTINCT p.*
+    FROM POSTS p
+    LEFT JOIN POST_HASHTAG ph ON p.ID = ph.POST_ID
+    LEFT JOIN HASHTAGS h ON ph.HASHTAG_ID = h.ID
+    WHERE p.DELETED = 0
+    <if test="category != null and category != ''">
+        AND p.CATEGORY = #{category}
+    </if>
+    <if test="location != null and location != ''">
+        AND DBMS_LOB.INSTR(p.INGREDIENTS, #{location, jdbcType=VARCHAR}) > 0
+    </if>
+    <if test="hashtag != null and hashtag != ''">
+        AND h.NAME LIKE '%' || #{hashtag} || '%'
+    </if>
+    ORDER BY p.CREATED_AT DESC
+</select>
+
+
+
+</mapper>

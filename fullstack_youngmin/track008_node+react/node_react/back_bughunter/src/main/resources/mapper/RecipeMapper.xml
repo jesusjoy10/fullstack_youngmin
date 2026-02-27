@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bughunter.mapper.RecipeMapper">
+
+    <select id="findRecommended" resultType="com.bughunter.domain.Recipe">
+        SELECT 
+            r.*, 
+            c.CATEGORY_NAME 
+        FROM RECIPES3 r
+        JOIN CATEGORY3 c ON r.CATEGORY = c.CATEGORY
+        WHERE r.STATUS = 'PUBLIC'
+        <if test="categoryName != null">
+            AND c.CATEGORY_NAME = #{categoryName}
+        </if>
+        <if test="difficulty != null">
+            AND r.DIFFICULTY = #{difficulty}
+        </if>
+        <if test="maxTime != null">
+            <![CDATA[ AND r.COOK_TIME <= #{maxTime} ]]>
+        </if>
+    </select>
+
+   <select id="findByCategory" resultType="com.bughunter.domain.Recipe">
+    SELECT 
+        r.*, 
+        c.CATEGORY_NAME 
+    FROM RECIPES3 r
+    JOIN CATEGORY3 c ON r.CATEGORY = c.CATEGORY
+    WHERE c.CATEGORY_NAME = #{category}
+</select>
+
+</mapper>

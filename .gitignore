@@ -1,0 +1,31 @@
+# IDE
+.metadata/
+.idea/
+.vscode/
+
+# Java / Spring
+target/
+build/
+.gradle/
+
+# Node
+node_modules/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# .gitignore
+.next/
+*.zip
+.env
+application-oauth.properties
+
+
+
+*.pem
+thejoa703-2.pem
+linux+asw+gitAction.md
+thejoa703_accessKeys.csv
+linux+aws+gitaction-1_react_boot.md
+

@@ -1,0 +1,24 @@
+# Eclipse metadata
+/fullstack_youngmin/track003_java/.metadata/
+*.launch
+.settings/
+bin/
+tmp/
+
+# IDE 설정 파일
+*.classpath
+*.project
+
+# 빌드 산출물
+/build/
+/target/
+/out/
+
+# 로그
+*.log
+
+# OS 자동 생성 파일
+.DS_Store
+Thumbs.db
+application-oauth.properties
+.env

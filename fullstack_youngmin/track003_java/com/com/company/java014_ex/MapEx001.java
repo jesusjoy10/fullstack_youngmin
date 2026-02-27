@@ -1,0 +1,55 @@
+package com.company.java014_ex;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Scanner;
+
+// map : 사전 - entry(key,value) / put,get,size,remove,contains
+public class MapEx001 {
+	public static void main(String[] args) {
+		//Q1. map 에 데이터 추가 -피구왕 통키, 제빵왕 김탁구, 요리왕 비룡
+		Scanner scanner = new Scanner(System.in);
+		Map<String, String> map = new HashMap<>();
+		 map.put("피구왕", "통키");
+	     map.put("제빵왕", "김탁구");
+	     map.put("요리왕", "비룡");
+	     System.out.println("===================\r\n + " + "KING \tNAME\r\n"+"=====================");
+	     for (Entry<String, String> k : map.entrySet()) {
+	            System.out.println(k.getKey() + "\t" + k.getValue());
+	}
+	    System.out.println("KING의 정보를 제공중입니다 \r\n" + "이름을 입력하세요>");
+	    String find = scanner.next();
+	    
+	    System.out.println(map.containsKey(find)? find + "-" + map.get(find): "찾는왕없음");
+}
+	}
+
+/*연습문제2)  Collection  Framework
+패키지명 : com.company.java014_ex
+클래스명 : MapEx001
+1. MAP 만들기
+KEY   VALUE
+피구왕   통키
+---------------------
+제빵왕   김탁구
+---------------------
+요리왕   비룡
+
+Map<String, String> map = new HashMap<>();
+
+2 다음과 같이 문제풀기
+==============================
+KING   NAME
+==============================
+피구왕   통키
+---------------------
+제빵왕   김탁구
+---------------------
+요리왕   비룡
+---------------------
+KING의 정보를 제공중입니다
+이름을 입력하세요> 제빵왕
+
+ㅁ제빵왕 : 김탁구
+*/

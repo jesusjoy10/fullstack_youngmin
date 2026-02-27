@@ -1,0 +1,23 @@
+package com.company.java010_bank;
+
+public class Delete {
+	   //상태 : 멤버변수
+ UserInfo userinfo;
+    //행위 : 멤버함수
+	public Delete() { super();  }
+
+	public Delete(UserInfo userinfo) { super(); this.userinfo = userinfo; }
+ 
+	//행위 : 멤버함수
+	public void exec() {
+		this.userinfo.setId("");
+		this.userinfo.setPass("");
+		this.userinfo.setBalance(0);
+		
+		System.out.println("정보를 삭제했습니다");
+		//setter / getter 이용해서 유저정보삭제, 초기화 ### 
+	}
+ 
+}
+/* 기능: 유저정보삭제, 초기화 
+*/

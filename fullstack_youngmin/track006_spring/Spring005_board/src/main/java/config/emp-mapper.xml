@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.thejoa703.dao.EmpDao">
+
+  
+  <select resultType="EmpDto" id="test6">
+  select * from emp
+  <where>
+  empno in
+  <foreach item="no" collection="list"
+         separator="," open="(" close=")">
+    #{no}
+</foreach> 
+  </where>
+  </select>
+
+</mapper>

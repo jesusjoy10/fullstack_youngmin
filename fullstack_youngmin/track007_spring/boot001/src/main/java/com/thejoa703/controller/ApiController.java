@@ -1,0 +1,122 @@
+package com.thejoa703.controller;
+
+import java.io.UnsupportedEncodingException;
+import java.net.URISyntaxException;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.thejoa703.external.ApiChatGpt;
+import com.thejoa703.external.ApiCoolSms;
+import com.thejoa703.external.ApiEmailNaver;
+import com.thejoa703.external.ApiKmaWeather;
+import com.thejoa703.external.BookDto;
+import com.thejoa703.external.NaverBookJsonService;
+import com.thejoa703.external.NaverBookXmlService;
+
+import net.nurigo.java_sdk.exceptions.CoolsmsException;
+
+@Controller
+@RequestMapping("/api")
+public class ApiController {
+
+	///////////////////////// ChatGpt
+	// http://localhost:8484/api/openai
+	@Autowired   ApiChatGpt  apiChatGpt;
+	
+	@GetMapping("/openai")
+	public String openai_get() { return "external/openai"; }
+	
+	@PostMapping(value="/openai" , produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String openai(@RequestBody String content) {
+		return  apiChatGpt.getAIResponse(content);
+	}
+
+	///////////////////////// Weather
+	// http://localhost:8484/api/weather
+	@Autowired   ApiKmaWeather  	apiKmaWeather;
+	
+	@GetMapping("/weather")
+	public String kma_get() { return "external/weather"; }
+	
+	@GetMapping(value="/weatherapi" , produces = "application/xml;charset=UTF-8")
+	@ResponseBody
+	public String kma() throws URISyntaxException {
+		return  apiKmaWeather.getWeatherResponse();
+	}
+
+
+	///////////////////////// Email
+	@Autowired  ApiEmailNaver   apiEmailNaver;
+	
+	@GetMapping("/mail")
+	public String mail_get() { return "external/mail"; }
+	
+	@PostMapping(value="/mail" ) 
+	public String mail(String subject, String content, String email){ 
+		apiEmailNaver.sendMail(subject , content , email);
+		return "external/mail_result";
+	}
+	///////////////////////////////Sms
+	@Autowired ApiCoolSms apiCoolSms;
+	
+	@GetMapping("/sms")
+	public String sms() {return "external/sms";}
+	@GetMapping("/smsapi")
+	@ResponseBody
+	public String sms_api(@RequestParam String to) throws CoolsmsException{
+		return apiCoolSms.phoneNumber(to);
+	}
+	
+	/////////////////////////////PostCode
+	@GetMapping("/postcode")
+	public String postcode() {return "external/postcode";}
+	
+/////////////////////////////Maps
+	@GetMapping("/maps")
+	public String maps() {return "external/navermap";}
+	
+/////////////////////////////Chatbot
+	@GetMapping("/chatbot")
+	public String chatbot() {return "external/chatbot";}
+	
+/////////////////////////////NaverBookParsing-json
+	//http://localhost:8484/api/naverbook/json?search=spring
+	//org.springframework.Http.mediaType
+	@Autowired NaverBookJsonService jsonService;
+	
+	@GetMapping(value = "/naverbook/json", produces=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public List<BookDto> naverbookJson(@RequestParam String search) throws UnsupportedEncodingException {
+		return jsonService.getBooks(search);
+	}
+	
+	
+/////////////////////////////NaverBookParsing-xml
+	@Autowired NaverBookXmlService xmlService;
+
+	@GetMapping(value = "/naverbook/xml", produces=MediaType.APPLICATION_XML_VALUE)
+	@ResponseBody
+	public List<BookDto> naverbookXml(@RequestParam String search) throws UnsupportedEncodingException {
+	    return xmlService.getBooks(search);
+	}
+
+}
+
+
+
+
+
+
+
+
+

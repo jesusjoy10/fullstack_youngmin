@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- HTML 버튼 -->
+<input type="button" value="addEventEx-1~5 Like" 
+       title="버튼5" id="addEventEx" class="btn btn-success" />
+
+<!-- JavaScript 코드 -->
+<script>
+  window.addEventListener("load", function() {
+    document.getElementById("addEventEx").onclick = function() {
+      let like = prompt("좋아하는 숫자 1~5", "1~5");
+      alert("좋아하는 숫자는 " + like + "입니다.");
+    };
+  });
+</script>
+
+    
+</body>
+</html>
+
+<!--# Web Basic 복습문제
+0. 스크립트가 document 어느위치에서든지 동작 가능하게
+1. 아이디가 addEventEx인것을 getElementByid 이용해 선택
+2. 클릭시 prompt 이용해서 당신이 좋아하는 1~5사이의 숫자 물어보고
+3. alert 이용해서 알림창 띄우기  -->
+
+
+
